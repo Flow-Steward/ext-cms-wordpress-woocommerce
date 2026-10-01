@@ -1,0 +1,154 @@
+page_id: setup-guide
+title: Setup Guide
+description: Create the credentials this extension needs, then fill in and test the connection.
+project_scoped: false
+components:
+  - component_id: setup_guide_wordpress
+    type: markdown
+    title: WordPress setup
+    body: |  # pragma: allowlist secret
+      **Before you start**
+
+      The WordPress REST API is part of WordPress Core. A standard site does not need a separate plugin to expose it.
+
+      - WordPress 5.6 or later is required, because that is the release that added native Application Passwords.
+      - The site should use HTTPS. This extension only connects over HTTPS.
+      - The REST API must not be disabled or blocked. A security plugin, a hosting firewall, or a custom configuration can block it.
+      - Create or select a least-privilege WordPress service account that holds only the permissions the operations you intend to run actually require. Do not reuse a personal administrator account when a narrower role will do.
+
+      **Create the Application Password**
+
+      1. Sign in to WordPress as the service account, or as an administrator editing that account.
+      2. Navigate to `WordPress Admin → Users → Profile`.
+      3. Scroll to the `Application Passwords` section.
+      4. Enter a recognizable application name, such as `Flow Steward`.
+      5. Select the button that generates the Application Password.
+      6. Copy the generated password as soon as it is displayed. WordPress may not display it again.
+
+      **What to use as the username**
+
+      Use the WordPress username, not the email address, unless the two are identical and the site accepts the email address as a username. Do not use the user's normal WordPress login password: this extension authenticates only with an Application Password.
+  - component_id: setup_guide_woocommerce
+    type: markdown
+    title: WooCommerce setup
+    body: |
+      WooCommerce credentials are optional. Leave both fields empty if you only need WordPress operations; every WordPress operation still works without them.
+
+      **Before you start**
+
+      - WooCommerce must be installed and active on the site.
+      - Pretty permalinks must be enabled. The WooCommerce REST API does not work with plain permalinks.
+
+      **Create the API key**
+
+      1. Navigate to `WooCommerce → Settings → Advanced → REST API`.
+      2. Select `Add key`.
+      3. Enter a recognizable description, such as `Flow Steward`.
+      4. Select the WordPress user whose permissions the API key will use. The key can never do more than that user can.
+      5. Select `Read/Write` permissions to reach the complete supported API surface. `Read` alone is enough only if you never run a WooCommerce create, update, or batch operation.
+      6. Select the button that generates the API key.
+      7. Copy both the Consumer Key and the Consumer Secret as soon as they are displayed. The secret may not be shown again.
+  - component_id: setup_guide_flow_steward
+    type: markdown
+    title: Complete the Flow Steward connection
+    body: |
+      Open the `Connection` page in this extension and fill in the form.
+
+      1. **Site URL** - enter the base site URL, for example `https://example.com`. Do not append `/wp-json`, `/wp/v2`, or `/wc/v3`; Flow Steward adds the REST path itself.
+      2. **WordPress username** - the username of the service account you created the Application Password for.
+      3. **WordPress Application Password** - the value you copied from `Users → Profile`.
+      4. **WooCommerce Consumer Key** and **WooCommerce Consumer Secret** - optional, but supply both or neither. One alone is rejected before Flow Steward contacts WooCommerce.
+      5. Save the connection.
+      6. Run `Test connection`.
+
+      **Reading the result**
+
+      `Test connection` reports WordPress and WooCommerce independently, so a WooCommerce problem never hides a working WordPress connection.
+
+      WordPress state:
+
+      - `wordpress_ready` - the site answered, `/wp/v2` is published, and the Application Password authenticated.
+      - `wordpress_unavailable` - the site did not answer, or it does not publish `/wp/v2`. See "REST API blocked or unavailable" below.
+      - `wordpress_authentication_failed` - the site answered but rejected the username and Application Password.
+
+      WooCommerce state:
+
+      - `woocommerce_ready` - `/wc/v3` is published and the Consumer Key and Consumer Secret authenticated.
+      - `woocommerce_not_installed` - no `/wc/v3` namespace was detected at the site.
+      - `woocommerce_not_configured` - `/wc/v3` is published, but this connection carries no WooCommerce credentials. WordPress operations still work.
+      - `woocommerce_authentication_failed` - `/wc/v3` is published and credentials were supplied, but WooCommerce rejected them.
+  - component_id: setup_guide_woocommerce_webhooks
+    type: markdown
+    title: Sending WooCommerce events to a workflow
+    body: |
+      A WooCommerce webhook decides where your store sends its data, so this extension does not
+      create or change one for you. You add it in WooCommerce yourself, and point it at a
+      workflow that is waiting for it. It takes a couple of minutes and you only do it once per
+      event you care about.
+
+      1. In Flow Steward, open the workflow you want the store to start, and add a **webhook
+         trigger** to it. This is the platform's own generic trigger; there is nothing
+         WooCommerce-specific to choose.
+      2. Save the workflow. The trigger shows a **receiving URL** - copy it.
+      3. In WooCommerce Admin, go to `WooCommerce → Settings → Advanced → Webhooks` and select
+         **Add webhook**.
+      4. Give it a name you will recognise, set **Status** to `Active`, and choose the
+         **Topic** for the event you want, such as `Order created` or `Product updated`.
+      5. Paste the Flow Steward receiving URL into **Delivery URL**.
+      6. Save. WooCommerce now posts that event to your workflow, and the workflow runs with the
+         event payload as its input.
+
+      **What this does and does not do**
+
+      - Flow Steward receives whatever WooCommerce sends to that URL. It is the same generic
+        workflow webhook any other source can post to.
+      - This extension does not register, list, change or synchronise WooCommerce webhooks, and
+        it adds no webhook-specific trigger, callback service or admin page of its own.
+      - Whatever verification the platform's generic webhook trigger already performs is what
+        applies here. This extension adds no WooCommerce signature checking on top of it, so do
+        not assume the `X-WC-Webhook-Signature` header is being validated for you.
+      - To stop the events, delete or deactivate the webhook in WooCommerce.
+
+  - component_id: setup_guide_troubleshooting
+    type: markdown
+    title: Troubleshooting
+    body: |
+      **REST API blocked or unavailable.** Open `https://your-site/wp-json/` in a browser. If it does not return JSON, a security plugin, a hosting firewall, or a custom rule is blocking the REST API. Allow `/wp-json/` and try again.
+
+      **Pretty permalinks disabled.** Set `Settings → Permalinks` to any option other than `Plain`. WooCommerce `/wc/v3` routes are unreachable without pretty permalinks.
+
+      **Incorrect username or Application Password.** `wordpress_authentication_failed` means the pair was rejected. Confirm you entered the WordPress username rather than the display name or email address, and that the Application Password was pasted whole, including its spaces.
+
+      **Application Passwords disabled by hosting or security policy.** If the `Application Passwords` section is missing from `Users → Profile`, the site or its host has disabled the feature. Ask the host or the site administrator to re-enable it. This extension supports no alternative authentication.
+
+      **Missing WordPress user capabilities.** An `authorization_failed` result means the site authenticated the account but the account may not perform that operation. Grant the service account the capability the operation requires, or use an account that already has it.
+
+      **WooCommerce not installed.** `woocommerce_not_installed` means no `/wc/v3` namespace was detected. Confirm WooCommerce is active, then confirm `https://your-site/wp-json/` lists `wc/v3` among its namespaces.
+
+      **Incorrect WooCommerce key permissions.** A key created with `Read` permissions cannot run a WooCommerce create, update, or batch operation. Create a new key with `Read/Write` permissions.
+
+      **Consumer Key or Consumer Secret missing.** Supplying one WooCommerce secret without the other fails validation before any WooCommerce request is sent. Enter both values, or clear both.
+
+      **Authorization headers stripped by the web server or proxy.** Some Apache and CGI setups drop the `Authorization` header, so every request looks unauthenticated. Ask the host to pass the header through; on Apache this is usually a `SetEnvIf Authorization` or `CGIPassAuth On` rule.
+
+      **TLS certificate validation failure.** Flow Steward verifies the site certificate and does not skip verification. Install a valid certificate for the exact hostname in the site URL, including any intermediate chain.
+
+      **Private or local WordPress site rejected.** The default Flow Steward network policy refuses private, loopback, link-local, and other reserved addresses, and this extension adds no exception. A site that only resolves inside a private network cannot be connected.
+  - component_id: setup_guide_security
+    type: markdown
+    title: Security guidance
+    body: |
+      - Use HTTPS. This extension refuses any site URL that is not `https`.
+      - Use a dedicated least-privilege service user wherever that is practical, rather than a personal administrator account.
+      - Store credentials only in the Flow Steward secret fields on the `Connection` page. Never put them in a workflow input, a note, or a step parameter.
+      - Do not place credentials in URLs. Flow Steward sends them as an HTTPS Basic `Authorization` header and rejects a site URL that carries credentials.
+      - Revoke the Application Password and the WooCommerce keys when the access is no longer required. Both are revoked at the site, not in Flow Steward.
+      - Rotate credentials if they may have been exposed, then update the connection with the new values.
+  - component_id: setup_guide_links
+    type: markdown
+    title: Official documentation
+    body: |
+      - [WordPress Application Passwords](https://developer.wordpress.org/rest-api/reference/application-passwords/)
+      - [WordPress REST API authentication](https://developer.wordpress.org/rest-api/using-the-rest-api/authentication/)
+      - [WooCommerce REST API authentication](https://developer.woocommerce.com/docs/apis/rest-api/authentication/)
+      - [WooCommerce REST API v3 reference](https://developer.woocommerce.com/docs/apis/rest-api/v3/)

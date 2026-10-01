@@ -1,0 +1,7 @@
+version: "1"
+pages:
+  - ref: pages/setup-guide.yaml
+  - ref: pages/connection.yaml
+  - ref: pages/wordpress-api.yaml
+  - ref: pages/woocommerce-api.yaml
+  - ref: pages/changelog.yaml

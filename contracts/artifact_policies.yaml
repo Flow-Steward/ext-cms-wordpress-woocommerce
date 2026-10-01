@@ -1,0 +1,10 @@
+# WordPress media consumes a workflow file. Complete WooCommerce product
+# exports stream to object storage instead of returning a large catalog in
+# workflow state.
+artifact_policies:
+  - operation_id: wp_create_media
+    inputs:
+      - {kind: artifact, value_type: artifact_handle, binding_key: wordpress_media_artifact, from_input: artifact_handle, max_size_bytes: 67108864}
+  - operation_id: wc_export_products
+    outputs:
+      - {kind: artifact, value_type: artifact_handle, binding_key: woocommerce_products_export, filename: woocommerce-products.jsonl, content_type: application/x-ndjson, max_size_bytes: 209715200, max_size_env: FS_EXTENSION_ARTIFACT_MAX_BYTES, retention_class: run_window}

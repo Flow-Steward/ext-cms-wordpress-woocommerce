@@ -1,0 +1,12 @@
+page_id: connection
+title: Connection
+description: Add and manage the project-scoped WordPress site connection.
+components:
+  - ref: ../components/wordpress_connection_form.yaml
+  - component_id: connection_notes
+    type: markdown
+    title: Before you save
+    body: |
+      Read the `Setup Guide` page first if you have not created the credentials yet. It is available before any connection exists.
+
+      WooCommerce credentials are optional. Supply both the Consumer Key and the Consumer Secret, or neither: one alone is rejected before Flow Steward sends any WooCommerce request. WordPress operations remain available either way.

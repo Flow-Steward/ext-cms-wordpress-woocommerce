@@ -1,0 +1,53 @@
+"""Closed dispatcher for the WordPress & WooCommerce extension.
+
+``OPERATION_REGISTRY`` is the whole routable surface. An operation id that is
+not a key here is refused before the payload is looked at any further, and
+before any outbound I/O.
+"""
+
+from __future__ import annotations
+
+from collections.abc import Mapping
+from typing import Any
+
+from runtime import errors
+from runtime.catalog import (
+    REST_OPERATIONS_BY_ID,
+    TEST_CONNECTION_OPERATION_ID,
+    VALIDATE_SETTINGS_OPERATION_ID,
+    Operation,
+)
+from runtime.catalog_export import EXPORT_PRODUCTS_OPERATION_ID
+from runtime.errors import error_response
+from runtime.operations import handle_runtime
+
+OPERATION_REGISTRY: dict[str, Operation | None] = {
+    TEST_CONNECTION_OPERATION_ID: None,
+    VALIDATE_SETTINGS_OPERATION_ID: None,
+    EXPORT_PRODUCTS_OPERATION_ID: None,
+    **REST_OPERATIONS_BY_ID,
+}
+OPERATION_IDS: frozenset[str] = frozenset(OPERATION_REGISTRY)
+
+
+def dispatch_runtime(payload: dict[str, Any]) -> dict[str, Any]:
+    """Route one runtime invocation, or refuse it."""
+    operation_id = _operation_id(payload)
+    if operation_id not in OPERATION_REGISTRY:
+        return error_response(
+            errors.UNSUPPORTED_OPERATION, "That operation is not part of this extension"
+        )
+    return handle_runtime(payload)
+
+
+def _operation_id(payload: Any) -> str:
+    if not isinstance(payload, Mapping) or payload.get("mode") != "action":
+        return ""
+    action = payload.get("action")
+    if not isinstance(action, Mapping):
+        return ""
+    value = action.get("action_id") or action.get("operation_id")
+    return value.strip() if isinstance(value, str) else ""
+
+
+__all__ = ["OPERATION_IDS", "OPERATION_REGISTRY", "dispatch_runtime"]

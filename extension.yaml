@@ -1,0 +1,112 @@
+manifest_version: 2
+lifecycle: {data_schema_version: 1, data_migrations: []}
+extension_id: flowsteward.wordpress-woocommerce
+kind: tool_provider
+version: 1.0.0
+release_stage: active
+billing_mode: free
+display_name: WordPress & WooCommerce
+description: A curated, automation-safe subset of the WordPress Core and WooCommerce REST APIs, typed and scoped to one project-scoped WordPress site.
+vendor:
+  name: Flow Steward
+  support_url: https://github.com/Flow-Steward/ext-cms-wordpress-woocommerce/issues
+  website_url: https://github.com/Flow-Steward/ext-cms-wordpress-woocommerce
+listing:
+  category: cms
+  tags: [wordpress, woocommerce, rest, cms, ecommerce]
+  summary: Read and safely write standard WordPress and WooCommerce data over the official REST APIs.
+features: [tool, action]
+required_scopes: [extension:invoke, artifact:read, artifact:write]
+account_scope:
+  scope_type: project
+  description: Each WordPress site connection, its Application Password, and its optional WooCommerce keys are scoped to one project.
+external_effects:
+  - {operation_id: wp_create_post, effect_kind: wordpress_posts_create, channel: wordpress_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wp_update_post, effect_kind: wordpress_posts_update, channel: wordpress_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wp_create_post_autosave, effect_kind: wordpress_post_revisions_create, channel: wordpress_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wp_create_page, effect_kind: wordpress_pages_create, channel: wordpress_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wp_update_page, effect_kind: wordpress_pages_update, channel: wordpress_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wp_create_page_autosave, effect_kind: wordpress_page_revisions_create, channel: wordpress_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wp_create_media, effect_kind: wordpress_media_media_create, channel: wordpress_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wp_update_media, effect_kind: wordpress_media_update, channel: wordpress_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wp_create_comment, effect_kind: wordpress_comments_create, channel: wordpress_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wp_update_comment, effect_kind: wordpress_comments_update, channel: wordpress_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wp_create_category, effect_kind: wordpress_categories_create, channel: wordpress_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wp_update_category, effect_kind: wordpress_categories_update, channel: wordpress_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wp_create_tag, effect_kind: wordpress_tags_create, channel: wordpress_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wp_update_tag, effect_kind: wordpress_tags_update, channel: wordpress_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wp_update_settings, effect_kind: wordpress_settings_update, channel: wordpress_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wp_create_block, effect_kind: wordpress_blocks_create, channel: wordpress_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wp_update_block, effect_kind: wordpress_blocks_update, channel: wordpress_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wp_create_block_autosave, effect_kind: wordpress_block_revisions_create, channel: wordpress_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wp_update_sidebar, effect_kind: wordpress_sidebars_update, channel: wordpress_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wp_create_widget, effect_kind: wordpress_widgets_create, channel: wordpress_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wp_update_widget, effect_kind: wordpress_widgets_update, channel: wordpress_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wc_create_coupon, effect_kind: woocommerce_coupons_create, channel: woocommerce_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wc_update_coupon, effect_kind: woocommerce_coupons_update, channel: woocommerce_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wc_batch_coupons, effect_kind: woocommerce_coupons_batch, channel: woocommerce_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wc_create_customer, effect_kind: woocommerce_customers_create, channel: woocommerce_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wc_update_customer, effect_kind: woocommerce_customers_update, channel: woocommerce_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wc_batch_customers, effect_kind: woocommerce_customers_batch, channel: woocommerce_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wc_create_order, effect_kind: woocommerce_orders_create, channel: woocommerce_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wc_update_order, effect_kind: woocommerce_orders_update, channel: woocommerce_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wc_batch_orders, effect_kind: woocommerce_orders_batch, channel: woocommerce_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wc_send_order_details, effect_kind: woocommerce_order_actions_action, channel: woocommerce_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wc_send_order_email, effect_kind: woocommerce_order_actions_action, channel: woocommerce_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wc_create_order_note, effect_kind: woocommerce_order_notes_create, channel: woocommerce_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wc_create_product, effect_kind: woocommerce_products_create, channel: woocommerce_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wc_update_product, effect_kind: woocommerce_products_update, channel: woocommerce_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wc_batch_products, effect_kind: woocommerce_products_batch, channel: woocommerce_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wc_duplicate_product, effect_kind: woocommerce_products_action, channel: woocommerce_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wc_create_product_variation, effect_kind: woocommerce_product_variations_create, channel: woocommerce_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wc_update_product_variation, effect_kind: woocommerce_product_variations_update, channel: woocommerce_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wc_batch_product_variations, effect_kind: woocommerce_product_variations_batch, channel: woocommerce_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wc_create_product_attribute, effect_kind: woocommerce_product_attributes_create, channel: woocommerce_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wc_update_product_attribute, effect_kind: woocommerce_product_attributes_update, channel: woocommerce_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wc_batch_product_attributes, effect_kind: woocommerce_product_attributes_batch, channel: woocommerce_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wc_create_product_attribute_term, effect_kind: woocommerce_product_attribute_terms_create, channel: woocommerce_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wc_update_product_attribute_term, effect_kind: woocommerce_product_attribute_terms_update, channel: woocommerce_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wc_batch_product_attribute_terms, effect_kind: woocommerce_product_attribute_terms_batch, channel: woocommerce_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wc_create_product_category, effect_kind: woocommerce_product_categories_create, channel: woocommerce_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wc_update_product_category, effect_kind: woocommerce_product_categories_update, channel: woocommerce_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wc_batch_product_categories, effect_kind: woocommerce_product_categories_batch, channel: woocommerce_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wc_create_product_shipping_class, effect_kind: woocommerce_product_shipping_classes_create, channel: woocommerce_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wc_update_product_shipping_class, effect_kind: woocommerce_product_shipping_classes_update, channel: woocommerce_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wc_batch_product_shipping_classes, effect_kind: woocommerce_product_shipping_classes_batch, channel: woocommerce_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wc_create_product_tag, effect_kind: woocommerce_product_tags_create, channel: woocommerce_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wc_update_product_tag, effect_kind: woocommerce_product_tags_update, channel: woocommerce_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wc_batch_product_tags, effect_kind: woocommerce_product_tags_batch, channel: woocommerce_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wc_create_product_review, effect_kind: woocommerce_product_reviews_create, channel: woocommerce_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wc_update_product_review, effect_kind: woocommerce_product_reviews_update, channel: woocommerce_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wc_batch_product_reviews, effect_kind: woocommerce_product_reviews_batch, channel: woocommerce_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wc_create_tax, effect_kind: woocommerce_taxes_create, channel: woocommerce_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wc_update_tax, effect_kind: woocommerce_taxes_update, channel: woocommerce_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wc_batch_taxes, effect_kind: woocommerce_taxes_batch, channel: woocommerce_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wc_create_tax_class, effect_kind: woocommerce_tax_classes_create, channel: woocommerce_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wc_update_setting_option, effect_kind: woocommerce_setting_options_update, channel: woocommerce_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wc_batch_setting_options, effect_kind: woocommerce_setting_options_batch, channel: woocommerce_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wc_update_payment_gateway, effect_kind: woocommerce_payment_gateways_update, channel: woocommerce_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wc_create_shipping_zone, effect_kind: woocommerce_shipping_zones_create, channel: woocommerce_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wc_update_shipping_zone, effect_kind: woocommerce_shipping_zones_update, channel: woocommerce_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wc_update_shipping_zone_locations, effect_kind: woocommerce_shipping_zone_locations_update, channel: woocommerce_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wc_create_shipping_zone_method, effect_kind: woocommerce_shipping_zone_methods_create, channel: woocommerce_rest, idempotency: required, test_mode_behavior: suppress}
+  - {operation_id: wc_update_shipping_zone_method, effect_kind: woocommerce_shipping_zone_methods_update, channel: woocommerce_rest, idempotency: required, test_mode_behavior: suppress}
+runtime:
+  extension_contract_v2:
+    connection_types: contracts/connection_types.yaml
+    operation_manifest: contracts/operation_manifest.yaml
+    step_ui_manifest: contracts/step_ui_manifest.yaml
+    artifact_policies: contracts/artifact_policies.yaml
+artifact_policies:
+  - {operation_id: wp_create_media, inputs: [{kind: artifact, value_type: artifact_handle, binding_key: wordpress_media_artifact, from_input: artifact_handle, max_size_bytes: 67108864}]}
+  - operation_id: wc_export_products
+    outputs:
+      - {kind: artifact, value_type: artifact_handle, binding_key: woocommerce_products_export, filename: woocommerce-products.jsonl, content_type: application/x-ndjson, max_size_bytes: 209715200, max_size_env: FS_EXTENSION_ARTIFACT_MAX_BYTES, retention_class: run_window}
+entrypoint:
+  mode: subprocess
+  command: [python3, main.py]
+  timeout_policy: {env: FS_EXTENSION_OPERATION_TIMEOUT_SECONDS, default_seconds: 300, minimum_seconds: 30, maximum_seconds: 3600, headroom_seconds: 30}
+health: {command: [python3, health.py], timeout_seconds: 5}
+ui_manifest: ui/ui_manifest.yaml
+action_manifest: ui/actions/actions.yaml
+python_requirements: []

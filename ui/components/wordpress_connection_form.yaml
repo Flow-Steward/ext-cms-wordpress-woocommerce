@@ -1,0 +1,67 @@
+component_id: wordpress_site_connection
+type: connection_form
+title: WordPress site connection
+description: Store the site URL and WordPress username, the required Application Password, and optionally both WooCommerce API keys.
+data:
+  connection_kind: extension
+  connection_type: wordpress_site
+  provider: wordpress
+  config_fields: [site_url, wordpress_username]
+  secret_fields: [wordpress_application_password, woocommerce_consumer_key, woocommerce_consumer_secret]
+  required_secret_fields: [wordpress_application_password]
+  tags: [wordpress, woocommerce, rest]
+  test_action: test_connection
+  # The platform's secret-ref validator executes only `required` and
+  # `additionalProperties`, so the connection type's `dependentRequired` pairing
+  # rule and the https-only rule are declared but not enforced when the form
+  # saves. These run before the save and block it. The two credential checks are
+  # triggered by conditions evaluated in the browser, so no secret is sent.
+  pre_save_actions:
+    - action_id: validate_connection_settings
+      status: Checking the site URL...
+      data: {check: site_url}
+      values_fields: [site_url]
+      failure_message: Enter a site URL that starts with https://, without /wp-json.
+    - action_id: validate_connection_settings
+      status: Checking the WooCommerce credentials...
+      data: {check: woocommerce_pair}
+      run_when:
+        - {path: woocommerce_consumer_key, neq: ""}
+        - {path: woocommerce_consumer_secret, eq: ""}
+      failure_message: Enter the WooCommerce Consumer Secret as well, or clear the Consumer Key.
+    - action_id: validate_connection_settings
+      status: Checking the WooCommerce credentials...
+      data: {check: woocommerce_pair}
+      run_when:
+        - {path: woocommerce_consumer_secret, neq: ""}
+        - {path: woocommerce_consumer_key, eq: ""}
+      failure_message: Enter the WooCommerce Consumer Key as well, or clear the Consumer Secret.
+defaults:
+  display_name: WordPress site
+fields:
+  - path: display_name
+    label: Display name
+    widget: text
+  - path: site_url
+    label: Site URL
+    widget: url
+    required: true
+    help: The base site URL, for example https://example.com. Do not append /wp-json, /wp/v2, or /wc/v3.
+  - path: wordpress_username
+    label: WordPress username
+    widget: text
+    required: true
+    help: The WordPress username of the service account, not its email address unless the site accepts it.
+  - path: wordpress_application_password
+    label: WordPress Application Password
+    widget: secret
+    required: true
+    help: Generated at WordPress Admin then Users then Profile then Application Passwords. Not the normal login password.
+  - path: woocommerce_consumer_key
+    label: WooCommerce Consumer Key
+    widget: secret
+    help: Optional. Supply both WooCommerce values or neither.
+  - path: woocommerce_consumer_secret
+    label: WooCommerce Consumer Secret
+    widget: secret
+    help: Optional. Supply both WooCommerce values or neither.

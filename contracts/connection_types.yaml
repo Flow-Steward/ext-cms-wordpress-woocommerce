@@ -1,0 +1,54 @@
+connection_types:
+  - connection_type_id: wordpress_site
+    display_name: WordPress site
+    description: One project-scoped WordPress site reached with an Application Password, optionally carrying WooCommerce REST API keys.
+    auth:
+      type: static_secret
+    config_schema:
+      type: object
+      additionalProperties: false
+      required: [site_url, wordpress_username]
+      properties:
+        site_url:
+          type: string
+          title: Site URL
+          description: The base site URL, for example https://example.com. Do not append /wp-json, /wp/v2, or /wc/v3.
+          minLength: 8
+          maxLength: 512
+        wordpress_username:
+          type: string
+          title: WordPress username
+          description: The WordPress username of the service account, not its email address unless the site accepts it.
+          minLength: 1
+          maxLength: 190
+    secret_schema:
+      type: object
+      additionalProperties: false
+      required: [wordpress_application_password]
+      # WooCommerce needs both keys or neither. Declaring it here means the
+      # platform enforces the pair on every path that writes a connection, and
+      # the connection form marks the second field required as soon as the
+      # first is filled in.
+      dependentRequired:
+        woocommerce_consumer_key: [woocommerce_consumer_secret]
+        woocommerce_consumer_secret: [woocommerce_consumer_key]
+      properties:
+        wordpress_application_password:
+          type: string
+          title: WordPress Application Password
+          minLength: 1
+          maxLength: 512
+        woocommerce_consumer_key:
+          type: string
+          title: WooCommerce Consumer Key
+          minLength: 1
+          maxLength: 512
+        woocommerce_consumer_secret:
+          type: string
+          title: WooCommerce Consumer Secret
+          minLength: 1
+          maxLength: 512
+    capabilities:
+      test_connection: true
+      wordpress_rest: true
+      woocommerce_rest: true
