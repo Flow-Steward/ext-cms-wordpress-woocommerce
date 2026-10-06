@@ -137,7 +137,7 @@ def test_manifest_declares_the_free_first_party_identity() -> None:
     manifest = _yaml("extension.yaml")
     assert manifest["extension_id"] == "flowsteward.wordpress-woocommerce"
     assert manifest["display_name"] == "WordPress & WooCommerce"
-    assert manifest["version"] == "1.0.0"
+    assert manifest["version"] == "1.1.0"
     assert manifest["billing_mode"] == "free"
     assert manifest["vendor"]["name"] == "Flow Steward"
     assert manifest["account_scope"]["scope_type"] == "project"

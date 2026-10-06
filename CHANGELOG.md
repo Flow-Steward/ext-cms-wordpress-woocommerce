@@ -16,7 +16,15 @@ can read it:
   Endpoint: `GET /orders/{id}/refunds`.
 ```
 
-## Unreleased
+## 1.1.0
+
+### Added
+
+- **A long WooCommerce catalog export shows how far it has got.** While `Export every matching
+  WooCommerce product` runs, Job Details shows how many products have been exported out of the
+  total the store reports, updated after every page. Needs Flow Steward with extension SDK 0.3.0
+  or later; on an older Flow Steward the export runs as before, without the progress line.
+  Endpoint: `GET /products` (the `X-WP-Total` header supplies the total).
 
 ### Changed
 

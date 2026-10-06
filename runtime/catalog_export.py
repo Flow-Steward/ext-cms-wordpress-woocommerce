@@ -15,6 +15,16 @@ from typing import Any
 
 from flowsteward_extension_sdk import write_artifact_stream
 
+try:
+    from flowsteward_extension_sdk import report_progress
+except ImportError:  # a Core with an SDK older than 0.3.0 shows no progress
+
+    def report_progress(
+        message: str = "", *, done: int | None = None, total: int | None = None
+    ) -> None:
+        return None
+
+
 from . import errors, validation
 from .catalog import Operation, operation
 from .connection import connection_from_payload
@@ -224,6 +234,9 @@ def _product_jsonl_chunks(
             yield (
                 json.dumps(item, ensure_ascii=False, separators=(",", ":")).encode("utf-8") + b"\n"
             )
+        report_progress(
+            "Exporting products", done=state["item_count"], total=state["total_reported"]
+        )
         if not body or not pagination["has_more"]:
             return
         page += 1

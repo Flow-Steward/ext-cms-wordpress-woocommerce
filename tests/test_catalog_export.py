@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 
 from conftest import WOO_CREDENTIALS, connection_payload, json_response
-from runtime import errors
+from runtime import catalog_export, errors
 from runtime.operations import handle_runtime
 
 
@@ -72,6 +72,34 @@ def test_export_products_reads_every_page_and_writes_one_jsonl_artifact(
         "https://shop.example/wp-json/wc/v3/products?page=2&per_page=2&status=publish&order=asc&orderby=id",
         "https://shop.example/wp-json/wc/v3/products?page=3&per_page=2&status=publish&order=asc&orderby=id",
     ]
+
+
+def test_export_products_reports_progress_against_the_site_total(
+    http, transport_factory, monkeypatch
+) -> None:
+    http.queue(
+        json_response([{"id": 1}, {"id": 2}], headers={"X-WP-Total": "3", "X-WP-TotalPages": "2"}),
+        json_response([{"id": 3}], headers={"X-WP-Total": "3", "X-WP-TotalPages": "2"}),
+    )
+    reported: list[tuple[str, int | None, int | None]] = []
+    monkeypatch.setattr(
+        catalog_export,
+        "report_progress",
+        lambda message="", *, done=None, total=None: reported.append((message, done, total)),
+    )
+
+    def artifact_writer(payload, chunks, **kwargs):
+        body = b"".join(chunks)
+        return {"artifact_handle": "artifact:catalog", "size_bytes": len(body), "sha256": "s"}
+
+    response = handle_runtime(
+        connection_payload("wc_export_products", {"per_page": 2}, **WOO_CREDENTIALS),
+        transport_factory=transport_factory,
+        artifact_writer=artifact_writer,
+    )
+
+    assert response["ok"] is True
+    assert reported == [("Exporting products", 2, 3), ("Exporting products", 3, 3)]
 
 
 def test_export_products_refuses_partial_page_controls_before_outbound_io(

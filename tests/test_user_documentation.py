@@ -235,7 +235,7 @@ def test_the_changelog_file_documents_the_current_version() -> None:
     manifest = _yaml("extension.yaml")
     changelog = (BUNDLE_ROOT / "CHANGELOG.md").read_text()
     assert f"## {manifest['version']}" in changelog
-    assert manifest["version"] == INITIAL_VERSION
+    assert f"## {INITIAL_VERSION}" in changelog
 
 
 def test_the_initial_entry_summarises_the_release() -> None:
