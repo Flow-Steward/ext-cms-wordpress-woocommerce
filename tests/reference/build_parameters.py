@@ -871,7 +871,7 @@ def _woocommerce_operation(
     item_section = BODY_ITEM_SECTION.get(row.operation_id)
     if item_section is not None:
         heading, body_field, model_name = item_section
-        entries = next(
+        entries: list[Any] = next(
             (
                 section["fields"]
                 for section in page.get("sections", [])
@@ -989,7 +989,10 @@ def render(tables: dict[str, Any]) -> str:
         return f"{name} = {rendered}\n\n"
 
     body = HEADER
-    body += "".join(f"{literal_names[value]} = {value!r}\n" for value in shared_literals)
+    body += "".join(
+        f"{literal_names[value]} = {value!r}  # nosec B105 - a field path, not a secret\n"
+        for value in shared_literals
+    )
     body += "\n"
     body += dump("QUERY_FIELDS: dict[str, list[dict[str, Any]]]", tables["query"])
     body += dump("BODY_FIELDS: dict[str, list[dict[str, Any]]]", tables["body"])

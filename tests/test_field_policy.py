@@ -16,7 +16,7 @@ from typing import Any
 import pytest
 from conftest import connection_payload, json_response
 from runtime import errors
-from runtime.catalog import REST_OPERATIONS, operation
+from runtime.catalog import REST_OPERATIONS, REST_OPERATIONS_BY_ID
 from runtime.field_policy import (
     PASSWORD_FIELD,
     PASSWORD_RESPONSE_OPERATIONS,
@@ -237,7 +237,7 @@ def test_a_setting_option_whose_type_is_password_is_untouched(http, transport_fa
 
 
 def test_an_operation_outside_the_policy_is_not_touched() -> None:
-    row = operation("wc_get_order")
+    row = REST_OPERATIONS_BY_ID["wc_get_order"]
     body = {
         "id": 5,
         "password": "not a documented order property",  # pragma: allowlist secret
@@ -250,7 +250,7 @@ def test_product_operations_remove_woocommerce_post_password(
     operation_id: str,
 ) -> None:
     """WooCommerce 11 may emit an undocumented post_password credential field."""
-    row = operation(operation_id)
+    row = REST_OPERATIONS_BY_ID[operation_id]
     record = {
         "id": 1207,
         "post_password": "must-never-leave-the-extension",  # pragma: allowlist secret
@@ -323,7 +323,7 @@ def test_an_operation_without_a_documented_password_returns_the_body_untouched(
     plugin is free to put its own `password` on a revision, and this extension
     has no business removing it.
     """
-    row = operation(operation_id)
+    row = REST_OPERATIONS_BY_ID[operation_id]
     record = {
         "id": 1,
         "password": "a third party's own field",  # pragma: allowlist secret

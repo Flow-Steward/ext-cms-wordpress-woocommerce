@@ -305,10 +305,10 @@ def _http_failure_facts(
     status: int,
     mutating: bool,
     retry_after: float | None = None,
-) -> dict[str, object]:
+) -> dict[str, Any]:
     retryable_status = status in {408, 429, 500, 502, 503, 504}
     ambiguous = mutating and status in {408, 500, 502, 503, 504}
-    facts: dict[str, object] = {
+    facts: dict[str, Any] = {
         "failure_class": "provider",
         "retryable": retryable_status and not ambiguous,
         "definitely_no_external_effect": not ambiguous,
@@ -320,7 +320,7 @@ def _http_failure_facts(
     return facts
 
 
-def _transport_failure_facts(*, mutating: bool) -> dict[str, object]:
+def _transport_failure_facts(*, mutating: bool) -> dict[str, Any]:
     return {
         "failure_class": "transient",
         "retryable": not mutating,

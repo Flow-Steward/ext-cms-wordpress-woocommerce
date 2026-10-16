@@ -12,7 +12,18 @@ from __future__ import annotations
 from typing import Any
 
 import pytest
-from conftest import CONNECTION_ID, SITE_URL, json_response, sample_input
+from conftest import (
+    CONNECTION_ID,
+    FOR_EACH_STEP_SCOPE,
+    GROUP_STEP_SCOPE,
+    HOST_CONTRACT_VERSION,
+    ROOT_STEP_SCOPE,
+    SITE_URL,
+    json_response,
+    sample_input,
+)
+from dispatcher import dispatch_runtime
+from flowsteward_extension_sdk import runtime_context_from_payload
 from runtime import errors
 from runtime.catalog import REST_OPERATIONS
 from runtime.operations import handle_runtime
@@ -21,9 +32,33 @@ from runtime.operations import handle_runtime
 HOST_ACTION_KEYS = ("action_id", "page_id", "component_id", "context", "target", "input")
 
 #: The exact top-level keys of a host request.
-HOST_REQUEST_KEYS = ("contract_version", "mode", "host", "action")
+HOST_REQUEST_KEYS = ("contract_version", "mode", "host", "action", "runtime_context")
 
-WOO = {"consumer_key": "ck", "consumer_secret": "cs"}  # pragma: allowlist secret
+#: A call outside any workflow run (the connection form): all four scope keys null.
+NO_RUN_SCOPE: dict[str, Any] = {
+    "group_id": None,
+    "for_each_id": None,
+    "step_id": None,
+    "step_execution_id": None,
+}
+
+
+def _host_block(scope: dict[str, Any]) -> dict[str, Any]:
+    """The `host` block: who calls, for which project, and from which execution."""
+    return {
+        "contract_version": HOST_CONTRACT_VERSION,
+        "operation": "command",
+        "scope": {
+            "account_id": "account-1",
+            "project_id": "project-1",
+            "job_id": None if scope == NO_RUN_SCOPE else "job-1",
+            **scope,
+        },
+        "principal": {"user_id": "user-1"},
+    }
+
+
+WOO: dict[str, Any] = {"consumer_key": "ck", "consumer_secret": "cs"}  # pragma: allowlist secret
 
 
 def host_payload(
@@ -34,22 +69,19 @@ def host_payload(
     component_id: str | None = "wordpress_api_content",
     consumer_key: str = "",
     consumer_secret: str = "",
+    scope: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     """A request shaped exactly the way the platform builds one."""
+    scope = dict(ROOT_STEP_SCOPE if scope is None else scope)
     secrets: dict[str, str] = {"wordpress_application_password": "abcd EFGH"}
     if consumer_key:
         secrets["woocommerce_consumer_key"] = consumer_key
     if consumer_secret:
         secrets["woocommerce_consumer_secret"] = consumer_secret
     return {
-        "contract_version": "1.0",
+        "contract_version": HOST_CONTRACT_VERSION,
         "mode": "action",
-        "host": {
-            "contract_version": "1.0",
-            "operation": "command",
-            "scope": {"account_id": "account-1", "project_id": "project-1"},
-            "principal": {"user_id": "user-1"},
-        },
+        "host": _host_block(scope),
         "action": {
             "action_id": operation_id,
             "page_id": page_id,
@@ -65,6 +97,7 @@ def host_payload(
             },
             "input": {"connection_ref": CONNECTION_ID, **operation_input},
         },
+        "runtime_context": {"job_id": "job-1", **scope},
     }
 
 
@@ -153,14 +186,9 @@ def test_an_envelope_key_the_host_never_sends_is_still_refused(http, transport_f
 def _pre_save(check: str, **values: Any) -> dict[str, Any]:
     """A pre-save action request, shaped the way the connection form builds one."""
     return {
-        "contract_version": "1.0",
+        "contract_version": HOST_CONTRACT_VERSION,
         "mode": "action",
-        "host": {
-            "contract_version": "1.0",
-            "operation": "command",
-            "scope": {"account_id": "account-1", "project_id": "project-1"},
-            "principal": {"user_id": "user-1"},
-        },
+        "host": _host_block(NO_RUN_SCOPE),
         "action": {
             "action_id": "validate_connection_settings",
             "page_id": "connection",
@@ -169,6 +197,7 @@ def _pre_save(check: str, **values: Any) -> dict[str, Any]:
             "target": {},
             "input": {"check": check, **values},
         },
+        "runtime_context": dict(NO_RUN_SCOPE),
     }
 
 
@@ -272,3 +301,152 @@ def test_the_woocommerce_pair_check_names_both_halves() -> None:
     assert response["ok"] is False
     assert "consumer key" in response["error"]
     assert "consumer secret" in response["error"]
+
+
+# -- The final execution scope ---------------------------------------------
+
+PNG = b"\x89PNG\r\n\x1a\n" + b"pixels" * 10
+
+
+def _route_with(monkeypatch: pytest.MonkeyPatch, **fakes: Any) -> None:
+    """Let ``dispatch_runtime`` reach the real runtime with fake I/O."""
+    import dispatcher
+
+    monkeypatch.setattr(
+        dispatcher, "handle_runtime", lambda payload: handle_runtime(payload, **fakes)
+    )
+
+
+def _media_request(scope: dict[str, Any]) -> dict[str, Any]:
+    """A media upload as the host sends it: envelope, scope and artifact grant."""
+    from test_media_upload import _grant
+
+    payload = host_payload(
+        "wp_create_media",
+        {"artifact_handle": "artifact-1", "filename": "photo.png", "title": "Spring"},
+        scope=scope,
+    )
+    payload.update(_grant(PNG))
+    return payload
+
+
+def test_the_host_envelopes_pass_the_sdk_contract_check() -> None:
+    for payload in (host_payload("wp_list_posts", {}), _pre_save("woocommerce_pair")):
+        context = runtime_context_from_payload(payload)
+        assert context.contract_version == HOST_CONTRACT_VERSION
+
+
+@pytest.mark.parametrize(
+    "scope",
+    [ROOT_STEP_SCOPE, GROUP_STEP_SCOPE, FOR_EACH_STEP_SCOPE],
+    ids=["root", "group", "for_each"],
+)
+def test_the_catalog_export_writes_its_artifact_for_every_owner(
+    http, transport_factory, monkeypatch: pytest.MonkeyPatch, scope: dict[str, Any]
+) -> None:
+    http.queue(json_response([{"id": 1}], headers={"X-WP-Total": "1", "X-WP-TotalPages": "1"}))
+    written: list[dict[str, Any]] = []
+
+    def artifact_writer(payload: Any, chunks: Any, **kwargs: Any) -> dict[str, Any]:
+        body = b"".join(chunks)
+        written.append({"scope": dict(payload["runtime_context"]), "body": body})
+        return {"artifact_handle": "artifact:catalog", "size_bytes": len(body), "sha256": "x"}
+
+    _route_with(monkeypatch, transport_factory=transport_factory, artifact_writer=artifact_writer)
+
+    response = dispatch_runtime(host_payload("wc_export_products", {}, scope=scope, **WOO))
+
+    assert response["ok"] is True, response.get("error")
+    assert response["result"]["artifact_handle"] == "artifact:catalog"
+    assert response["result"]["item_count"] == 1
+    assert len(written) == 1
+    assert {key: written[0]["scope"][key] for key in scope} == scope
+    assert b'"id":1' in written[0]["body"].replace(b" ", b"")
+
+
+@pytest.mark.parametrize(
+    "scope",
+    [ROOT_STEP_SCOPE, GROUP_STEP_SCOPE, FOR_EACH_STEP_SCOPE],
+    ids=["root", "group", "for_each"],
+)
+def test_the_media_upload_reads_its_artifact_for_every_owner(
+    http, transport_factory, monkeypatch: pytest.MonkeyPatch, scope: dict[str, Any]
+) -> None:
+    http.queue(json_response({"id": 501, "source_url": "https://shop.example/x.png"}, status=201))
+    reads: list[str] = []
+
+    def artifact_streamer(*_args: Any, **_kwargs: Any) -> Any:
+        reads.append(scope["step_execution_id"])
+        return iter([PNG])
+
+    _route_with(
+        monkeypatch, transport_factory=transport_factory, artifact_streamer=artifact_streamer
+    )
+
+    response = dispatch_runtime(_media_request(scope))
+
+    assert response["ok"] is True, response.get("error")
+    assert response["result"]["data"]["id"] == 501
+    assert reads == [scope["step_execution_id"]]
+    assert len(http.requests) == 1
+    assert PNG in http.last["body"]
+
+
+@pytest.mark.parametrize(
+    ("contract_version", "scope", "reason"),
+    [
+        ("extension_host_v1", FOR_EACH_STEP_SCOPE, "Unsupported host contract"),
+        ("1.0", FOR_EACH_STEP_SCOPE, "Unsupported host contract"),
+        ("", FOR_EACH_STEP_SCOPE, "Unsupported host contract"),
+        (
+            HOST_CONTRACT_VERSION,
+            {k: v for k, v in FOR_EACH_STEP_SCOPE.items() if k != "for_each_id"},
+            "misses execution scope",
+        ),
+        (
+            HOST_CONTRACT_VERSION,
+            {**FOR_EACH_STEP_SCOPE, "group_id": "prepare_catalog"},
+            "both a Group and a For each",
+        ),
+        (
+            HOST_CONTRACT_VERSION,
+            {**ROOT_STEP_SCOPE, "step_execution_id": None},
+            "without its logical execution",
+        ),
+    ],
+    ids=["v1", "legacy_1_0", "no_contract", "missing_key", "two_owners", "step_no_execution"],
+)
+def test_a_foreign_or_incomplete_envelope_is_refused_before_any_effect(
+    http,
+    monkeypatch: pytest.MonkeyPatch,
+    contract_version: str,
+    scope: dict[str, Any],
+    reason: str,
+) -> None:
+    touched: list[str] = []
+
+    def forbidden(name: str) -> Any:
+        def call(*_args: Any, **_kwargs: Any) -> Any:
+            touched.append(name)
+            raise AssertionError(f"{name} ran for a refused envelope")
+
+        return call
+
+    _route_with(
+        monkeypatch,
+        transport_factory=forbidden("transport"),
+        artifact_streamer=forbidden("artifact_streamer"),
+        artifact_writer=forbidden("artifact_writer"),
+    )
+    payload = _media_request(ROOT_STEP_SCOPE)
+    payload["contract_version"] = contract_version
+    payload["runtime_context"] = dict(scope)
+
+    response = dispatch_runtime(payload)
+
+    assert response["ok"] is False
+    assert response["error_code"] == errors.INVALID_HOST_ENVELOPE
+    assert reason in response["error"]
+    assert response["definitely_no_external_effect"] is True
+    assert touched == []
+    assert http.requests == []

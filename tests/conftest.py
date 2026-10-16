@@ -21,6 +21,22 @@ from runtime.transport import RestTransport  # noqa: E402
 SITE_URL = "https://shop.example"
 CONNECTION_ID = "conn-1"
 
+#: The host contract every subprocess payload declares.
+HOST_CONTRACT_VERSION = "extension_host_v2"
+#: The final extension_host_v2 execution scope: all four keys, at most one owner.
+ROOT_STEP_SCOPE: dict[str, Any] = {
+    "group_id": None,
+    "for_each_id": None,
+    "step_id": "publish_catalog",
+    "step_execution_id": "7e2a4c6b-1d3f-4b5a-9c8e-000000000001",
+}
+GROUP_STEP_SCOPE: dict[str, Any] = {**ROOT_STEP_SCOPE, "group_id": "prepare_catalog"}
+FOR_EACH_STEP_SCOPE: dict[str, Any] = {
+    **ROOT_STEP_SCOPE,
+    "for_each_id": "each_product",
+    "step_execution_id": "7e2a4c6b-1d3f-4b5a-9c8e-000000000002",
+}
+
 
 class FakeResponse:
     """A deterministic stand-in for one urllib response."""
@@ -140,6 +156,7 @@ def connection_payload(
     connection_id: str = CONNECTION_ID,
     connection_type_id: str = "wordpress_site",
     runtime_context: dict[str, Any] | None = None,
+    scope: dict[str, Any] | None = None,
     extra: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     secrets: dict[str, str] = {"wordpress_application_password": application_password}
@@ -148,7 +165,12 @@ def connection_payload(
     if consumer_secret:
         secrets["woocommerce_consumer_secret"] = consumer_secret
     payload: dict[str, Any] = {
+        "contract_version": HOST_CONTRACT_VERSION,
         "mode": "action",
+        "runtime_context": {
+            **(ROOT_STEP_SCOPE if scope is None else scope),
+            **(runtime_context or {}),
+        },
         "action": {
             "action_id": operation_id,
             "input": {"connection_ref": connection_id, **operation_input},
@@ -162,8 +184,6 @@ def connection_payload(
             },
         },
     }
-    if runtime_context is not None:
-        payload["runtime_context"] = runtime_context
     if extra:
         payload.update(extra)
     return payload

@@ -230,7 +230,7 @@ def test_a_query_cannot_smuggle_a_second_host(http, transport_factory) -> None:
 
 
 def test_the_transport_refuses_an_unsupported_namespace() -> None:
-    row = operation("wp_list_posts")
+    row = REST_OPERATIONS_BY_ID["wp_list_posts"]
     forged = type(row)(**{**row.__dict__, "namespace": "acf/v3"})
     _raises_callable_234_1 = RestTransport(CONNECTION).build_url
     with pytest.raises(ExtensionError) as raised:
@@ -239,7 +239,7 @@ def test_the_transport_refuses_an_unsupported_namespace() -> None:
 
 
 def test_the_transport_refuses_an_unsupported_method() -> None:
-    row = operation("wp_list_posts")
+    row = REST_OPERATIONS_BY_ID["wp_list_posts"]
     forged = type(row)(**{**row.__dict__, "method": "DELETE"})
     _raises_callable_242_1 = RestTransport(CONNECTION).build_url
     with pytest.raises(ExtensionError) as raised:
@@ -248,7 +248,7 @@ def test_the_transport_refuses_an_unsupported_method() -> None:
 
 
 def test_the_transport_refuses_a_route_that_escapes_the_namespace() -> None:
-    row = operation("wp_list_posts")
+    row = REST_OPERATIONS_BY_ID["wp_list_posts"]
     for route in ("/../../wp-json/acf/v3/options", "/posts/{unbound}"):
         forged = type(row)(**{**row.__dict__, "route": route})
         _raises_callable_251_1 = RestTransport(CONNECTION).build_url
@@ -469,4 +469,4 @@ def test_the_registry_is_fixed_at_import_time() -> None:
     assert isinstance(catalog.SUPPORTED_METHODS, frozenset)
     for row in catalog.REST_OPERATIONS:
         with pytest.raises((AttributeError, TypeError)):
-            row.route = "/anything-else"
+            row.route = "/anything-else"  # type: ignore[misc]

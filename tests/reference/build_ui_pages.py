@@ -190,7 +190,9 @@ def render(provider: str) -> str:
         "    type: markdown",
         f"    title: {len(supported)} operations available",
         "    body: |",
-        _block([page["intro"], "", f"[Official {page['title']} reference]({page['reference']})"]),
+        _block(
+            [str(page["intro"]), "", f"[Official {page['title']} reference]({page['reference']})"]
+        ),
     ]
     for heading, resources in RESOURCE_GROUPS[provider]:
         lines.extend(_group_component(provider, heading, resources))

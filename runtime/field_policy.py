@@ -23,12 +23,12 @@ from typing import Any
 from .catalog import Operation
 
 #: The documented field name used by WordPress and WooCommerce customer records.
-PASSWORD_FIELD = "password"  # pragma: allowlist secret
+PASSWORD_FIELD = "password"  # pragma: allowlist secret  # nosec B105 - a field name
 
 #: WooCommerce 11 also emits this undocumented product-record credential field.
 #: It is intentionally absent from the public contract and must be removed before
 #: a response can enter workflow state or the external-effect replay store.
-POST_PASSWORD_FIELD = "post_password"  # pragma: allowlist secret
+POST_PASSWORD_FIELD = "post_password"  # pragma: allowlist secret  # nosec B105 - a field name
 
 #: Operations whose documented **query** accepts the password of a protected
 #: record. Supplying it would send a content credential in a URL.

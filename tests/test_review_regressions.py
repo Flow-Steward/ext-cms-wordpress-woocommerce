@@ -11,7 +11,7 @@ from pathlib import Path
 import pytest
 from conftest import connection_payload, json_response, php_parse_str
 from runtime import errors
-from runtime.catalog import REST_OPERATIONS, REST_OPERATIONS_BY_ID, operation
+from runtime.catalog import REST_OPERATIONS, REST_OPERATIONS_BY_ID
 from runtime.io_shapes import batch_item_fields, operation_inputs, operation_outputs
 from runtime.operations import handle_runtime
 from runtime.parameters import BATCH_ITEM_FIELDS, BODY_FIELDS, QUERY_FIELDS, RESPONSE_FIELDS
@@ -114,7 +114,10 @@ def test_every_operation_has_a_documented_response_model() -> None:
 
 
 def test_a_batch_response_is_grouped_not_a_single_record() -> None:
-    outputs = {field["name"]: field for field in operation_outputs(operation("wc_batch_products"))}
+    outputs = {
+        field["name"]: field
+        for field in operation_outputs(REST_OPERATIONS_BY_ID["wc_batch_products"])
+    }
     schema = outputs["data"]["schema"]
     assert schema["type"] == "object"
     assert set(schema["properties"]) == {"create", "update"}
@@ -123,7 +126,10 @@ def test_a_batch_response_is_grouped_not_a_single_record() -> None:
 
 
 def test_product_batch_output_publishes_the_compact_receipt_contract() -> None:
-    outputs = {field["name"]: field for field in operation_outputs(operation("wc_batch_products"))}
+    outputs = {
+        field["name"]: field
+        for field in operation_outputs(REST_OPERATIONS_BY_ID["wc_batch_products"])
+    }
     receipt = outputs["data"]["schema"]["properties"]["update"]["items"]
 
     assert set(receipt["properties"]) == {
@@ -207,7 +213,10 @@ def test_create_and_update_batch_members_have_different_schemas() -> None:
 
 
 def test_batch_item_schemas_are_published_closed_with_required_fields() -> None:
-    inputs = {field["name"]: field for field in operation_inputs(operation("wc_batch_coupons"))}
+    inputs = {
+        field["name"]: field
+        for field in operation_inputs(REST_OPERATIONS_BY_ID["wc_batch_coupons"])
+    }
     create_schema = inputs["create_items"]["schema"]["items"]
     update_schema = inputs["update_items"]["schema"]["items"]
 

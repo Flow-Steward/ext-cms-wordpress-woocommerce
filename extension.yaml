@@ -2,7 +2,7 @@ manifest_version: 2
 lifecycle: {data_schema_version: 1, data_migrations: []}
 extension_id: flowsteward.wordpress-woocommerce
 kind: tool_provider
-version: 1.1.0
+version: 1.2.0
 release_stage: active
 billing_mode: free
 display_name: WordPress & WooCommerce
@@ -92,6 +92,7 @@ external_effects:
   - {operation_id: wc_create_shipping_zone_method, effect_kind: woocommerce_shipping_zone_methods_create, channel: woocommerce_rest, idempotency: required, test_mode_behavior: suppress}
   - {operation_id: wc_update_shipping_zone_method, effect_kind: woocommerce_shipping_zone_methods_update, channel: woocommerce_rest, idempotency: required, test_mode_behavior: suppress}
 runtime:
+  contract_version: extension_host_v2
   extension_contract_v2:
     connection_types: contracts/connection_types.yaml
     operation_manifest: contracts/operation_manifest.yaml

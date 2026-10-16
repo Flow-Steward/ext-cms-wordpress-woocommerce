@@ -15,56 +15,56 @@ from __future__ import annotations
 
 from typing import Any
 
-_TOKEN_ORDER_REFUNDS_TAXES = "order-refunds.taxes"
-_TOKEN_ORDER_REFUNDS_PREVIEW_BREAKDOWN_SECTION = "order-refunds.preview_breakdown_section"
-_TOKEN_SYSTEM_STATUS_SETTINGS = "system-status.settings"
-_TOKEN_SYSTEM_STATUS_SECURITY = "system-status.security"
-_TOKEN_DATA_COUNTRIES_STATES = "data.countries_states"
-_TOKEN_DATA_COUNTRIES = "data.countries"
+_TOKEN_ORDER_REFUNDS_TAXES = "order-refunds.taxes"  # nosec B105 - a field path, not a secret
+_TOKEN_ORDER_REFUNDS_PREVIEW_BREAKDOWN_SECTION = "order-refunds.preview_breakdown_section"  # nosec B105 - a field path, not a secret
+_TOKEN_SYSTEM_STATUS_SETTINGS = "system-status.settings"  # nosec B105 - a field path, not a secret
+_TOKEN_SYSTEM_STATUS_SECURITY = "system-status.security"  # nosec B105 - a field path, not a secret
+_TOKEN_DATA_COUNTRIES_STATES = "data.countries_states"  # nosec B105 - a field path, not a secret
+_TOKEN_DATA_COUNTRIES = "data.countries"  # nosec B105 - a field path, not a secret
 
-_TOKEN_ORDERS_TAX_LINES = "orders.tax_lines"
-_TOKEN_ORDERS_REFUNDS = "orders.refunds"
-_TOKEN_ORDER_REFUNDS_META_DATA = "order-refunds.meta_data"
-_TOKEN_ORDER_REFUNDS_LINE_ITEMS = "order-refunds.line_items"
-_TOKEN_ORDER_REFUNDS_TAX_LINES = "order-refunds.tax_lines"
-_TOKEN_ORDER_REFUNDS_SHIPPING_LINES = "order-refunds.shipping_lines"
-_TOKEN_ORDER_REFUNDS_FEE_LINES = "order-refunds.fee_lines"
-_TOKEN_SYSTEM_STATUS_ENVIRONMENT = "system-status.environment"
-_TOKEN_SYSTEM_STATUS_DATABASE = "system-status.database"
-_TOKEN_SYSTEM_STATUS_THEME = "system-status.theme"
+_TOKEN_ORDERS_TAX_LINES = "orders.tax_lines"  # nosec B105 - a field path, not a secret
+_TOKEN_ORDERS_REFUNDS = "orders.refunds"  # nosec B105 - a field path, not a secret
+_TOKEN_ORDER_REFUNDS_META_DATA = "order-refunds.meta_data"  # nosec B105 - a field path, not a secret
+_TOKEN_ORDER_REFUNDS_LINE_ITEMS = "order-refunds.line_items"  # nosec B105 - a field path, not a secret
+_TOKEN_ORDER_REFUNDS_TAX_LINES = "order-refunds.tax_lines"  # nosec B105 - a field path, not a secret
+_TOKEN_ORDER_REFUNDS_SHIPPING_LINES = "order-refunds.shipping_lines"  # nosec B105 - a field path, not a secret
+_TOKEN_ORDER_REFUNDS_FEE_LINES = "order-refunds.fee_lines"  # nosec B105 - a field path, not a secret
+_TOKEN_SYSTEM_STATUS_ENVIRONMENT = "system-status.environment"  # nosec B105 - a field path, not a secret
+_TOKEN_SYSTEM_STATUS_DATABASE = "system-status.database"  # nosec B105 - a field path, not a secret
+_TOKEN_SYSTEM_STATUS_THEME = "system-status.theme"  # nosec B105 - a field path, not a secret
 
-_TOKEN_CUSTOMERS_FILE = "customers.file"
-_TOKEN_PRODUCTS_META_DATA = "products.meta_data"
-_TOKEN_PRODUCT_VARIATIONS_DOWNLOADS = "product-variations.downloads"
-_TOKEN_PRODUCT_VARIATIONS_DIMENSIONS = "product-variations.dimensions"
-_TOKEN_PRODUCT_VARIATIONS_IMAGE = "product-variations.image"
-_TOKEN_PRODUCT_VARIATIONS_ATTRIBUTES = "product-variations.attributes"
-_TOKEN_PRODUCT_VARIATIONS_META_DATA = "product-variations.meta_data"
-_TOKEN_PRODUCT_CATEGORIES_IMAGE = "product-categories.image"
-_TOKEN_PAYMENT_GATEWAYS_SETTINGS = "payment-gateways.settings"
-_TOKEN_SHIPPING_ZONE_METHODS_SETTINGS = "shipping-zone-methods.settings"
+_TOKEN_CUSTOMERS_FILE = "customers.file"  # nosec B105 - a field path, not a secret
+_TOKEN_PRODUCTS_META_DATA = "products.meta_data"  # nosec B105 - a field path, not a secret
+_TOKEN_PRODUCT_VARIATIONS_DOWNLOADS = "product-variations.downloads"  # nosec B105 - a field path, not a secret
+_TOKEN_PRODUCT_VARIATIONS_DIMENSIONS = "product-variations.dimensions"  # nosec B105 - a field path, not a secret
+_TOKEN_PRODUCT_VARIATIONS_IMAGE = "product-variations.image"  # nosec B105 - a field path, not a secret
+_TOKEN_PRODUCT_VARIATIONS_ATTRIBUTES = "product-variations.attributes"  # nosec B105 - a field path, not a secret
+_TOKEN_PRODUCT_VARIATIONS_META_DATA = "product-variations.meta_data"  # nosec B105 - a field path, not a secret
+_TOKEN_PRODUCT_CATEGORIES_IMAGE = "product-categories.image"  # nosec B105 - a field path, not a secret
+_TOKEN_PAYMENT_GATEWAYS_SETTINGS = "payment-gateways.settings"  # nosec B105 - a field path, not a secret
+_TOKEN_SHIPPING_ZONE_METHODS_SETTINGS = "shipping-zone-methods.settings"  # nosec B105 - a field path, not a secret
 
-_TOKEN_ORDERS_COUPON_LINES = "orders.coupon_lines"
-_TOKEN_ORDER_REFUNDS_PREVIEW_LINE_ITEM = "order-refunds.preview_line_item"
-_TOKEN_PRODUCTS_DOWNLOADS = "products.downloads"
-_TOKEN_PRODUCTS_DIMENSIONS = "products.dimensions"
-_TOKEN_PRODUCTS_CATEGORIES = "products.categories"
-_TOKEN_PRODUCTS_TAGS = "products.tags"
-_TOKEN_PRODUCTS_BRANDS = "products.brands"
-_TOKEN_PRODUCTS_IMAGES = "products.images"
-_TOKEN_PRODUCTS_ATTRIBUTES = "products.attributes"
-_TOKEN_PRODUCTS_DEFAULT_ATTRIBUTES = "products.default_attributes"
+_TOKEN_ORDERS_COUPON_LINES = "orders.coupon_lines"  # nosec B105 - a field path, not a secret
+_TOKEN_ORDER_REFUNDS_PREVIEW_LINE_ITEM = "order-refunds.preview_line_item"  # nosec B105 - a field path, not a secret
+_TOKEN_PRODUCTS_DOWNLOADS = "products.downloads"  # nosec B105 - a field path, not a secret
+_TOKEN_PRODUCTS_DIMENSIONS = "products.dimensions"  # nosec B105 - a field path, not a secret
+_TOKEN_PRODUCTS_CATEGORIES = "products.categories"  # nosec B105 - a field path, not a secret
+_TOKEN_PRODUCTS_TAGS = "products.tags"  # nosec B105 - a field path, not a secret
+_TOKEN_PRODUCTS_BRANDS = "products.brands"  # nosec B105 - a field path, not a secret
+_TOKEN_PRODUCTS_IMAGES = "products.images"  # nosec B105 - a field path, not a secret
+_TOKEN_PRODUCTS_ATTRIBUTES = "products.attributes"  # nosec B105 - a field path, not a secret
+_TOKEN_PRODUCTS_DEFAULT_ATTRIBUTES = "products.default_attributes"  # nosec B105 - a field path, not a secret
 
-_TOKEN_COUPONS_META_DATA = "coupons.meta_data"
-_TOKEN_CUSTOMERS_BILLING = "customers.billing"
-_TOKEN_CUSTOMERS_SHIPPING = "customers.shipping"
-_TOKEN_CUSTOMERS_META_DATA = "customers.meta_data"
-_TOKEN_ORDERS_BILLING = "orders.billing"
-_TOKEN_ORDERS_SHIPPING = "orders.shipping"
-_TOKEN_ORDERS_META_DATA = "orders.meta_data"
-_TOKEN_ORDERS_LINE_ITEMS = "orders.line_items"
-_TOKEN_ORDERS_SHIPPING_LINES = "orders.shipping_lines"
-_TOKEN_ORDERS_FEE_LINES = "orders.fee_lines"
+_TOKEN_COUPONS_META_DATA = "coupons.meta_data"  # nosec B105 - a field path, not a secret
+_TOKEN_CUSTOMERS_BILLING = "customers.billing"  # nosec B105 - a field path, not a secret
+_TOKEN_CUSTOMERS_SHIPPING = "customers.shipping"  # nosec B105 - a field path, not a secret
+_TOKEN_CUSTOMERS_META_DATA = "customers.meta_data"  # nosec B105 - a field path, not a secret
+_TOKEN_ORDERS_BILLING = "orders.billing"  # nosec B105 - a field path, not a secret
+_TOKEN_ORDERS_SHIPPING = "orders.shipping"  # nosec B105 - a field path, not a secret
+_TOKEN_ORDERS_META_DATA = "orders.meta_data"  # nosec B105 - a field path, not a secret
+_TOKEN_ORDERS_LINE_ITEMS = "orders.line_items"  # nosec B105 - a field path, not a secret
+_TOKEN_ORDERS_SHIPPING_LINES = "orders.shipping_lines"  # nosec B105 - a field path, not a secret
+_TOKEN_ORDERS_FEE_LINES = "orders.fee_lines"  # nosec B105 - a field path, not a secret
 
 QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
     "wp_list_posts": [

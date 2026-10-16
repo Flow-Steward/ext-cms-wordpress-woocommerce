@@ -10,6 +10,8 @@ from __future__ import annotations
 from collections.abc import Mapping
 from typing import Any
 
+from flowsteward_extension_sdk import runtime_context_from_payload
+
 from runtime import errors
 from runtime.catalog import (
     REST_OPERATIONS_BY_ID,
@@ -32,12 +34,31 @@ OPERATION_IDS: frozenset[str] = frozenset(OPERATION_REGISTRY)
 
 def dispatch_runtime(payload: dict[str, Any]) -> dict[str, Any]:
     """Route one runtime invocation, or refuse it."""
+    # The host envelope is checked before anything is read or sent: another
+    # contract, a missing execution-scope key or two owners is refused here.
+    try:
+        runtime_context_from_payload(payload)
+    except ValueError as exc:
+        return _invalid_host_envelope(str(exc))
     operation_id = _operation_id(payload)
     if operation_id not in OPERATION_REGISTRY:
         return error_response(
             errors.UNSUPPORTED_OPERATION, "That operation is not part of this extension"
         )
     return handle_runtime(payload)
+
+
+def _invalid_host_envelope(message: str) -> dict[str, Any]:
+    """The failing envelope for a request this extension does not speak."""
+    code = errors.INVALID_HOST_ENVELOPE
+    return {
+        "ok": False,
+        "result": {},
+        "error_code": code,
+        "error": message,
+        "errors": [{"code": code, "message": message}],
+        "definitely_no_external_effect": True,
+    }
 
 
 def _operation_id(payload: Any) -> str:

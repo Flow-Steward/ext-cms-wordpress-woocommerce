@@ -10,6 +10,9 @@ from __future__ import annotations
 from collections.abc import Mapping
 
 INVALID_PAYLOAD = "invalid_payload"
+#: The host sent an envelope of another contract or an invalid execution scope. It is
+#: answered by the dispatcher before any operation runs, so no operation declares it.
+INVALID_HOST_ENVELOPE = "invalid_host_envelope"
 INVALID_CONFIGURATION = "invalid_configuration"
 INVALID_CONNECTION = "invalid_connection"
 WOOCOMMERCE_CREDENTIALS_INCOMPLETE = "woocommerce_credentials_incomplete"

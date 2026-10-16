@@ -5,7 +5,7 @@ from __future__ import annotations
 import pytest
 from conftest import connection_payload, json_response, php_parse_str, sample_input
 from runtime import errors
-from runtime.catalog import REST_OPERATIONS, REST_OPERATIONS_BY_ID, operation
+from runtime.catalog import REST_OPERATIONS, REST_OPERATIONS_BY_ID
 from runtime.io_shapes import body_field_names, input_field_names, query_field_names
 from runtime.operations import handle_runtime
 from runtime.parameters import BODY_FIELDS, NESTED_MODELS, QUERY_FIELDS, RESPONSE_FIELDS
@@ -159,8 +159,8 @@ def test_plugin_specific_fields_are_refused_inside_a_nested_object(
 
 def test_a_field_documented_for_another_operation_is_still_refused(http, transport_factory) -> None:
     """`sticky` is documented for posts, not for pages."""
-    assert "sticky" in body_field_names(operation("wp_create_post"))
-    assert "sticky" not in body_field_names(operation("wp_create_page"))
+    assert "sticky" in body_field_names(REST_OPERATIONS_BY_ID["wp_create_post"])
+    assert "sticky" not in body_field_names(REST_OPERATIONS_BY_ID["wp_create_page"])
     response = _run("wp_create_page", {"title": "x", "sticky": True}, transport_factory)
 
     assert response["error_code"] == errors.INVALID_PAYLOAD
@@ -170,8 +170,8 @@ def test_a_field_documented_for_another_operation_is_still_refused(http, transpo
 def test_a_query_parameter_documented_for_another_provider_is_refused(
     http, transport_factory
 ) -> None:
-    assert "dates_are_gmt" in query_field_names(operation("wc_list_orders"))
-    assert "dates_are_gmt" not in query_field_names(operation("wp_list_posts"))
+    assert "dates_are_gmt" in query_field_names(REST_OPERATIONS_BY_ID["wc_list_orders"])
+    assert "dates_are_gmt" not in query_field_names(REST_OPERATIONS_BY_ID["wp_list_posts"])
     response = _run("wp_list_posts", {"dates_are_gmt": True}, transport_factory)
 
     assert response["error_code"] == errors.INVALID_PAYLOAD

@@ -8,10 +8,20 @@ import sys
 from pathlib import Path
 
 import yaml
+from conftest import HOST_CONTRACT_VERSION, ROOT_STEP_SCOPE
 from health import check_health
 from runtime.catalog import REST_OPERATIONS
 
 BUNDLE_ROOT = Path(__file__).resolve().parents[1]
+
+
+def _host(body: dict) -> dict:
+    """One subprocess payload as the host sends it: contract, scope and body."""
+    return {
+        "contract_version": HOST_CONTRACT_VERSION,
+        "runtime_context": dict(ROOT_STEP_SCOPE),
+        **body,
+    }
 
 
 def _run_entrypoint(payload: object) -> tuple[int, dict]:
@@ -34,7 +44,9 @@ def test_every_task_owned_file_lives_inside_this_bundle() -> None:
         "dev-wheels",
         "dispatcher.py",
         "health.py",
+        "icon.png",
         "main.py",
+        "pyproject.toml",
         "requirements-dev.txt",
         "runtime",
         "tests",
@@ -69,11 +81,22 @@ def test_the_health_command_runs_as_a_subprocess() -> None:
 
 def test_the_entrypoint_refuses_an_unknown_operation() -> None:
     code, response = _run_entrypoint(
-        {"mode": "action", "action": {"action_id": "wp_delete_post", "input": {}}}
+        _host({"mode": "action", "action": {"action_id": "wp_delete_post", "input": {}}})
     )
     assert code == 2
     assert response["ok"] is False
     assert response["error_code"] == "unsupported_operation"
+
+
+def test_the_entrypoint_refuses_an_envelope_of_another_contract() -> None:
+    payload = _host({"mode": "action", "action": {"action_id": "wp_list_posts", "input": {}}})
+    payload["contract_version"] = "extension_host_v1"
+
+    code, response = _run_entrypoint(payload)
+
+    assert code == 2
+    assert response["error_code"] == "invalid_host_envelope"
+    assert response["definitely_no_external_effect"] is True
 
 
 def test_the_entrypoint_refuses_a_non_json_request() -> None:
@@ -116,3 +139,16 @@ def test_no_generated_contract_is_missing_from_the_bundle() -> None:
         "ui/components/wordpress_connection_form.yaml",
     ):
         assert (BUNDLE_ROOT / relative).is_file(), relative
+
+
+def test_the_logo_is_a_small_square_png() -> None:
+    """Core requires icon.png beside extension.yaml: PNG, square, 32-512 px, <= 100 KB."""
+    import struct
+
+    data = (BUNDLE_ROOT / "icon.png").read_bytes()
+    assert data[:8] == b"\x89PNG\r\n\x1a\n"
+    assert data[12:16] == b"IHDR"
+    width, height = struct.unpack(">II", data[16:24])
+    assert width == height
+    assert 32 <= width <= 512
+    assert len(data) <= 100 * 1024

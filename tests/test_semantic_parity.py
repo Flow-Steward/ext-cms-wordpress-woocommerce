@@ -17,7 +17,7 @@ import pytest
 import yaml
 from conftest import connection_payload, json_response
 from runtime import errors
-from runtime.catalog import REST_OPERATIONS, REST_OPERATIONS_BY_ID, operation
+from runtime.catalog import REST_OPERATIONS, REST_OPERATIONS_BY_ID
 from runtime.io_shapes import (
     KIND_BATCH_GROUPS,
     KIND_KEYED_MAP,
@@ -247,7 +247,7 @@ def test_a_native_mixed_value_accepts_every_json_shape(http, transport_factory) 
 def test_a_mixed_value_is_published_as_a_union() -> None:
     field = next(
         entry
-        for entry in operation_inputs(operation("wc_create_product"))
+        for entry in operation_inputs(REST_OPERATIONS_BY_ID["wc_create_product"])
         if entry["name"] == "meta_data"
     )
     value_schema = field["schema"]["items"]["properties"]["value"]

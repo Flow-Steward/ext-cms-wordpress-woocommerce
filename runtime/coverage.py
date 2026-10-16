@@ -23,7 +23,7 @@ from .catalog import (
 _PATH_WEBHOOKS_ID = "/webhooks/{id}"
 _PATH_USERS_USER_ID_APPLICATION_PASSWORDS = "/users/{user_id}/application-passwords"
 _PATH_USERS_USER_ID_APPLICATION_PASSWORDS_UUID = "/users/{user_id}/application-passwords/{uuid}"
-_TOKEN_WP_SITE_HEALTH_V1 = "wp-site-health/v1"
+_TOKEN_WP_SITE_HEALTH_V1 = "wp-site-health/v1"  # nosec B105 - a REST namespace, not a secret
 
 STATUS_SUPPORTED = "supported"
 STATUS_EXCLUDED = "excluded"

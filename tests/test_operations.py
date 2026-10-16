@@ -5,7 +5,7 @@ from __future__ import annotations
 import pytest
 from conftest import connection_payload, json_response, sample_input
 from runtime import errors
-from runtime.catalog import REST_OPERATIONS, operation
+from runtime.catalog import REST_OPERATIONS, REST_OPERATIONS_BY_ID
 from runtime.io_shapes import result_field_names
 from runtime.operations import handle_runtime
 
@@ -24,7 +24,7 @@ def test_a_read_returns_the_declared_result_fields(http, transport_factory) -> N
     response = _run("wp_get_post", {"id": 12}, transport_factory)
 
     assert response["ok"] is True
-    assert set(response["result"]) == set(result_field_names(operation("wp_get_post")))
+    assert set(response["result"]) == set(result_field_names(REST_OPERATIONS_BY_ID["wp_get_post"]))
     assert response["result"]["data"]["id"] == 12
     assert response["result"]["http_status"] == 200
     assert http.last["method"] == "GET"
@@ -400,7 +400,7 @@ def test_reads_are_never_suppressed_in_test_mode(http, transport_factory) -> Non
 def test_documented_routes_are_built_exactly(
     http, transport_factory, operation_id: str, operation_input: dict, expected_url: str
 ) -> None:
-    row = operation(operation_id)
+    row = REST_OPERATIONS_BY_ID[operation_id]
     http.queue(json_response({} if row.shape != "list" else []))
     _run(operation_id, operation_input, transport_factory, **WOO)
     assert http.last["url"] == expected_url

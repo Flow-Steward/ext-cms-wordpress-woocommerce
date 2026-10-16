@@ -9,9 +9,10 @@ binned by changing its status, with one deliberate exception. Moderating a comme
 [What it does not do](#what-it-does-not-do).
 
 - Extension ID: `flowsteward.wordpress-woocommerce`
-- Version: `1.1.0`
+- Version: `1.2.0`
 - Billing: free
 - Vendor: Flow Steward
+- Logo: `icon.png` (the Flow Steward wave mark)
 
 The extension exposes exactly the operations declared in `contracts/rest_coverage.yaml`. That file
 is the coverage source of truth: every supported route, and every documented route deliberately
@@ -26,6 +27,16 @@ modelled too, and responses carry the documented record shape. An undocumented t
 `acf`, `lang`, a SEO plugin key, anything a plugin might add — is refused before a request is
 built, including inside each item of a batch payload. That boundary is what keeps this free
 extension separate from the future ACF, WPML, Polylang, and SEO extensions.
+
+## Requirements
+
+This release speaks the host contract `extension_host_v2` with its final
+execution scope (`group_id`, `for_each_id`, `step_id`, `step_execution_id`)
+and is built on `flowsteward-extension-sdk` 0.4.0. A request with another
+contract, a missing scope key, or both a Group and a For each as its owner is
+refused before the connection is read, an artifact is opened or the site is
+contacted. Install it on a Flow Steward Core that speaks this contract; an
+older Core does not run it.
 
 ## Where to look
 
