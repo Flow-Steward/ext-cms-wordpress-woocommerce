@@ -9,7 +9,7 @@ binned by changing its status, with one deliberate exception. Moderating a comme
 [What it does not do](#what-it-does-not-do).
 
 - Extension ID: `flowsteward.wordpress-woocommerce`
-- Version: `1.2.0`
+- Version: `1.2.1`
 - Billing: free
 - Vendor: Flow Steward
 - Logo: `icon.png` (the Flow Steward wave mark)
