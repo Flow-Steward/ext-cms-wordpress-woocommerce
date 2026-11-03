@@ -9,10 +9,10 @@ binned by changing its status, with one deliberate exception. Moderating a comme
 [What it does not do](#what-it-does-not-do).
 
 - Extension ID: `flowsteward.wordpress-woocommerce`
-- Version: `1.2.1`
+- Version: `1.2.2`
 - Billing: free
 - Vendor: Flow Steward
-- Logo: `icon.png` (the Flow Steward wave mark)
+- Logo: `icon.png` (separate official WordPress W and Woo wordmarks; PNG, 512x512)
 
 The extension exposes exactly the operations declared in `contracts/rest_coverage.yaml`. That file
 is the coverage source of truth: every supported route, and every documented route deliberately
@@ -319,3 +319,5 @@ IPv4 and IPv6 multicast literals as global and therefore does not refuse them up
 extension uses the SDK guard unchanged and adds no local override, so the gap is reported rather
 than worked around. A TCP connection to a multicast literal cannot complete, so no request is
 dispatched in practice.
+
+Logo sources and attribution: [BRANDING.md](BRANDING.md).
