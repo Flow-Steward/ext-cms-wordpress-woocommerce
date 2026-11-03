@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.2
+
+- Use the original official provider artwork in the catalog and extension icon. Runtime behavior is unchanged.
+
 All notable changes to the WordPress & WooCommerce extension are recorded here.
 
 Entries use these sections where they apply: **Added**, **Changed**, **Deprecated**,
