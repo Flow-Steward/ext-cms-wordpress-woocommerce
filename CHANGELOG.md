@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.2.3
+
+### Changed
+
+- Clarified the catalog description, supported operations and connection setup.
+
+### Security
+
+- Updated the CI pytest pin from 8.3.5 to 9.0.3.
+
 ## 1.2.2
 
 - Use the original official provider artwork in the catalog and extension icon. Runtime behavior is unchanged.

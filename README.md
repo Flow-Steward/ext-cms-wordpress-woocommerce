@@ -1,15 +1,17 @@
 # WordPress & WooCommerce
 
-A curated, automation-safe subset of the WordPress Core and WooCommerce REST APIs, typed and
-scoped to one project-scoped WordPress site.
+Connect WordPress publishing and WooCommerce store operations to Flow Steward over their standard REST APIs. WordPress steps list, read, create and update posts, pages, media, comments, categories, tags and reusable blocks. Additional supported operations expose revisions, autosaves, search, settings, widgets and site metadata, giving content workflows the records needed to publish material, maintain taxonomy or moderate comments with the connected user's permissions.
 
-"Automation-safe" rather than "non-destructive": no HTTP `DELETE` is exposed and no record can be
-binned by changing its status, with one deliberate exception. Moderating a comment may set it to
-`spam` or `trash`, because that is what moderation is. See
-[What it does not do](#what-it-does-not-do).
+For WooCommerce, work with products and variations, prices and stock, categories, attributes, tags, reviews, customers, coupons, orders and order notes. Supported batch operations let a workflow submit related creates or updates together. Read store reports, taxes, shipping configuration and other supported reference data, or send an order email through its dedicated operation. A product export step follows the matching catalog's pages and writes a JSONL file for later processing.
+
+Use these operations to connect a supplier catalog, publish approved content, feed store records to accounting or produce reporting inputs. WooCommerce credentials are optional when only WordPress content is needed, and connection testing reports each service separately. Access is limited to the declared native API operations: WordPress user-account administration, deletion, refund creation and plugin-specific APIs are excluded. Custom workflows supply the business mapping and coordination between steps.
+
+Use a publicly reachable HTTPS WordPress 5.6+ site with REST access and create an Application Password for a suitable service user. Add its username and site base URL; for WooCommerce, also enable pretty permalinks and supply a matching consumer key and secret with the required read/write permissions.
+
+Supported create and update operations follow the connected user’s permissions. See [What it does not do](#what-it-does-not-do) for the excluded operations.
 
 - Extension ID: `flowsteward.wordpress-woocommerce`
-- Version: `1.2.2`
+- Version: `1.2.3`
 - Billing: free
 - Vendor: Flow Steward
 - Logo: `icon.png` (separate official WordPress W and Woo wordmarks; PNG, 512x512)
