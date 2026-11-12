@@ -28,7 +28,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: per_page, type: integer, required: false}, {name: search, type: string, required: false}, {name: search_fields, type: array, required: false}, {name: after, type: string, required: false}, {name: before, type: string, required: false}, {name: modified_after, type: string, required: false}, {name: modified_before, type: string, required: false}, {name: dates_are_gmt, type: boolean, required: false}, {name: exclude, type: array, required: false}, {name: include, type: array, required: false}, {name: order, type: string, required: false}, {name: orderby, type: string, required: false}, {name: parent, type: array, required: false}, {name: parent_exclude, type: array, required: false}, {name: slug, type: string, required: false}, {name: status, type: string, required: false}, {name: include_status, type: string, required: false}, {name: exclude_status, type: string, required: false}, {name: type, type: string, required: false}, {name: include_types, type: string, required: false}, {name: exclude_types, type: string, required: false}, {name: sku, type: string, required: false}, {name: featured, type: boolean, required: false}, {name: category, type: string, required: false}, {name: tag, type: string, required: false}, {name: shipping_class, type: string, required: false}, {name: attribute, type: string, required: false}, {name: attribute_term, type: string, required: false}, {name: tax_class, type: string, required: false}, {name: on_sale, type: boolean, required: false}, {name: min_price, type: string, required: false}, {name: max_price, type: string, required: false}, {name: stock_status, type: string, required: false}, {name: virtual, type: boolean, required: false}, {name: downloadable, type: boolean, required: false}, {name: image_size, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: per_page, type: integer, required: false}, {name: search, type: string, required: false}, {name: search_fields, type: array, required: false}, {name: after, type: string, required: false}, {name: before, type: string, required: false}, {name: modified_after, type: string, required: false}, {name: modified_before, type: string, required: false}, {name: dates_are_gmt, type: boolean, required: false}, {name: exclude, type: array, required: false}, {name: include, type: array, required: false}, {name: order, type: string, required: false}, {name: orderby, type: string, required: false}, {name: parent, type: array, required: false}, {name: parent_exclude, type: array, required: false}, {name: slug, type: string, required: false}, {name: status, type: string, required: false}, {name: include_status, type: string, required: false}, {name: exclude_status, type: string, required: false}, {name: type, type: string, required: false}, {name: include_types, type: string, required: false}, {name: exclude_types, type: string, required: false}, {name: sku, type: string, required: false}, {name: featured, type: boolean, required: false}, {name: category, type: string, required: false}, {name: tag, type: string, required: false}, {name: shipping_class, type: string, required: false}, {name: attribute, type: string, required: false}, {name: attribute_term, type: string, required: false}, {name: tax_class, type: string, required: false}, {name: on_sale, type: boolean, required: false}, {name: min_price, type: string, required: false}, {name: max_price, type: string, required: false}, {name: stock_status, type: string, required: false}, {name: virtual, type: boolean, required: false}, {name: downloadable, type: boolean, required: false}, {name: image_size, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [artifact_handle, filename, content_type, item_count, page_count, total_reported, size_bytes, sha256, artifacts]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured, artifact_output_unavailable]
   - action_id: wp_list_posts
@@ -38,7 +38,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: page, type: integer, required: false}, {name: per_page, type: integer, required: false}, {name: search, type: string, required: false}, {name: after, type: string, required: false}, {name: modified_after, type: string, required: false}, {name: author, type: array, required: false}, {name: author_exclude, type: array, required: false}, {name: before, type: string, required: false}, {name: modified_before, type: string, required: false}, {name: exclude, type: array, required: false}, {name: include, type: array, required: false}, {name: offset, type: integer, required: false}, {name: order, type: string, required: false}, {name: orderby, type: string, required: false}, {name: search_columns, type: array, required: false}, {name: slug, type: array, required: false}, {name: status, type: array, required: false}, {name: tax_relation, type: string, required: false}, {name: categories, type: array, required: false}, {name: categories_exclude, type: array, required: false}, {name: tags, type: array, required: false}, {name: tags_exclude, type: array, required: false}, {name: sticky, type: boolean, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: page, type: integer, required: false}, {name: per_page, type: integer, required: false}, {name: search, type: string, required: false}, {name: after, type: string, required: false}, {name: modified_after, type: string, required: false}, {name: author, type: array, required: false}, {name: author_exclude, type: array, required: false}, {name: before, type: string, required: false}, {name: modified_before, type: string, required: false}, {name: exclude, type: array, required: false}, {name: include, type: array, required: false}, {name: offset, type: integer, required: false}, {name: order, type: string, required: false}, {name: orderby, type: string, required: false}, {name: search_columns, type: array, required: false}, {name: slug, type: array, required: false}, {name: status, type: array, required: false}, {name: tax_relation, type: string, required: false}, {name: categories, type: array, required: false}, {name: categories_exclude, type: array, required: false}, {name: tags, type: array, required: false}, {name: tags_exclude, type: array, required: false}, {name: sticky, type: boolean, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error]
   - action_id: wp_create_post
@@ -59,7 +59,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}, {name: context, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}, {name: context, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [data, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error]
   - action_id: wp_update_post
@@ -80,7 +80,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: parent, type: integer, required: true}, {name: context, type: string, required: false}, {name: page, type: integer, required: false}, {name: per_page, type: integer, required: false}, {name: search, type: string, required: false}, {name: exclude, type: array, required: false}, {name: include, type: array, required: false}, {name: offset, type: integer, required: false}, {name: order, type: string, required: false}, {name: orderby, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: parent, type: integer, required: true}, {name: context, type: string, required: false}, {name: page, type: integer, required: false}, {name: per_page, type: integer, required: false}, {name: search, type: string, required: false}, {name: exclude, type: array, required: false}, {name: include, type: array, required: false}, {name: offset, type: integer, required: false}, {name: order, type: string, required: false}, {name: orderby, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error]
   - action_id: wp_get_post_revision
@@ -90,7 +90,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: parent, type: integer, required: true}, {name: id, type: integer, required: true}, {name: context, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: parent, type: integer, required: true}, {name: id, type: integer, required: true}, {name: context, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [data, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error]
   - action_id: wp_list_post_autosaves
@@ -100,7 +100,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}, {name: parent, type: array, required: false}, {name: context, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}, {name: parent, type: array, required: false}, {name: context, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error]
   - action_id: wp_create_post_autosave
@@ -121,7 +121,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: parent, type: integer, required: true}, {name: id, type: integer, required: true}, {name: context, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: parent, type: integer, required: true}, {name: id, type: integer, required: true}, {name: context, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [data, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error]
   - action_id: wp_list_pages
@@ -131,7 +131,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: page, type: integer, required: false}, {name: per_page, type: integer, required: false}, {name: search, type: string, required: false}, {name: after, type: string, required: false}, {name: modified_after, type: string, required: false}, {name: author, type: array, required: false}, {name: author_exclude, type: array, required: false}, {name: before, type: string, required: false}, {name: modified_before, type: string, required: false}, {name: exclude, type: array, required: false}, {name: include, type: array, required: false}, {name: menu_order, type: integer, required: false}, {name: offset, type: integer, required: false}, {name: order, type: string, required: false}, {name: orderby, type: string, required: false}, {name: parent, type: array, required: false}, {name: parent_exclude, type: array, required: false}, {name: search_columns, type: array, required: false}, {name: slug, type: array, required: false}, {name: status, type: array, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: page, type: integer, required: false}, {name: per_page, type: integer, required: false}, {name: search, type: string, required: false}, {name: after, type: string, required: false}, {name: modified_after, type: string, required: false}, {name: author, type: array, required: false}, {name: author_exclude, type: array, required: false}, {name: before, type: string, required: false}, {name: modified_before, type: string, required: false}, {name: exclude, type: array, required: false}, {name: include, type: array, required: false}, {name: menu_order, type: integer, required: false}, {name: offset, type: integer, required: false}, {name: order, type: string, required: false}, {name: orderby, type: string, required: false}, {name: parent, type: array, required: false}, {name: parent_exclude, type: array, required: false}, {name: search_columns, type: array, required: false}, {name: slug, type: array, required: false}, {name: status, type: array, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error]
   - action_id: wp_create_page
@@ -152,7 +152,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}, {name: context, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}, {name: context, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [data, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error]
   - action_id: wp_update_page
@@ -173,7 +173,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: parent, type: integer, required: true}, {name: context, type: string, required: false}, {name: page, type: integer, required: false}, {name: per_page, type: integer, required: false}, {name: search, type: string, required: false}, {name: exclude, type: array, required: false}, {name: include, type: array, required: false}, {name: offset, type: integer, required: false}, {name: order, type: string, required: false}, {name: orderby, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: parent, type: integer, required: true}, {name: context, type: string, required: false}, {name: page, type: integer, required: false}, {name: per_page, type: integer, required: false}, {name: search, type: string, required: false}, {name: exclude, type: array, required: false}, {name: include, type: array, required: false}, {name: offset, type: integer, required: false}, {name: order, type: string, required: false}, {name: orderby, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error]
   - action_id: wp_get_page_revision
@@ -183,7 +183,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: parent, type: integer, required: true}, {name: id, type: integer, required: true}, {name: context, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: parent, type: integer, required: true}, {name: id, type: integer, required: true}, {name: context, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [data, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error]
   - action_id: wp_list_page_autosaves
@@ -193,7 +193,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}, {name: parent, type: array, required: false}, {name: context, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}, {name: parent, type: array, required: false}, {name: context, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error]
   - action_id: wp_create_page_autosave
@@ -214,7 +214,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: parent, type: integer, required: true}, {name: id, type: integer, required: true}, {name: context, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: parent, type: integer, required: true}, {name: id, type: integer, required: true}, {name: context, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [data, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error]
   - action_id: wp_list_media
@@ -224,7 +224,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: page, type: integer, required: false}, {name: per_page, type: integer, required: false}, {name: search, type: string, required: false}, {name: after, type: string, required: false}, {name: modified_after, type: string, required: false}, {name: author, type: array, required: false}, {name: author_exclude, type: array, required: false}, {name: before, type: string, required: false}, {name: modified_before, type: string, required: false}, {name: exclude, type: array, required: false}, {name: include, type: array, required: false}, {name: offset, type: integer, required: false}, {name: order, type: string, required: false}, {name: orderby, type: string, required: false}, {name: parent, type: array, required: false}, {name: parent_exclude, type: array, required: false}, {name: search_columns, type: array, required: false}, {name: slug, type: array, required: false}, {name: status, type: array, required: false}, {name: media_type, type: string, required: false}, {name: mime_type, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: page, type: integer, required: false}, {name: per_page, type: integer, required: false}, {name: search, type: string, required: false}, {name: after, type: string, required: false}, {name: modified_after, type: string, required: false}, {name: author, type: array, required: false}, {name: author_exclude, type: array, required: false}, {name: before, type: string, required: false}, {name: modified_before, type: string, required: false}, {name: exclude, type: array, required: false}, {name: include, type: array, required: false}, {name: offset, type: integer, required: false}, {name: order, type: string, required: false}, {name: orderby, type: string, required: false}, {name: parent, type: array, required: false}, {name: parent_exclude, type: array, required: false}, {name: search_columns, type: array, required: false}, {name: slug, type: array, required: false}, {name: status, type: array, required: false}, {name: media_type, type: string, required: false}, {name: mime_type, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error]
   - action_id: wp_create_media
@@ -245,7 +245,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}, {name: context, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}, {name: context, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [data, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error]
   - action_id: wp_update_media
@@ -266,7 +266,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: page, type: integer, required: false}, {name: per_page, type: integer, required: false}, {name: search, type: string, required: false}, {name: after, type: string, required: false}, {name: author, type: array, required: false}, {name: author_exclude, type: array, required: false}, {name: author_email, type: string, required: false}, {name: before, type: string, required: false}, {name: exclude, type: array, required: false}, {name: include, type: array, required: false}, {name: offset, type: integer, required: false}, {name: order, type: string, required: false}, {name: orderby, type: string, required: false}, {name: parent, type: array, required: false}, {name: parent_exclude, type: array, required: false}, {name: post, type: integer, required: false}, {name: status, type: array, required: false}, {name: type, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: page, type: integer, required: false}, {name: per_page, type: integer, required: false}, {name: search, type: string, required: false}, {name: after, type: string, required: false}, {name: author, type: array, required: false}, {name: author_exclude, type: array, required: false}, {name: author_email, type: string, required: false}, {name: before, type: string, required: false}, {name: exclude, type: array, required: false}, {name: include, type: array, required: false}, {name: offset, type: integer, required: false}, {name: order, type: string, required: false}, {name: orderby, type: string, required: false}, {name: parent, type: array, required: false}, {name: parent_exclude, type: array, required: false}, {name: post, type: integer, required: false}, {name: status, type: array, required: false}, {name: type, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error]
   - action_id: wp_create_comment
@@ -287,7 +287,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}, {name: context, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}, {name: context, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [data, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error]
   - action_id: wp_update_comment
@@ -308,7 +308,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: page, type: integer, required: false}, {name: per_page, type: integer, required: false}, {name: search, type: string, required: false}, {name: exclude, type: array, required: false}, {name: include, type: array, required: false}, {name: order, type: string, required: false}, {name: orderby, type: string, required: false}, {name: hide_empty, type: boolean, required: false}, {name: parent, type: array, required: false}, {name: post, type: integer, required: false}, {name: slug, type: array, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: page, type: integer, required: false}, {name: per_page, type: integer, required: false}, {name: search, type: string, required: false}, {name: exclude, type: array, required: false}, {name: include, type: array, required: false}, {name: order, type: string, required: false}, {name: orderby, type: string, required: false}, {name: hide_empty, type: boolean, required: false}, {name: parent, type: array, required: false}, {name: post, type: integer, required: false}, {name: slug, type: array, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error]
   - action_id: wp_create_category
@@ -329,7 +329,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}, {name: context, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}, {name: context, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [data, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error]
   - action_id: wp_update_category
@@ -350,7 +350,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: page, type: integer, required: false}, {name: per_page, type: integer, required: false}, {name: search, type: string, required: false}, {name: exclude, type: array, required: false}, {name: include, type: array, required: false}, {name: offset, type: integer, required: false}, {name: order, type: string, required: false}, {name: orderby, type: string, required: false}, {name: hide_empty, type: boolean, required: false}, {name: post, type: integer, required: false}, {name: slug, type: array, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: page, type: integer, required: false}, {name: per_page, type: integer, required: false}, {name: search, type: string, required: false}, {name: exclude, type: array, required: false}, {name: include, type: array, required: false}, {name: offset, type: integer, required: false}, {name: order, type: string, required: false}, {name: orderby, type: string, required: false}, {name: hide_empty, type: boolean, required: false}, {name: post, type: integer, required: false}, {name: slug, type: array, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error]
   - action_id: wp_create_tag
@@ -371,7 +371,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}, {name: context, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}, {name: context, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [data, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error]
   - action_id: wp_update_tag
@@ -392,7 +392,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: type, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: type, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [data, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error]
   - action_id: wp_get_taxonomy
@@ -402,7 +402,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: taxonomy, type: string, required: true}, {name: context, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: taxonomy, type: string, required: true}, {name: context, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [data, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error]
   - action_id: wp_list_users
@@ -412,7 +412,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: page, type: integer, required: false}, {name: per_page, type: integer, required: false}, {name: search, type: string, required: false}, {name: exclude, type: array, required: false}, {name: include, type: array, required: false}, {name: offset, type: integer, required: false}, {name: order, type: string, required: false}, {name: orderby, type: string, required: false}, {name: slug, type: array, required: false}, {name: roles, type: array, required: false}, {name: capabilities, type: array, required: false}, {name: who, type: string, required: false}, {name: has_published_posts, type: array, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: page, type: integer, required: false}, {name: per_page, type: integer, required: false}, {name: search, type: string, required: false}, {name: exclude, type: array, required: false}, {name: include, type: array, required: false}, {name: offset, type: integer, required: false}, {name: order, type: string, required: false}, {name: orderby, type: string, required: false}, {name: slug, type: array, required: false}, {name: roles, type: array, required: false}, {name: capabilities, type: array, required: false}, {name: who, type: string, required: false}, {name: has_published_posts, type: array, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error]
   - action_id: wp_get_user
@@ -422,7 +422,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}, {name: context, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}, {name: context, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [data, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error]
   - action_id: wp_get_current_user
@@ -432,7 +432,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [data, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error]
   - action_id: wp_get_post_types
@@ -442,7 +442,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [data, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error]
   - action_id: wp_get_post_type
@@ -452,7 +452,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: type, type: string, required: true}, {name: context, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: type, type: string, required: true}, {name: context, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [data, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error]
   - action_id: wp_get_post_statuses
@@ -462,7 +462,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [data, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error]
   - action_id: wp_get_post_status
@@ -472,7 +472,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: status, type: string, required: true}, {name: context, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: status, type: string, required: true}, {name: context, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [data, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error]
   - action_id: wp_get_settings
@@ -482,7 +482,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: _fields, type: array, required: false}]
     result_fields: [data, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error]
   - action_id: wp_update_settings
@@ -503,7 +503,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: status, type: array, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: status, type: array, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error]
   - action_id: wp_get_theme
@@ -513,7 +513,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: stylesheet, type: string, required: true}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: stylesheet, type: string, required: true}, {name: _fields, type: array, required: false}]
     result_fields: [data, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error]
   - action_id: wp_search
@@ -523,7 +523,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: page, type: integer, required: false}, {name: per_page, type: integer, required: false}, {name: search, type: string, required: false}, {name: type, type: string, required: false}, {name: subtype, type: string, required: false}, {name: exclude, type: array, required: false}, {name: include, type: array, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: page, type: integer, required: false}, {name: per_page, type: integer, required: false}, {name: search, type: string, required: false}, {name: type, type: string, required: false}, {name: subtype, type: string, required: false}, {name: exclude, type: array, required: false}, {name: include, type: array, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error]
   - action_id: wp_list_block_types
@@ -533,7 +533,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: namespace, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: namespace, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error]
   - action_id: wp_list_namespace_block_types
@@ -543,7 +543,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: namespace, type: string, required: true}, {name: context, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: namespace, type: string, required: true}, {name: context, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error]
   - action_id: wp_get_block_type
@@ -553,7 +553,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: namespace, type: string, required: true}, {name: name, type: string, required: true}, {name: context, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: namespace, type: string, required: true}, {name: name, type: string, required: true}, {name: context, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [data, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error]
   - action_id: wp_list_blocks
@@ -563,7 +563,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: page, type: integer, required: false}, {name: per_page, type: integer, required: false}, {name: search, type: string, required: false}, {name: after, type: string, required: false}, {name: modified_after, type: string, required: false}, {name: before, type: string, required: false}, {name: modified_before, type: string, required: false}, {name: exclude, type: array, required: false}, {name: include, type: array, required: false}, {name: offset, type: integer, required: false}, {name: order, type: string, required: false}, {name: orderby, type: string, required: false}, {name: search_columns, type: array, required: false}, {name: slug, type: array, required: false}, {name: status, type: array, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: page, type: integer, required: false}, {name: per_page, type: integer, required: false}, {name: search, type: string, required: false}, {name: after, type: string, required: false}, {name: modified_after, type: string, required: false}, {name: before, type: string, required: false}, {name: modified_before, type: string, required: false}, {name: exclude, type: array, required: false}, {name: include, type: array, required: false}, {name: offset, type: integer, required: false}, {name: order, type: string, required: false}, {name: orderby, type: string, required: false}, {name: search_columns, type: array, required: false}, {name: slug, type: array, required: false}, {name: status, type: array, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error]
   - action_id: wp_create_block
@@ -584,7 +584,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}, {name: context, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}, {name: context, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [data, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error]
   - action_id: wp_update_block
@@ -605,7 +605,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: parent, type: integer, required: true}, {name: context, type: string, required: false}, {name: page, type: integer, required: false}, {name: per_page, type: integer, required: false}, {name: search, type: string, required: false}, {name: exclude, type: array, required: false}, {name: include, type: array, required: false}, {name: offset, type: integer, required: false}, {name: order, type: string, required: false}, {name: orderby, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: parent, type: integer, required: true}, {name: context, type: string, required: false}, {name: page, type: integer, required: false}, {name: per_page, type: integer, required: false}, {name: search, type: string, required: false}, {name: exclude, type: array, required: false}, {name: include, type: array, required: false}, {name: offset, type: integer, required: false}, {name: order, type: string, required: false}, {name: orderby, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error]
   - action_id: wp_get_block_revision
@@ -615,7 +615,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: parent, type: integer, required: true}, {name: id, type: integer, required: true}, {name: context, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: parent, type: integer, required: true}, {name: id, type: integer, required: true}, {name: context, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [data, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error]
   - action_id: wp_list_block_autosaves
@@ -625,7 +625,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}, {name: parent, type: array, required: false}, {name: context, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}, {name: parent, type: array, required: false}, {name: context, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error]
   - action_id: wp_create_block_autosave
@@ -646,7 +646,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: parent, type: integer, required: true}, {name: id, type: integer, required: true}, {name: context, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: parent, type: integer, required: true}, {name: id, type: integer, required: true}, {name: context, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [data, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error]
   - action_id: wp_search_block_directory
@@ -656,7 +656,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: page, type: integer, required: false}, {name: per_page, type: integer, required: false}, {name: term, type: string, required: true}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: page, type: integer, required: false}, {name: per_page, type: integer, required: false}, {name: term, type: string, required: true}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error]
   - action_id: wp_list_block_patterns
@@ -666,7 +666,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error]
   - action_id: wp_list_block_pattern_categories
@@ -676,7 +676,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error]
   - action_id: wp_list_pattern_directory_patterns
@@ -686,7 +686,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: page, type: integer, required: false}, {name: per_page, type: integer, required: false}, {name: search, type: string, required: false}, {name: category, type: integer, required: false}, {name: keyword, type: string, required: false}, {name: slug, type: array, required: false}, {name: offset, type: integer, required: false}, {name: order, type: string, required: false}, {name: orderby, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: page, type: integer, required: false}, {name: per_page, type: integer, required: false}, {name: search, type: string, required: false}, {name: category, type: integer, required: false}, {name: keyword, type: string, required: false}, {name: slug, type: array, required: false}, {name: offset, type: integer, required: false}, {name: order, type: string, required: false}, {name: orderby, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error]
   - action_id: wp_render_block
@@ -706,7 +706,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [data, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error]
   - action_id: wp_get_menu_location
@@ -716,7 +716,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: location, type: string, required: true}, {name: context, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: location, type: string, required: true}, {name: context, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [data, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error]
   - action_id: wp_list_sidebars
@@ -726,7 +726,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error]
   - action_id: wp_get_sidebar
@@ -736,7 +736,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: string, required: true}, {name: context, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: string, required: true}, {name: context, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [data, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error]
   - action_id: wp_update_sidebar
@@ -757,7 +757,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error]
   - action_id: wp_get_widget_type
@@ -767,7 +767,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: string, required: true}, {name: context, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: string, required: true}, {name: context, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [data, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error]
   - action_id: wp_list_widgets
@@ -777,7 +777,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: sidebar, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: sidebar, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error]
   - action_id: wp_create_widget
@@ -798,7 +798,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: string, required: true}, {name: context, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: string, required: true}, {name: context, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [data, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error]
   - action_id: wp_update_widget
@@ -819,7 +819,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: search, type: string, required: false}, {name: status, type: array, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: search, type: string, required: false}, {name: status, type: array, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error]
   - action_id: wp_get_plugin
@@ -829,7 +829,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: plugin, type: string, required: true}, {name: context, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: plugin, type: string, required: true}, {name: context, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [data, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error]
   - action_id: wc_list_coupons
@@ -839,7 +839,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: page, type: integer, required: false}, {name: per_page, type: integer, required: false}, {name: search, type: string, required: false}, {name: after, type: string, required: false}, {name: before, type: string, required: false}, {name: modified_after, type: string, required: false}, {name: modified_before, type: string, required: false}, {name: dates_are_gmt, type: boolean, required: false}, {name: exclude, type: array, required: false}, {name: include, type: array, required: false}, {name: offset, type: integer, required: false}, {name: order, type: string, required: false}, {name: orderby, type: string, required: false}, {name: code, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: page, type: integer, required: false}, {name: per_page, type: integer, required: false}, {name: search, type: string, required: false}, {name: after, type: string, required: false}, {name: before, type: string, required: false}, {name: modified_after, type: string, required: false}, {name: modified_before, type: string, required: false}, {name: dates_are_gmt, type: boolean, required: false}, {name: exclude, type: array, required: false}, {name: include, type: array, required: false}, {name: offset, type: integer, required: false}, {name: order, type: string, required: false}, {name: orderby, type: string, required: false}, {name: code, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_create_coupon
@@ -860,7 +860,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}, {name: _fields, type: array, required: false}]
     result_fields: [data, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_update_coupon
@@ -892,7 +892,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: page, type: integer, required: false}, {name: per_page, type: integer, required: false}, {name: search, type: string, required: false}, {name: exclude, type: array, required: false}, {name: include, type: array, required: false}, {name: offset, type: integer, required: false}, {name: order, type: string, required: false}, {name: orderby, type: string, required: false}, {name: email, type: string, required: false}, {name: role, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: page, type: integer, required: false}, {name: per_page, type: integer, required: false}, {name: search, type: string, required: false}, {name: exclude, type: array, required: false}, {name: include, type: array, required: false}, {name: offset, type: integer, required: false}, {name: order, type: string, required: false}, {name: orderby, type: string, required: false}, {name: email, type: string, required: false}, {name: role, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_create_customer
@@ -913,7 +913,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}, {name: _fields, type: array, required: false}]
     result_fields: [data, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_update_customer
@@ -945,7 +945,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}, {name: context, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}, {name: context, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_list_orders
@@ -955,7 +955,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: page, type: integer, required: false}, {name: per_page, type: integer, required: false}, {name: search, type: string, required: false}, {name: after, type: string, required: false}, {name: before, type: string, required: false}, {name: modified_after, type: string, required: false}, {name: modified_before, type: string, required: false}, {name: dates_are_gmt, type: boolean, required: false}, {name: exclude, type: array, required: false}, {name: include, type: array, required: false}, {name: offset, type: integer, required: false}, {name: order, type: string, required: false}, {name: orderby, type: string, required: false}, {name: parent, type: array, required: false}, {name: parent_exclude, type: array, required: false}, {name: status, type: array, required: false}, {name: customer, type: integer, required: false}, {name: product, type: integer, required: false}, {name: dp, type: integer, required: false}, {name: created_via, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: page, type: integer, required: false}, {name: per_page, type: integer, required: false}, {name: search, type: string, required: false}, {name: after, type: string, required: false}, {name: before, type: string, required: false}, {name: modified_after, type: string, required: false}, {name: modified_before, type: string, required: false}, {name: dates_are_gmt, type: boolean, required: false}, {name: exclude, type: array, required: false}, {name: include, type: array, required: false}, {name: offset, type: integer, required: false}, {name: order, type: string, required: false}, {name: orderby, type: string, required: false}, {name: parent, type: array, required: false}, {name: parent_exclude, type: array, required: false}, {name: status, type: array, required: false}, {name: customer, type: integer, required: false}, {name: product, type: integer, required: false}, {name: dp, type: integer, required: false}, {name: created_via, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_create_order
@@ -976,7 +976,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}, {name: dp, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}, {name: dp, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [data, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_update_order
@@ -1008,7 +1008,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_send_order_details
@@ -1040,7 +1040,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}, {name: context, type: string, required: false}, {name: type, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}, {name: context, type: string, required: false}, {name: type, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_create_order_note
@@ -1061,7 +1061,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}, {name: note_id, type: integer, required: true}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}, {name: note_id, type: integer, required: true}, {name: _fields, type: array, required: false}]
     result_fields: [data, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_list_order_refunds
@@ -1071,7 +1071,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}, {name: context, type: string, required: false}, {name: page, type: integer, required: false}, {name: per_page, type: integer, required: false}, {name: search, type: string, required: false}, {name: after, type: string, required: false}, {name: before, type: string, required: false}, {name: dates_are_gmt, type: boolean, required: false}, {name: exclude, type: array, required: false}, {name: include, type: array, required: false}, {name: offset, type: integer, required: false}, {name: order, type: string, required: false}, {name: orderby, type: string, required: false}, {name: parent, type: array, required: false}, {name: parent_exclude, type: array, required: false}, {name: dp, type: integer, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}, {name: context, type: string, required: false}, {name: page, type: integer, required: false}, {name: per_page, type: integer, required: false}, {name: search, type: string, required: false}, {name: after, type: string, required: false}, {name: before, type: string, required: false}, {name: dates_are_gmt, type: boolean, required: false}, {name: exclude, type: array, required: false}, {name: include, type: array, required: false}, {name: offset, type: integer, required: false}, {name: order, type: string, required: false}, {name: orderby, type: string, required: false}, {name: parent, type: array, required: false}, {name: parent_exclude, type: array, required: false}, {name: dp, type: integer, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_get_order_refund
@@ -1081,7 +1081,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}, {name: refund_id, type: integer, required: true}, {name: dp, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}, {name: refund_id, type: integer, required: true}, {name: dp, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [data, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_preview_order_refund
@@ -1101,7 +1101,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_list_products
@@ -1111,7 +1111,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: page, type: integer, required: false}, {name: per_page, type: integer, required: false}, {name: search, type: string, required: false}, {name: search_fields, type: array, required: false}, {name: after, type: string, required: false}, {name: before, type: string, required: false}, {name: modified_after, type: string, required: false}, {name: modified_before, type: string, required: false}, {name: dates_are_gmt, type: boolean, required: false}, {name: exclude, type: array, required: false}, {name: include, type: array, required: false}, {name: offset, type: integer, required: false}, {name: order, type: string, required: false}, {name: orderby, type: string, required: false}, {name: parent, type: array, required: false}, {name: parent_exclude, type: array, required: false}, {name: slug, type: string, required: false}, {name: status, type: string, required: false}, {name: include_status, type: string, required: false}, {name: exclude_status, type: string, required: false}, {name: type, type: string, required: false}, {name: include_types, type: string, required: false}, {name: exclude_types, type: string, required: false}, {name: sku, type: string, required: false}, {name: featured, type: boolean, required: false}, {name: category, type: string, required: false}, {name: tag, type: string, required: false}, {name: shipping_class, type: string, required: false}, {name: attribute, type: string, required: false}, {name: attribute_term, type: string, required: false}, {name: tax_class, type: string, required: false}, {name: on_sale, type: boolean, required: false}, {name: min_price, type: string, required: false}, {name: max_price, type: string, required: false}, {name: stock_status, type: string, required: false}, {name: virtual, type: boolean, required: false}, {name: downloadable, type: boolean, required: false}, {name: image_size, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: page, type: integer, required: false}, {name: per_page, type: integer, required: false}, {name: search, type: string, required: false}, {name: search_fields, type: array, required: false}, {name: after, type: string, required: false}, {name: before, type: string, required: false}, {name: modified_after, type: string, required: false}, {name: modified_before, type: string, required: false}, {name: dates_are_gmt, type: boolean, required: false}, {name: exclude, type: array, required: false}, {name: include, type: array, required: false}, {name: offset, type: integer, required: false}, {name: order, type: string, required: false}, {name: orderby, type: string, required: false}, {name: parent, type: array, required: false}, {name: parent_exclude, type: array, required: false}, {name: slug, type: string, required: false}, {name: status, type: string, required: false}, {name: include_status, type: string, required: false}, {name: exclude_status, type: string, required: false}, {name: type, type: string, required: false}, {name: include_types, type: string, required: false}, {name: exclude_types, type: string, required: false}, {name: sku, type: string, required: false}, {name: featured, type: boolean, required: false}, {name: category, type: string, required: false}, {name: tag, type: string, required: false}, {name: shipping_class, type: string, required: false}, {name: attribute, type: string, required: false}, {name: attribute_term, type: string, required: false}, {name: tax_class, type: string, required: false}, {name: on_sale, type: boolean, required: false}, {name: min_price, type: string, required: false}, {name: max_price, type: string, required: false}, {name: stock_status, type: string, required: false}, {name: virtual, type: boolean, required: false}, {name: downloadable, type: boolean, required: false}, {name: image_size, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_create_product
@@ -1132,7 +1132,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}, {name: _fields, type: array, required: false}]
     result_fields: [data, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_update_product
@@ -1175,7 +1175,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: product_id, type: integer, required: true}, {name: context, type: string, required: false}, {name: page, type: integer, required: false}, {name: per_page, type: integer, required: false}, {name: search, type: string, required: false}, {name: after, type: string, required: false}, {name: before, type: string, required: false}, {name: dates_are_gmt, type: boolean, required: false}, {name: exclude, type: array, required: false}, {name: include, type: array, required: false}, {name: offset, type: integer, required: false}, {name: order, type: string, required: false}, {name: orderby, type: string, required: false}, {name: parent, type: array, required: false}, {name: parent_exclude, type: array, required: false}, {name: slug, type: string, required: false}, {name: status, type: string, required: false}, {name: include_status, type: string, required: false}, {name: exclude_status, type: string, required: false}, {name: sku, type: string, required: false}, {name: tax_class, type: string, required: false}, {name: on_sale, type: boolean, required: false}, {name: min_price, type: string, required: false}, {name: max_price, type: string, required: false}, {name: stock_status, type: string, required: false}, {name: virtual, type: boolean, required: false}, {name: downloadable, type: boolean, required: false}, {name: image_size, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: product_id, type: integer, required: true}, {name: context, type: string, required: false}, {name: page, type: integer, required: false}, {name: per_page, type: integer, required: false}, {name: search, type: string, required: false}, {name: after, type: string, required: false}, {name: before, type: string, required: false}, {name: dates_are_gmt, type: boolean, required: false}, {name: exclude, type: array, required: false}, {name: include, type: array, required: false}, {name: offset, type: integer, required: false}, {name: order, type: string, required: false}, {name: orderby, type: string, required: false}, {name: parent, type: array, required: false}, {name: parent_exclude, type: array, required: false}, {name: slug, type: string, required: false}, {name: status, type: string, required: false}, {name: include_status, type: string, required: false}, {name: exclude_status, type: string, required: false}, {name: sku, type: string, required: false}, {name: tax_class, type: string, required: false}, {name: on_sale, type: boolean, required: false}, {name: min_price, type: string, required: false}, {name: max_price, type: string, required: false}, {name: stock_status, type: string, required: false}, {name: virtual, type: boolean, required: false}, {name: downloadable, type: boolean, required: false}, {name: image_size, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_create_product_variation
@@ -1196,7 +1196,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: product_id, type: integer, required: true}, {name: id, type: integer, required: true}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: product_id, type: integer, required: true}, {name: id, type: integer, required: true}, {name: _fields, type: array, required: false}]
     result_fields: [data, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_update_product_variation
@@ -1228,7 +1228,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_create_product_attribute
@@ -1249,7 +1249,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}, {name: _fields, type: array, required: false}]
     result_fields: [data, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_update_product_attribute
@@ -1281,7 +1281,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: attribute_id, type: integer, required: true}, {name: context, type: string, required: false}, {name: page, type: integer, required: false}, {name: per_page, type: integer, required: false}, {name: search, type: string, required: false}, {name: exclude, type: array, required: false}, {name: include, type: array, required: false}, {name: order, type: string, required: false}, {name: orderby, type: string, required: false}, {name: hide_empty, type: boolean, required: false}, {name: parent, type: integer, required: false}, {name: product, type: integer, required: false}, {name: slug, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: attribute_id, type: integer, required: true}, {name: context, type: string, required: false}, {name: page, type: integer, required: false}, {name: per_page, type: integer, required: false}, {name: search, type: string, required: false}, {name: exclude, type: array, required: false}, {name: include, type: array, required: false}, {name: order, type: string, required: false}, {name: orderby, type: string, required: false}, {name: hide_empty, type: boolean, required: false}, {name: parent, type: integer, required: false}, {name: product, type: integer, required: false}, {name: slug, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_create_product_attribute_term
@@ -1302,7 +1302,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: attribute_id, type: integer, required: true}, {name: id, type: integer, required: true}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: attribute_id, type: integer, required: true}, {name: id, type: integer, required: true}, {name: _fields, type: array, required: false}]
     result_fields: [data, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_update_product_attribute_term
@@ -1334,7 +1334,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: page, type: integer, required: false}, {name: per_page, type: integer, required: false}, {name: search, type: string, required: false}, {name: exclude, type: array, required: false}, {name: include, type: array, required: false}, {name: order, type: string, required: false}, {name: orderby, type: string, required: false}, {name: hide_empty, type: boolean, required: false}, {name: parent, type: integer, required: false}, {name: product, type: integer, required: false}, {name: slug, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: page, type: integer, required: false}, {name: per_page, type: integer, required: false}, {name: search, type: string, required: false}, {name: exclude, type: array, required: false}, {name: include, type: array, required: false}, {name: order, type: string, required: false}, {name: orderby, type: string, required: false}, {name: hide_empty, type: boolean, required: false}, {name: parent, type: integer, required: false}, {name: product, type: integer, required: false}, {name: slug, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_create_product_category
@@ -1355,7 +1355,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}, {name: _fields, type: array, required: false}]
     result_fields: [data, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_update_product_category
@@ -1397,7 +1397,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: page, type: integer, required: false}, {name: per_page, type: integer, required: false}, {name: search, type: string, required: false}, {name: exclude, type: array, required: false}, {name: include, type: array, required: false}, {name: offset, type: integer, required: false}, {name: order, type: string, required: false}, {name: orderby, type: string, required: false}, {name: hide_empty, type: boolean, required: false}, {name: product, type: integer, required: false}, {name: slug, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: page, type: integer, required: false}, {name: per_page, type: integer, required: false}, {name: search, type: string, required: false}, {name: exclude, type: array, required: false}, {name: include, type: array, required: false}, {name: offset, type: integer, required: false}, {name: order, type: string, required: false}, {name: orderby, type: string, required: false}, {name: hide_empty, type: boolean, required: false}, {name: product, type: integer, required: false}, {name: slug, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_create_product_shipping_class
@@ -1418,7 +1418,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}, {name: _fields, type: array, required: false}]
     result_fields: [data, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_update_product_shipping_class
@@ -1450,7 +1450,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: page, type: integer, required: false}, {name: per_page, type: integer, required: false}, {name: search, type: string, required: false}, {name: exclude, type: array, required: false}, {name: include, type: array, required: false}, {name: offset, type: integer, required: false}, {name: order, type: string, required: false}, {name: orderby, type: string, required: false}, {name: hide_empty, type: boolean, required: false}, {name: product, type: integer, required: false}, {name: slug, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: page, type: integer, required: false}, {name: per_page, type: integer, required: false}, {name: search, type: string, required: false}, {name: exclude, type: array, required: false}, {name: include, type: array, required: false}, {name: offset, type: integer, required: false}, {name: order, type: string, required: false}, {name: orderby, type: string, required: false}, {name: hide_empty, type: boolean, required: false}, {name: product, type: integer, required: false}, {name: slug, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_create_product_tag
@@ -1471,7 +1471,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}, {name: _fields, type: array, required: false}]
     result_fields: [data, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_update_product_tag
@@ -1503,7 +1503,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: page, type: integer, required: false}, {name: per_page, type: integer, required: false}, {name: search, type: string, required: false}, {name: after, type: string, required: false}, {name: before, type: string, required: false}, {name: dates_are_gmt, type: boolean, required: false}, {name: exclude, type: array, required: false}, {name: include, type: array, required: false}, {name: offset, type: integer, required: false}, {name: order, type: string, required: false}, {name: orderby, type: string, required: false}, {name: reviewer, type: array, required: false}, {name: reviewer_exclude, type: array, required: false}, {name: reviewer_email, type: array, required: false}, {name: product, type: array, required: false}, {name: status, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: page, type: integer, required: false}, {name: per_page, type: integer, required: false}, {name: search, type: string, required: false}, {name: after, type: string, required: false}, {name: before, type: string, required: false}, {name: dates_are_gmt, type: boolean, required: false}, {name: exclude, type: array, required: false}, {name: include, type: array, required: false}, {name: offset, type: integer, required: false}, {name: order, type: string, required: false}, {name: orderby, type: string, required: false}, {name: reviewer, type: array, required: false}, {name: reviewer_exclude, type: array, required: false}, {name: reviewer_email, type: array, required: false}, {name: product, type: array, required: false}, {name: status, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_create_product_review
@@ -1524,7 +1524,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}, {name: _fields, type: array, required: false}]
     result_fields: [data, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_update_product_review
@@ -1556,7 +1556,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_get_sales_report
@@ -1566,7 +1566,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: period, type: string, required: false}, {name: date_min, type: string, required: false}, {name: date_max, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: period, type: string, required: false}, {name: date_min, type: string, required: false}, {name: date_max, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_get_top_sellers_report
@@ -1576,7 +1576,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: period, type: string, required: false}, {name: date_min, type: string, required: false}, {name: date_max, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: period, type: string, required: false}, {name: date_min, type: string, required: false}, {name: date_max, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_get_coupons_totals_report
@@ -1586,7 +1586,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_get_customers_totals_report
@@ -1596,7 +1596,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_get_orders_totals_report
@@ -1606,7 +1606,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_get_products_totals_report
@@ -1616,7 +1616,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_get_reviews_totals_report
@@ -1626,7 +1626,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_list_taxes
@@ -1636,7 +1636,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: page, type: integer, required: false}, {name: per_page, type: integer, required: false}, {name: offset, type: integer, required: false}, {name: order, type: string, required: false}, {name: orderby, type: string, required: false}, {name: class, type: string, required: false}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: context, type: string, required: false}, {name: page, type: integer, required: false}, {name: per_page, type: integer, required: false}, {name: offset, type: integer, required: false}, {name: order, type: string, required: false}, {name: orderby, type: string, required: false}, {name: class, type: string, required: false}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_create_tax
@@ -1657,7 +1657,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}, {name: _fields, type: array, required: false}]
     result_fields: [data, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_update_tax
@@ -1689,7 +1689,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_create_tax_class
@@ -1710,7 +1710,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_list_setting_options
@@ -1720,7 +1720,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: group_id, type: string, required: true}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: group_id, type: string, required: true}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_get_setting_option
@@ -1730,7 +1730,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: group_id, type: string, required: true}, {name: id, type: string, required: true}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: group_id, type: string, required: true}, {name: id, type: string, required: true}, {name: _fields, type: array, required: false}]
     result_fields: [data, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_update_setting_option
@@ -1762,7 +1762,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_get_payment_gateway
@@ -1772,7 +1772,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: string, required: true}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: string, required: true}, {name: _fields, type: array, required: false}]
     result_fields: [data, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_update_payment_gateway
@@ -1793,7 +1793,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_create_shipping_zone
@@ -1814,7 +1814,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}, {name: _fields, type: array, required: false}]
     result_fields: [data, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_update_shipping_zone
@@ -1835,7 +1835,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: integer, required: true}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_update_shipping_zone_locations
@@ -1856,7 +1856,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: zone_id, type: integer, required: true}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: zone_id, type: integer, required: true}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_create_shipping_zone_method
@@ -1877,7 +1877,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: zone_id, type: integer, required: true}, {name: id, type: integer, required: true}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: zone_id, type: integer, required: true}, {name: id, type: integer, required: true}, {name: _fields, type: array, required: false}]
     result_fields: [data, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_update_shipping_zone_method
@@ -1898,7 +1898,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_get_shipping_method
@@ -1908,7 +1908,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: string, required: true}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: string, required: true}, {name: _fields, type: array, required: false}]
     result_fields: [data, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_get_system_status
@@ -1918,7 +1918,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: _fields, type: array, required: false}]
     result_fields: [data, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_list_system_status_tools
@@ -1928,7 +1928,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_get_system_status_tool
@@ -1938,7 +1938,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: string, required: true}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: id, type: string, required: true}, {name: _fields, type: array, required: false}]
     result_fields: [data, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_list_data_resources
@@ -1948,7 +1948,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_list_continents
@@ -1958,7 +1958,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_get_continent
@@ -1968,7 +1968,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: location, type: string, required: true}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: location, type: string, required: true}, {name: _fields, type: array, required: false}]
     result_fields: [data, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_list_countries
@@ -1978,7 +1978,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_get_country
@@ -1988,7 +1988,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: location, type: string, required: true}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: location, type: string, required: true}, {name: _fields, type: array, required: false}]
     result_fields: [data, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_list_currencies
@@ -1998,7 +1998,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: _fields, type: array, required: false}]
     result_fields: [items, pagination, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_get_currency
@@ -2008,7 +2008,7 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: currency, type: string, required: true}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: currency, type: string, required: true}, {name: _fields, type: array, required: false}]
     result_fields: [data, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]
   - action_id: wc_get_current_currency
@@ -2018,6 +2018,6 @@ actions:
     handler: {mode: extension}
     mutates_platform: false
     workflow_visible: true
-    parameters: [{name: connection_ref, type: connection_ref, required: true}]
+    parameters: [{name: connection_ref, type: connection_ref, required: true}, {name: _fields, type: array, required: false}]
     result_fields: [data, http_status]
     error_codes: [invalid_payload, invalid_configuration, invalid_connection, woocommerce_credentials_incomplete, unsupported_operation, authentication_failed, authorization_failed, not_found, rate_limited, upstream_validation_failed, upstream_failure, invalid_json_response, response_too_large, timeout, connection_failed, redirect_rejected, blocked_address, internal_error, woocommerce_not_configured]

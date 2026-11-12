@@ -165,6 +165,27 @@ BATCH_CAPABILITIES: dict[str, dict[str, Any]] = {
 DEFAULT_BATCH_CAPABILITY: dict[str, Any] = {"members": ["create", "update"], "id_type": INTEGER}
 
 
+#: WordPress global parameters that every read of a REST resource honours, on
+#: WordPress and WooCommerce routes alike, but that no per-route table lists.
+#: ``_fields`` limits each record to the named fields (dot notation reaches a
+#: nested field), so a large collection page can be read without its full
+#: ``meta_data``, descriptions and links.
+#: https://developer.wordpress.org/rest-api/using-the-rest-api/global-parameters/#_fields
+GLOBAL_READ_QUERY_FIELDS: list[dict[str, Any]] = [
+    {"name": "_fields", "value_type": ARRAY, "item_type": TEXT},
+]
+
+#: Response shapes made of records, which ``_fields`` can narrow.
+RECORD_RESPONSE_KINDS: frozenset[str] = frozenset({KIND_OBJECT, KIND_OBJECT_LIST, KIND_KEYED_MAP})
+
+
+def _global_read_query_fields(row: Any) -> list[dict[str, Any]]:
+    """The global read parameters one operation accepts besides its own table."""
+    if row.method != "GET" or _response_kind(row) not in RECORD_RESPONSE_KINDS:
+        return []
+    return [dict(field) for field in GLOBAL_READ_QUERY_FIELDS]
+
+
 def _batch_capability(operation_id: str) -> dict[str, Any]:
     return BATCH_CAPABILITIES.get(operation_id, DEFAULT_BATCH_CAPABILITY)
 
@@ -589,7 +610,10 @@ def build() -> dict[str, Any]:
             )
         # One policy decides which documented fields this version carries, so a
         # field cannot be published here and refused by the runtime.
-        query[row.operation_id] = _drop(q, field_policy.excluded_query_fields(row.operation_id))
+        query[row.operation_id] = _drop(
+            q + _global_read_query_fields(row),
+            field_policy.excluded_query_fields(row.operation_id),
+        )
         body[row.operation_id] = _drop(b, field_policy.excluded_body_fields(row.operation_id))
         response[row.operation_id] = _drop(r, field_policy.excluded_response_fields(row))
         response_kinds[row.operation_id] = _response_kind(row)

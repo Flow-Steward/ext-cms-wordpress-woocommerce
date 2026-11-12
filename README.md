@@ -11,7 +11,7 @@ Use a publicly reachable HTTPS WordPress 5.6+ site with REST access and create a
 Supported create and update operations follow the connected user’s permissions. See [What it does not do](#what-it-does-not-do) for the excluded operations.
 
 - Extension ID: `flowsteward.wordpress-woocommerce`
-- Version: `1.2.3`
+- Version: `1.3.0`
 - Billing: free
 - Vendor: Flow Steward
 - Logo: `icon.png` (separate official WordPress W and Woo wordmarks; PNG, 512x512)
@@ -29,6 +29,11 @@ modelled too, and responses carry the documented record shape. An undocumented t
 `acf`, `lang`, a SEO plugin key, anything a plugin might add — is refused before a request is
 built, including inside each item of a batch payload. That boundary is what keeps this free
 extension separate from the future ACF, WPML, Polylang, and SEO extensions.
+
+Every read that returns records also accepts WordPress's documented global `_fields` parameter,
+for example `_fields: [id, sku, price, stock_quantity]`. The site then returns only those fields
+(dot notation reaches a nested one), so a large catalog page arrives without its full
+`meta_data`, descriptions, and links.
 
 ## Requirements
 

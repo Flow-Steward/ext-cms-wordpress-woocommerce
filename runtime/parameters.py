@@ -15,56 +15,52 @@ from __future__ import annotations
 
 from typing import Any
 
-_TOKEN_ORDER_REFUNDS_TAXES = "order-refunds.taxes"  # nosec B105 - a field path, not a secret
-_TOKEN_ORDER_REFUNDS_PREVIEW_BREAKDOWN_SECTION = "order-refunds.preview_breakdown_section"  # nosec B105 - a field path, not a secret
-_TOKEN_SYSTEM_STATUS_SETTINGS = "system-status.settings"  # nosec B105 - a field path, not a secret
-_TOKEN_SYSTEM_STATUS_SECURITY = "system-status.security"  # nosec B105 - a field path, not a secret
-_TOKEN_DATA_COUNTRIES_STATES = "data.countries_states"  # nosec B105 - a field path, not a secret
-_TOKEN_DATA_COUNTRIES = "data.countries"  # nosec B105 - a field path, not a secret
-
-_TOKEN_ORDERS_TAX_LINES = "orders.tax_lines"  # nosec B105 - a field path, not a secret
-_TOKEN_ORDERS_REFUNDS = "orders.refunds"  # nosec B105 - a field path, not a secret
-_TOKEN_ORDER_REFUNDS_META_DATA = "order-refunds.meta_data"  # nosec B105 - a field path, not a secret
-_TOKEN_ORDER_REFUNDS_LINE_ITEMS = "order-refunds.line_items"  # nosec B105 - a field path, not a secret
-_TOKEN_ORDER_REFUNDS_TAX_LINES = "order-refunds.tax_lines"  # nosec B105 - a field path, not a secret
-_TOKEN_ORDER_REFUNDS_SHIPPING_LINES = "order-refunds.shipping_lines"  # nosec B105 - a field path, not a secret
-_TOKEN_ORDER_REFUNDS_FEE_LINES = "order-refunds.fee_lines"  # nosec B105 - a field path, not a secret
-_TOKEN_SYSTEM_STATUS_ENVIRONMENT = "system-status.environment"  # nosec B105 - a field path, not a secret
-_TOKEN_SYSTEM_STATUS_DATABASE = "system-status.database"  # nosec B105 - a field path, not a secret
-_TOKEN_SYSTEM_STATUS_THEME = "system-status.theme"  # nosec B105 - a field path, not a secret
-
-_TOKEN_CUSTOMERS_FILE = "customers.file"  # nosec B105 - a field path, not a secret
-_TOKEN_PRODUCTS_META_DATA = "products.meta_data"  # nosec B105 - a field path, not a secret
-_TOKEN_PRODUCT_VARIATIONS_DOWNLOADS = "product-variations.downloads"  # nosec B105 - a field path, not a secret
-_TOKEN_PRODUCT_VARIATIONS_DIMENSIONS = "product-variations.dimensions"  # nosec B105 - a field path, not a secret
-_TOKEN_PRODUCT_VARIATIONS_IMAGE = "product-variations.image"  # nosec B105 - a field path, not a secret
-_TOKEN_PRODUCT_VARIATIONS_ATTRIBUTES = "product-variations.attributes"  # nosec B105 - a field path, not a secret
-_TOKEN_PRODUCT_VARIATIONS_META_DATA = "product-variations.meta_data"  # nosec B105 - a field path, not a secret
-_TOKEN_PRODUCT_CATEGORIES_IMAGE = "product-categories.image"  # nosec B105 - a field path, not a secret
-_TOKEN_PAYMENT_GATEWAYS_SETTINGS = "payment-gateways.settings"  # nosec B105 - a field path, not a secret
-_TOKEN_SHIPPING_ZONE_METHODS_SETTINGS = "shipping-zone-methods.settings"  # nosec B105 - a field path, not a secret
-
-_TOKEN_ORDERS_COUPON_LINES = "orders.coupon_lines"  # nosec B105 - a field path, not a secret
-_TOKEN_ORDER_REFUNDS_PREVIEW_LINE_ITEM = "order-refunds.preview_line_item"  # nosec B105 - a field path, not a secret
-_TOKEN_PRODUCTS_DOWNLOADS = "products.downloads"  # nosec B105 - a field path, not a secret
-_TOKEN_PRODUCTS_DIMENSIONS = "products.dimensions"  # nosec B105 - a field path, not a secret
-_TOKEN_PRODUCTS_CATEGORIES = "products.categories"  # nosec B105 - a field path, not a secret
-_TOKEN_PRODUCTS_TAGS = "products.tags"  # nosec B105 - a field path, not a secret
-_TOKEN_PRODUCTS_BRANDS = "products.brands"  # nosec B105 - a field path, not a secret
-_TOKEN_PRODUCTS_IMAGES = "products.images"  # nosec B105 - a field path, not a secret
-_TOKEN_PRODUCTS_ATTRIBUTES = "products.attributes"  # nosec B105 - a field path, not a secret
-_TOKEN_PRODUCTS_DEFAULT_ATTRIBUTES = "products.default_attributes"  # nosec B105 - a field path, not a secret
-
 _TOKEN_COUPONS_META_DATA = "coupons.meta_data"  # nosec B105 - a field path, not a secret
 _TOKEN_CUSTOMERS_BILLING = "customers.billing"  # nosec B105 - a field path, not a secret
-_TOKEN_CUSTOMERS_SHIPPING = "customers.shipping"  # nosec B105 - a field path, not a secret
+_TOKEN_CUSTOMERS_FILE = "customers.file"  # nosec B105 - a field path, not a secret
 _TOKEN_CUSTOMERS_META_DATA = "customers.meta_data"  # nosec B105 - a field path, not a secret
+_TOKEN_CUSTOMERS_SHIPPING = "customers.shipping"  # nosec B105 - a field path, not a secret
+_TOKEN_DATA_COUNTRIES = "data.countries"  # nosec B105 - a field path, not a secret
+_TOKEN_DATA_COUNTRIES_STATES = "data.countries_states"  # nosec B105 - a field path, not a secret
+_TOKEN_ORDER_REFUNDS_FEE_LINES = "order-refunds.fee_lines"  # nosec B105 - a field path, not a secret
+_TOKEN_ORDER_REFUNDS_LINE_ITEMS = "order-refunds.line_items"  # nosec B105 - a field path, not a secret
+_TOKEN_ORDER_REFUNDS_META_DATA = "order-refunds.meta_data"  # nosec B105 - a field path, not a secret
+_TOKEN_ORDER_REFUNDS_PREVIEW_BREAKDOWN_SECTION = "order-refunds.preview_breakdown_section"  # nosec B105 - a field path, not a secret
+_TOKEN_ORDER_REFUNDS_PREVIEW_LINE_ITEM = "order-refunds.preview_line_item"  # nosec B105 - a field path, not a secret
+_TOKEN_ORDER_REFUNDS_SHIPPING_LINES = "order-refunds.shipping_lines"  # nosec B105 - a field path, not a secret
+_TOKEN_ORDER_REFUNDS_TAX_LINES = "order-refunds.tax_lines"  # nosec B105 - a field path, not a secret
+_TOKEN_ORDER_REFUNDS_TAXES = "order-refunds.taxes"  # nosec B105 - a field path, not a secret
 _TOKEN_ORDERS_BILLING = "orders.billing"  # nosec B105 - a field path, not a secret
-_TOKEN_ORDERS_SHIPPING = "orders.shipping"  # nosec B105 - a field path, not a secret
-_TOKEN_ORDERS_META_DATA = "orders.meta_data"  # nosec B105 - a field path, not a secret
-_TOKEN_ORDERS_LINE_ITEMS = "orders.line_items"  # nosec B105 - a field path, not a secret
-_TOKEN_ORDERS_SHIPPING_LINES = "orders.shipping_lines"  # nosec B105 - a field path, not a secret
+_TOKEN_ORDERS_COUPON_LINES = "orders.coupon_lines"  # nosec B105 - a field path, not a secret
 _TOKEN_ORDERS_FEE_LINES = "orders.fee_lines"  # nosec B105 - a field path, not a secret
+_TOKEN_ORDERS_LINE_ITEMS = "orders.line_items"  # nosec B105 - a field path, not a secret
+_TOKEN_ORDERS_META_DATA = "orders.meta_data"  # nosec B105 - a field path, not a secret
+_TOKEN_ORDERS_REFUNDS = "orders.refunds"  # nosec B105 - a field path, not a secret
+_TOKEN_ORDERS_SHIPPING = "orders.shipping"  # nosec B105 - a field path, not a secret
+_TOKEN_ORDERS_SHIPPING_LINES = "orders.shipping_lines"  # nosec B105 - a field path, not a secret
+_TOKEN_ORDERS_TAX_LINES = "orders.tax_lines"  # nosec B105 - a field path, not a secret
+_TOKEN_PAYMENT_GATEWAYS_SETTINGS = "payment-gateways.settings"  # nosec B105 - a field path, not a secret
+_TOKEN_PRODUCT_CATEGORIES_IMAGE = "product-categories.image"  # nosec B105 - a field path, not a secret
+_TOKEN_PRODUCT_VARIATIONS_ATTRIBUTES = "product-variations.attributes"  # nosec B105 - a field path, not a secret
+_TOKEN_PRODUCT_VARIATIONS_DIMENSIONS = "product-variations.dimensions"  # nosec B105 - a field path, not a secret
+_TOKEN_PRODUCT_VARIATIONS_DOWNLOADS = "product-variations.downloads"  # nosec B105 - a field path, not a secret
+_TOKEN_PRODUCT_VARIATIONS_IMAGE = "product-variations.image"  # nosec B105 - a field path, not a secret
+_TOKEN_PRODUCT_VARIATIONS_META_DATA = "product-variations.meta_data"  # nosec B105 - a field path, not a secret
+_TOKEN_PRODUCTS_ATTRIBUTES = "products.attributes"  # nosec B105 - a field path, not a secret
+_TOKEN_PRODUCTS_BRANDS = "products.brands"  # nosec B105 - a field path, not a secret
+_TOKEN_PRODUCTS_CATEGORIES = "products.categories"  # nosec B105 - a field path, not a secret
+_TOKEN_PRODUCTS_DEFAULT_ATTRIBUTES = "products.default_attributes"  # nosec B105 - a field path, not a secret
+_TOKEN_PRODUCTS_DIMENSIONS = "products.dimensions"  # nosec B105 - a field path, not a secret
+_TOKEN_PRODUCTS_DOWNLOADS = "products.downloads"  # nosec B105 - a field path, not a secret
+_TOKEN_PRODUCTS_IMAGES = "products.images"  # nosec B105 - a field path, not a secret
+_TOKEN_PRODUCTS_META_DATA = "products.meta_data"  # nosec B105 - a field path, not a secret
+_TOKEN_PRODUCTS_TAGS = "products.tags"  # nosec B105 - a field path, not a secret
+_TOKEN_SHIPPING_ZONE_METHODS_SETTINGS = "shipping-zone-methods.settings"  # nosec B105 - a field path, not a secret
+_TOKEN_SYSTEM_STATUS_DATABASE = "system-status.database"  # nosec B105 - a field path, not a secret
+_TOKEN_SYSTEM_STATUS_ENVIRONMENT = "system-status.environment"  # nosec B105 - a field path, not a secret
+_TOKEN_SYSTEM_STATUS_SECURITY = "system-status.security"  # nosec B105 - a field path, not a secret
+_TOKEN_SYSTEM_STATUS_SETTINGS = "system-status.settings"  # nosec B105 - a field path, not a secret
+_TOKEN_SYSTEM_STATUS_THEME = "system-status.theme"  # nosec B105 - a field path, not a secret
 
 QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
     "wp_list_posts": [
@@ -113,6 +109,7 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
         {"name": "tags", "value_type": "array", "item_type": "integer"},
         {"name": "tags_exclude", "value_type": "array", "item_type": "integer"},
         {"name": "sticky", "value_type": "boolean"},
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wp_create_post": [],
     "wp_get_post": [
@@ -121,7 +118,8 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
             "value_type": "text",
             "enum": ["view", "embed", "edit"],
             "default": "view",
-        }
+        },
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wp_update_post": [],
     "wp_list_post_revisions": [
@@ -144,6 +142,7 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
             "enum": ["date", "id", "include", "relevance", "slug", "include_slugs", "title"],
             "default": "date",
         },
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wp_get_post_revision": [
         {
@@ -151,7 +150,8 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
             "value_type": "text",
             "enum": ["view", "embed", "edit"],
             "default": "view",
-        }
+        },
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wp_list_post_autosaves": [
         {"name": "parent", "value_type": "array", "item_type": "integer"},
@@ -161,6 +161,7 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
             "enum": ["view", "embed", "edit"],
             "default": "view",
         },
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wp_create_post_autosave": [],
     "wp_get_post_autosave": [
@@ -169,7 +170,8 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
             "value_type": "text",
             "enum": ["view", "embed", "edit"],
             "default": "view",
-        }
+        },
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wp_list_pages": [
         {
@@ -215,6 +217,7 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
         {"name": "search_columns", "value_type": "array", "item_type": "text"},
         {"name": "slug", "value_type": "array", "item_type": "text"},
         {"name": "status", "value_type": "array", "item_type": "text"},
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wp_create_page": [],
     "wp_get_page": [
@@ -223,7 +226,8 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
             "value_type": "text",
             "enum": ["view", "embed", "edit"],
             "default": "view",
-        }
+        },
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wp_update_page": [],
     "wp_list_page_revisions": [
@@ -246,6 +250,7 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
             "enum": ["date", "id", "include", "relevance", "slug", "include_slugs", "title"],
             "default": "date",
         },
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wp_get_page_revision": [
         {
@@ -253,7 +258,8 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
             "value_type": "text",
             "enum": ["view", "embed", "edit"],
             "default": "view",
-        }
+        },
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wp_list_page_autosaves": [
         {"name": "parent", "value_type": "array", "item_type": "integer"},
@@ -263,6 +269,7 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
             "enum": ["view", "embed", "edit"],
             "default": "view",
         },
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wp_create_page_autosave": [],
     "wp_get_page_autosave": [
@@ -271,7 +278,8 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
             "value_type": "text",
             "enum": ["view", "embed", "edit"],
             "default": "view",
-        }
+        },
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wp_list_media": [
         {
@@ -321,6 +329,7 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
             "enum": ["image", "video", "text", "application", "audio"],
         },
         {"name": "mime_type", "value_type": "text"},
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wp_create_media": [],
     "wp_get_media": [
@@ -329,7 +338,8 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
             "value_type": "text",
             "enum": ["view", "embed", "edit"],
             "default": "view",
-        }
+        },
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wp_update_media": [],
     "wp_list_comments": [
@@ -362,6 +372,7 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
         {"name": "post", "value_type": "integer"},
         {"name": "status", "value_type": "array", "item_type": "text"},
         {"name": "type", "value_type": "text", "default": "comment"},
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wp_create_comment": [],
     "wp_get_comment": [
@@ -370,7 +381,8 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
             "value_type": "text",
             "enum": ["view", "embed", "edit"],
             "default": "view",
-        }
+        },
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wp_update_comment": [],
     "wp_list_categories": [
@@ -405,6 +417,7 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
         {"name": "parent", "value_type": "array", "item_type": "integer"},
         {"name": "post", "value_type": "integer"},
         {"name": "slug", "value_type": "array", "item_type": "text"},
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wp_create_category": [],
     "wp_get_category": [
@@ -413,7 +426,8 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
             "value_type": "text",
             "enum": ["view", "embed", "edit"],
             "default": "view",
-        }
+        },
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wp_update_category": [],
     "wp_list_tags": [
@@ -448,6 +462,7 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
         {"name": "hide_empty", "value_type": "boolean"},
         {"name": "post", "value_type": "integer"},
         {"name": "slug", "value_type": "array", "item_type": "text"},
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wp_create_tag": [],
     "wp_get_tag": [
@@ -456,7 +471,8 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
             "value_type": "text",
             "enum": ["view", "embed", "edit"],
             "default": "view",
-        }
+        },
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wp_update_tag": [],
     "wp_get_taxonomies": [
@@ -467,6 +483,7 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
             "default": "view",
         },
         {"name": "type", "value_type": "text"},
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wp_get_taxonomy": [
         {
@@ -474,7 +491,8 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
             "value_type": "text",
             "enum": ["view", "embed", "edit"],
             "default": "view",
-        }
+        },
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wp_list_users": [
         {
@@ -510,6 +528,7 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
         {"name": "capabilities", "value_type": "array", "item_type": "text"},
         {"name": "who", "value_type": "text", "enum": ["authors"]},
         {"name": "has_published_posts", "value_type": "array", "item_type": "text"},
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wp_get_user": [
         {
@@ -517,7 +536,8 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
             "value_type": "text",
             "enum": ["view", "embed", "edit"],
             "default": "view",
-        }
+        },
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wp_get_current_user": [
         {
@@ -525,7 +545,8 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
             "value_type": "text",
             "enum": ["view", "embed", "edit"],
             "default": "view",
-        }
+        },
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wp_get_post_types": [
         {
@@ -533,7 +554,8 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
             "value_type": "text",
             "enum": ["view", "embed", "edit"],
             "default": "view",
-        }
+        },
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wp_get_post_type": [
         {
@@ -541,7 +563,8 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
             "value_type": "text",
             "enum": ["view", "embed", "edit"],
             "default": "view",
-        }
+        },
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wp_get_post_statuses": [
         {
@@ -549,7 +572,8 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
             "value_type": "text",
             "enum": ["view", "embed", "edit"],
             "default": "view",
-        }
+        },
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wp_get_post_status": [
         {
@@ -557,12 +581,16 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
             "value_type": "text",
             "enum": ["view", "embed", "edit"],
             "default": "view",
-        }
+        },
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
-    "wp_get_settings": [],
+    "wp_get_settings": [{"name": "_fields", "value_type": "array", "item_type": "text"}],
     "wp_update_settings": [],
-    "wp_list_themes": [{"name": "status", "value_type": "array", "item_type": "text"}],
-    "wp_get_theme": [],
+    "wp_list_themes": [
+        {"name": "status", "value_type": "array", "item_type": "text"},
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
+    ],
+    "wp_get_theme": [{"name": "_fields", "value_type": "array", "item_type": "text"}],
     "wp_search": [
         {"name": "context", "value_type": "text", "enum": ["view", "embed"], "default": "view"},
         {"name": "page", "value_type": "integer", "default": 1},
@@ -577,6 +605,7 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
         {"name": "subtype", "value_type": "text", "default": "any"},
         {"name": "exclude", "value_type": "array", "item_type": "integer"},
         {"name": "include", "value_type": "array", "item_type": "integer"},
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wp_list_block_types": [
         {
@@ -586,6 +615,7 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
             "default": "view",
         },
         {"name": "namespace", "value_type": "text"},
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wp_list_namespace_block_types": [
         {
@@ -593,7 +623,8 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
             "value_type": "text",
             "enum": ["view", "embed", "edit"],
             "default": "view",
-        }
+        },
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wp_get_block_type": [
         {
@@ -601,7 +632,8 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
             "value_type": "text",
             "enum": ["view", "embed", "edit"],
             "default": "view",
-        }
+        },
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wp_list_blocks": [
         {
@@ -641,6 +673,7 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
         {"name": "search_columns", "value_type": "array", "item_type": "text"},
         {"name": "slug", "value_type": "array", "item_type": "text"},
         {"name": "status", "value_type": "array", "item_type": "text"},
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wp_create_block": [],
     "wp_get_block": [
@@ -649,7 +682,8 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
             "value_type": "text",
             "enum": ["view", "embed", "edit"],
             "default": "view",
-        }
+        },
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wp_update_block": [],
     "wp_list_block_revisions": [
@@ -672,6 +706,7 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
             "enum": ["date", "id", "include", "relevance", "slug", "include_slugs", "title"],
             "default": "date",
         },
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wp_get_block_revision": [
         {
@@ -679,7 +714,8 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
             "value_type": "text",
             "enum": ["view", "embed", "edit"],
             "default": "view",
-        }
+        },
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wp_list_block_autosaves": [
         {"name": "parent", "value_type": "array", "item_type": "integer"},
@@ -689,6 +725,7 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
             "enum": ["view", "embed", "edit"],
             "default": "view",
         },
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wp_create_block_autosave": [],
     "wp_get_block_autosave": [
@@ -697,16 +734,20 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
             "value_type": "text",
             "enum": ["view", "embed", "edit"],
             "default": "view",
-        }
+        },
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wp_search_block_directory": [
         {"name": "context", "value_type": "text", "enum": ["view"], "default": "view"},
         {"name": "page", "value_type": "integer", "default": 1},
         {"name": "per_page", "value_type": "integer", "default": 10},
         {"name": "term", "value_type": "text", "required": True},
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
-    "wp_list_block_patterns": [],
-    "wp_list_block_pattern_categories": [],
+    "wp_list_block_patterns": [{"name": "_fields", "value_type": "array", "item_type": "text"}],
+    "wp_list_block_pattern_categories": [
+        {"name": "_fields", "value_type": "array", "item_type": "text"}
+    ],
     "wp_list_pattern_directory_patterns": [
         {
             "name": "context",
@@ -740,6 +781,7 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
             ],
             "default": "date",
         },
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wp_render_block": [],
     "wp_get_menu_locations": [
@@ -748,7 +790,8 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
             "value_type": "text",
             "enum": ["view", "embed", "edit"],
             "default": "view",
-        }
+        },
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wp_get_menu_location": [
         {
@@ -756,7 +799,8 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
             "value_type": "text",
             "enum": ["view", "embed", "edit"],
             "default": "view",
-        }
+        },
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wp_list_sidebars": [
         {
@@ -764,7 +808,8 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
             "value_type": "text",
             "enum": ["view", "embed", "edit"],
             "default": "view",
-        }
+        },
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wp_get_sidebar": [
         {
@@ -772,7 +817,8 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
             "value_type": "text",
             "enum": ["view", "embed", "edit"],
             "default": "view",
-        }
+        },
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wp_update_sidebar": [],
     "wp_list_widget_types": [
@@ -781,7 +827,8 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
             "value_type": "text",
             "enum": ["view", "embed", "edit"],
             "default": "view",
-        }
+        },
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wp_get_widget_type": [
         {
@@ -789,7 +836,8 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
             "value_type": "text",
             "enum": ["view", "embed", "edit"],
             "default": "view",
-        }
+        },
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wp_list_widgets": [
         {
@@ -799,6 +847,7 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
             "default": "view",
         },
         {"name": "sidebar", "value_type": "text"},
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wp_create_widget": [],
     "wp_get_widget": [
@@ -807,7 +856,8 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
             "value_type": "text",
             "enum": ["view", "embed", "edit"],
             "default": "view",
-        }
+        },
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wp_update_widget": [],
     "wp_list_plugins": [
@@ -819,6 +869,7 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
         },
         {"name": "search", "value_type": "text"},
         {"name": "status", "value_type": "array", "item_type": "text"},
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wp_get_plugin": [
         {
@@ -826,7 +877,8 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
             "value_type": "text",
             "enum": ["view", "embed", "edit"],
             "default": "view",
-        }
+        },
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wc_list_coupons": [
         {"name": "context", "value_type": "text", "enum": ["view", "edit"], "default": "view"},
@@ -849,9 +901,10 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
             "default": "date",
         },
         {"name": "code", "value_type": "text"},
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wc_create_coupon": [],
-    "wc_get_coupon": [],
+    "wc_get_coupon": [{"name": "_fields", "value_type": "array", "item_type": "text"}],
     "wc_update_coupon": [],
     "wc_batch_coupons": [],
     "wc_list_customers": [
@@ -885,13 +938,15 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
             ],
             "default": "customer",
         },
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wc_create_customer": [],
-    "wc_get_customer": [],
+    "wc_get_customer": [{"name": "_fields", "value_type": "array", "item_type": "text"}],
     "wc_update_customer": [],
     "wc_batch_customers": [],
     "wc_list_customer_downloads": [
-        {"name": "context", "value_type": "text", "enum": ["view"], "default": "view"}
+        {"name": "context", "value_type": "text", "enum": ["view"], "default": "view"},
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wc_list_orders": [
         {"name": "context", "value_type": "text", "enum": ["view", "edit"], "default": "view"},
@@ -935,12 +990,18 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
         {"name": "product", "value_type": "integer"},
         {"name": "dp", "value_type": "integer", "default": 2},
         {"name": "created_via", "value_type": "text"},
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wc_create_order": [],
-    "wc_get_order": [{"name": "dp", "value_type": "text"}],
+    "wc_get_order": [
+        {"name": "dp", "value_type": "text"},
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
+    ],
     "wc_update_order": [],
     "wc_batch_orders": [],
-    "wc_list_order_email_templates": [],
+    "wc_list_order_email_templates": [
+        {"name": "_fields", "value_type": "array", "item_type": "text"}
+    ],
     "wc_send_order_details": [],
     "wc_send_order_email": [],
     "wc_list_order_notes": [
@@ -951,9 +1012,10 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
             "enum": ["any", "customer", "internal"],
             "default": "any",
         },
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wc_create_order_note": [],
-    "wc_get_order_note": [],
+    "wc_get_order_note": [{"name": "_fields", "value_type": "array", "item_type": "text"}],
     "wc_list_order_refunds": [
         {"name": "context", "value_type": "text", "enum": ["view", "edit"], "default": "view"},
         {"name": "page", "value_type": "integer", "default": 1},
@@ -975,10 +1037,14 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
         {"name": "parent", "value_type": "array", "item_type": "integer"},
         {"name": "parent_exclude", "value_type": "array", "item_type": "integer"},
         {"name": "dp", "value_type": "integer", "default": 2},
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
-    "wc_get_order_refund": [{"name": "dp", "value_type": "text"}],
+    "wc_get_order_refund": [
+        {"name": "dp", "value_type": "text"},
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
+    ],
     "wc_preview_order_refund": [],
-    "wc_list_refunds": [],
+    "wc_list_refunds": [{"name": "_fields", "value_type": "array", "item_type": "text"}],
     "wc_list_products": [
         {"name": "context", "value_type": "text", "enum": ["view", "edit"], "default": "view"},
         {"name": "page", "value_type": "integer", "default": 1},
@@ -1069,9 +1135,10 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
         {"name": "virtual", "value_type": "boolean"},
         {"name": "downloadable", "value_type": "boolean"},
         {"name": "image_size", "value_type": "text", "default": "full"},
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wc_create_product": [],
-    "wc_get_product": [],
+    "wc_get_product": [{"name": "_fields", "value_type": "array", "item_type": "text"}],
     "wc_update_product": [],
     "wc_batch_products": [],
     "wc_duplicate_product": [],
@@ -1125,16 +1192,18 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
         {"name": "virtual", "value_type": "boolean"},
         {"name": "downloadable", "value_type": "boolean"},
         {"name": "image_size", "value_type": "text", "default": "full"},
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wc_create_product_variation": [],
-    "wc_get_product_variation": [],
+    "wc_get_product_variation": [{"name": "_fields", "value_type": "array", "item_type": "text"}],
     "wc_update_product_variation": [],
     "wc_batch_product_variations": [],
     "wc_list_product_attributes": [
-        {"name": "context", "value_type": "text", "enum": ["view", "edit"], "default": "view"}
+        {"name": "context", "value_type": "text", "enum": ["view", "edit"], "default": "view"},
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wc_create_product_attribute": [],
-    "wc_get_product_attribute": [],
+    "wc_get_product_attribute": [{"name": "_fields", "value_type": "array", "item_type": "text"}],
     "wc_update_product_attribute": [],
     "wc_batch_product_attributes": [],
     "wc_list_product_attribute_terms": [
@@ -1155,9 +1224,12 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
         {"name": "parent", "value_type": "integer"},
         {"name": "product", "value_type": "integer"},
         {"name": "slug", "value_type": "text"},
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wc_create_product_attribute_term": [],
-    "wc_get_product_attribute_term": [],
+    "wc_get_product_attribute_term": [
+        {"name": "_fields", "value_type": "array", "item_type": "text"}
+    ],
     "wc_update_product_attribute_term": [],
     "wc_batch_product_attribute_terms": [],
     "wc_list_product_categories": [
@@ -1178,9 +1250,10 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
         {"name": "parent", "value_type": "integer"},
         {"name": "product", "value_type": "integer"},
         {"name": "slug", "value_type": "text"},
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wc_create_product_category": [],
-    "wc_get_product_category": [],
+    "wc_get_product_category": [{"name": "_fields", "value_type": "array", "item_type": "text"}],
     "wc_update_product_category": [],
     "wc_batch_product_categories": [],
     "wc_list_product_custom_field_names": [],
@@ -1202,9 +1275,12 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
         {"name": "hide_empty", "value_type": "boolean", "default": False},
         {"name": "product", "value_type": "integer"},
         {"name": "slug", "value_type": "text"},
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wc_create_product_shipping_class": [],
-    "wc_get_product_shipping_class": [],
+    "wc_get_product_shipping_class": [
+        {"name": "_fields", "value_type": "array", "item_type": "text"}
+    ],
     "wc_update_product_shipping_class": [],
     "wc_batch_product_shipping_classes": [],
     "wc_list_product_tags": [
@@ -1225,9 +1301,10 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
         {"name": "hide_empty", "value_type": "boolean", "default": False},
         {"name": "product", "value_type": "integer"},
         {"name": "slug", "value_type": "text"},
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wc_create_product_tag": [],
-    "wc_get_product_tag": [],
+    "wc_get_product_tag": [{"name": "_fields", "value_type": "array", "item_type": "text"}],
     "wc_update_product_tag": [],
     "wc_batch_product_tags": [],
     "wc_list_product_reviews": [
@@ -1258,12 +1335,13 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
             "enum": ["all", "hold", "approved", "spam", "trash"],
             "default": "approved",
         },
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wc_create_product_review": [],
-    "wc_get_product_review": [],
+    "wc_get_product_review": [{"name": "_fields", "value_type": "array", "item_type": "text"}],
     "wc_update_product_review": [],
     "wc_batch_product_reviews": [],
-    "wc_list_reports": [],
+    "wc_list_reports": [{"name": "_fields", "value_type": "array", "item_type": "text"}],
     "wc_get_sales_report": [
         {"name": "context", "value_type": "text", "enum": ["view"], "default": "view"},
         {
@@ -1274,6 +1352,7 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
         },
         {"name": "date_min", "value_type": "text"},
         {"name": "date_max", "value_type": "text"},
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wc_get_top_sellers_report": [
         {"name": "context", "value_type": "text", "enum": ["view"], "default": "view"},
@@ -1285,12 +1364,23 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
         },
         {"name": "date_min", "value_type": "text"},
         {"name": "date_max", "value_type": "text"},
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
-    "wc_get_coupons_totals_report": [],
-    "wc_get_customers_totals_report": [],
-    "wc_get_orders_totals_report": [],
-    "wc_get_products_totals_report": [],
-    "wc_get_reviews_totals_report": [],
+    "wc_get_coupons_totals_report": [
+        {"name": "_fields", "value_type": "array", "item_type": "text"}
+    ],
+    "wc_get_customers_totals_report": [
+        {"name": "_fields", "value_type": "array", "item_type": "text"}
+    ],
+    "wc_get_orders_totals_report": [
+        {"name": "_fields", "value_type": "array", "item_type": "text"}
+    ],
+    "wc_get_products_totals_report": [
+        {"name": "_fields", "value_type": "array", "item_type": "text"}
+    ],
+    "wc_get_reviews_totals_report": [
+        {"name": "_fields", "value_type": "array", "item_type": "text"}
+    ],
     "wc_list_taxes": [
         {"name": "context", "value_type": "text", "enum": ["view", "edit"]},
         {"name": "page", "value_type": "integer"},
@@ -1304,44 +1394,53 @@ QUERY_FIELDS: dict[str, list[dict[str, Any]]] = {
             "default": "order",
         },
         {"name": "class", "value_type": "text"},
+        {"name": "_fields", "value_type": "array", "item_type": "text"},
     ],
     "wc_create_tax": [],
-    "wc_get_tax": [],
+    "wc_get_tax": [{"name": "_fields", "value_type": "array", "item_type": "text"}],
     "wc_update_tax": [],
     "wc_batch_taxes": [],
-    "wc_list_tax_classes": [],
+    "wc_list_tax_classes": [{"name": "_fields", "value_type": "array", "item_type": "text"}],
     "wc_create_tax_class": [],
-    "wc_list_setting_groups": [],
-    "wc_list_setting_options": [],
-    "wc_get_setting_option": [],
+    "wc_list_setting_groups": [{"name": "_fields", "value_type": "array", "item_type": "text"}],
+    "wc_list_setting_options": [{"name": "_fields", "value_type": "array", "item_type": "text"}],
+    "wc_get_setting_option": [{"name": "_fields", "value_type": "array", "item_type": "text"}],
     "wc_update_setting_option": [],
     "wc_batch_setting_options": [],
-    "wc_list_payment_gateways": [],
-    "wc_get_payment_gateway": [],
+    "wc_list_payment_gateways": [{"name": "_fields", "value_type": "array", "item_type": "text"}],
+    "wc_get_payment_gateway": [{"name": "_fields", "value_type": "array", "item_type": "text"}],
     "wc_update_payment_gateway": [],
-    "wc_list_shipping_zones": [],
+    "wc_list_shipping_zones": [{"name": "_fields", "value_type": "array", "item_type": "text"}],
     "wc_create_shipping_zone": [],
-    "wc_get_shipping_zone": [],
+    "wc_get_shipping_zone": [{"name": "_fields", "value_type": "array", "item_type": "text"}],
     "wc_update_shipping_zone": [],
-    "wc_list_shipping_zone_locations": [],
+    "wc_list_shipping_zone_locations": [
+        {"name": "_fields", "value_type": "array", "item_type": "text"}
+    ],
     "wc_update_shipping_zone_locations": [],
-    "wc_list_shipping_zone_methods": [],
+    "wc_list_shipping_zone_methods": [
+        {"name": "_fields", "value_type": "array", "item_type": "text"}
+    ],
     "wc_create_shipping_zone_method": [],
-    "wc_get_shipping_zone_method": [],
+    "wc_get_shipping_zone_method": [
+        {"name": "_fields", "value_type": "array", "item_type": "text"}
+    ],
     "wc_update_shipping_zone_method": [],
-    "wc_list_shipping_methods": [],
-    "wc_get_shipping_method": [],
-    "wc_get_system_status": [],
-    "wc_list_system_status_tools": [],
-    "wc_get_system_status_tool": [],
-    "wc_list_data_resources": [],
-    "wc_list_continents": [],
-    "wc_get_continent": [],
-    "wc_list_countries": [],
-    "wc_get_country": [],
-    "wc_list_currencies": [],
-    "wc_get_currency": [],
-    "wc_get_current_currency": [],
+    "wc_list_shipping_methods": [{"name": "_fields", "value_type": "array", "item_type": "text"}],
+    "wc_get_shipping_method": [{"name": "_fields", "value_type": "array", "item_type": "text"}],
+    "wc_get_system_status": [{"name": "_fields", "value_type": "array", "item_type": "text"}],
+    "wc_list_system_status_tools": [
+        {"name": "_fields", "value_type": "array", "item_type": "text"}
+    ],
+    "wc_get_system_status_tool": [{"name": "_fields", "value_type": "array", "item_type": "text"}],
+    "wc_list_data_resources": [{"name": "_fields", "value_type": "array", "item_type": "text"}],
+    "wc_list_continents": [{"name": "_fields", "value_type": "array", "item_type": "text"}],
+    "wc_get_continent": [{"name": "_fields", "value_type": "array", "item_type": "text"}],
+    "wc_list_countries": [{"name": "_fields", "value_type": "array", "item_type": "text"}],
+    "wc_get_country": [{"name": "_fields", "value_type": "array", "item_type": "text"}],
+    "wc_list_currencies": [{"name": "_fields", "value_type": "array", "item_type": "text"}],
+    "wc_get_currency": [{"name": "_fields", "value_type": "array", "item_type": "text"}],
+    "wc_get_current_currency": [{"name": "_fields", "value_type": "array", "item_type": "text"}],
 }
 
 BODY_FIELDS: dict[str, list[dict[str, Any]]] = {

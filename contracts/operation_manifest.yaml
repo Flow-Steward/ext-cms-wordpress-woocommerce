@@ -81,6 +81,7 @@ operations:
       - {name: virtual, value_type: boolean, required: false, schema: {type: boolean}}
       - {name: downloadable, value_type: boolean, required: false, schema: {type: boolean}}
       - {name: image_size, value_type: text, required: false, schema: {type: string, maxLength: 2048, default: full}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: artifact_handle, value_type: artifact_handle}
       - {name: filename, value_type: text}
@@ -125,6 +126,7 @@ operations:
       - {name: tags, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: integer}}}
       - {name: tags_exclude, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: integer}}}
       - {name: sticky, value_type: boolean, required: false, schema: {type: boolean}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {date: {type: [string, "null"]}, date_gmt: {type: [string, "null"]}, guid: {type: object}, id: {type: integer}, link: {type: string}, modified: {type: string}, modified_gmt: {type: string}, slug: {type: string}, status: {type: string}, type: {type: string}, permalink_template: {type: string}, generated_slug: {type: string}, title: {type: object}, content: {type: object}, author: {type: integer}, excerpt: {type: object}, featured_media: {type: integer}, comment_status: {type: string}, ping_status: {type: string}, format: {type: string}, meta: {type: object}, sticky: {type: boolean}, template: {type: string}, categories: {type: array, maxItems: 200, items: {type: integer}}, tags: {type: array, maxItems: 200, items: {type: integer}}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -173,6 +175,7 @@ operations:
       - {name: connection_ref, value_type: connection_ref, required: true}
       - {name: id, value_type: integer, required: true, schema: {type: integer, minimum: 0, maximum: 9007199254740992}}
       - {name: context, value_type: text, required: false, schema: {type: string, enum: [view, embed, edit], default: view}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: data, value_type: object, schema: {type: object, properties: {date: {type: [string, "null"]}, date_gmt: {type: [string, "null"]}, guid: {type: object}, id: {type: integer}, link: {type: string}, modified: {type: string}, modified_gmt: {type: string}, slug: {type: string}, status: {type: string}, type: {type: string}, permalink_template: {type: string}, generated_slug: {type: string}, title: {type: object}, content: {type: object}, author: {type: integer}, excerpt: {type: object}, featured_media: {type: integer}, comment_status: {type: string}, ping_status: {type: string}, format: {type: string}, meta: {type: object}, sticky: {type: boolean}, template: {type: string}, categories: {type: array, maxItems: 200, items: {type: integer}}, tags: {type: array, maxItems: 200, items: {type: integer}}}}}
       - {name: http_status, value_type: integer}
@@ -229,6 +232,7 @@ operations:
       - {name: offset, value_type: integer, required: false, schema: {type: integer}}
       - {name: order, value_type: text, required: false, schema: {type: string, enum: [asc, desc], default: desc}}
       - {name: orderby, value_type: text, required: false, schema: {type: string, enum: [date, id, include, relevance, slug, include_slugs, title], default: date}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {author: {type: integer}, date: {type: string}, date_gmt: {type: string}, guid: {type: object}, id: {type: integer}, modified: {type: string}, modified_gmt: {type: string}, parent: {type: integer}, slug: {type: string}, title: {type: object}, content: {type: object}, excerpt: {type: object}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -246,6 +250,7 @@ operations:
       - {name: parent, value_type: integer, required: true, schema: {type: integer, minimum: 0, maximum: 9007199254740992}}
       - {name: id, value_type: integer, required: true, schema: {type: integer, minimum: 0, maximum: 9007199254740992}}
       - {name: context, value_type: text, required: false, schema: {type: string, enum: [view, embed, edit], default: view}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: data, value_type: object, schema: {type: object, properties: {author: {type: integer}, date: {type: string}, date_gmt: {type: string}, guid: {type: object}, id: {type: integer}, modified: {type: string}, modified_gmt: {type: string}, parent: {type: integer}, slug: {type: string}, title: {type: object}, content: {type: object}, excerpt: {type: object}}}}
       - {name: http_status, value_type: integer}
@@ -262,6 +267,7 @@ operations:
       - {name: id, value_type: integer, required: true, schema: {type: integer, minimum: 0, maximum: 9007199254740992}}
       - {name: parent, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: integer}}}
       - {name: context, value_type: text, required: false, schema: {type: string, enum: [view, embed, edit], default: view}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {author: {type: integer}, date: {type: string}, date_gmt: {type: string}, guid: {type: object}, id: {type: integer}, modified: {type: string}, modified_gmt: {type: string}, parent: {type: integer}, slug: {type: string}, title: {type: object}, content: {type: object}, excerpt: {type: object}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -313,6 +319,7 @@ operations:
       - {name: parent, value_type: integer, required: true, schema: {type: integer, minimum: 0, maximum: 9007199254740992}}
       - {name: id, value_type: integer, required: true, schema: {type: integer, minimum: 0, maximum: 9007199254740992}}
       - {name: context, value_type: text, required: false, schema: {type: string, enum: [view, embed, edit], default: view}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: data, value_type: object, schema: {type: object, properties: {author: {type: integer}, date: {type: string}, date_gmt: {type: string}, guid: {type: object}, id: {type: integer}, modified: {type: string}, modified_gmt: {type: string}, parent: {type: integer}, slug: {type: string}, title: {type: object}, content: {type: object}, excerpt: {type: object}}}}
       - {name: http_status, value_type: integer}
@@ -347,6 +354,7 @@ operations:
       - {name: search_columns, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
       - {name: slug, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
       - {name: status, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {date: {type: [string, "null"]}, date_gmt: {type: [string, "null"]}, guid: {type: object}, id: {type: integer}, link: {type: string}, modified: {type: string}, modified_gmt: {type: string}, slug: {type: string}, status: {type: string}, type: {type: string}, permalink_template: {type: string}, generated_slug: {type: string}, parent: {type: integer}, title: {type: object}, content: {type: object}, author: {type: integer}, excerpt: {type: object}, featured_media: {type: integer}, comment_status: {type: string}, ping_status: {type: string}, menu_order: {type: integer}, meta: {type: object}, template: {type: string}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -393,6 +401,7 @@ operations:
       - {name: connection_ref, value_type: connection_ref, required: true}
       - {name: id, value_type: integer, required: true, schema: {type: integer, minimum: 0, maximum: 9007199254740992}}
       - {name: context, value_type: text, required: false, schema: {type: string, enum: [view, embed, edit], default: view}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: data, value_type: object, schema: {type: object, properties: {date: {type: [string, "null"]}, date_gmt: {type: [string, "null"]}, guid: {type: object}, id: {type: integer}, link: {type: string}, modified: {type: string}, modified_gmt: {type: string}, slug: {type: string}, status: {type: string}, type: {type: string}, permalink_template: {type: string}, generated_slug: {type: string}, parent: {type: integer}, title: {type: object}, content: {type: object}, author: {type: integer}, excerpt: {type: object}, featured_media: {type: integer}, comment_status: {type: string}, ping_status: {type: string}, menu_order: {type: integer}, meta: {type: object}, template: {type: string}}}}
       - {name: http_status, value_type: integer}
@@ -447,6 +456,7 @@ operations:
       - {name: offset, value_type: integer, required: false, schema: {type: integer}}
       - {name: order, value_type: text, required: false, schema: {type: string, enum: [asc, desc], default: desc}}
       - {name: orderby, value_type: text, required: false, schema: {type: string, enum: [date, id, include, relevance, slug, include_slugs, title], default: date}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {author: {type: integer}, date: {type: string}, date_gmt: {type: string}, guid: {type: object}, id: {type: integer}, modified: {type: string}, modified_gmt: {type: string}, parent: {type: integer}, slug: {type: string}, title: {type: object}, content: {type: object}, excerpt: {type: object}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -464,6 +474,7 @@ operations:
       - {name: parent, value_type: integer, required: true, schema: {type: integer, minimum: 0, maximum: 9007199254740992}}
       - {name: id, value_type: integer, required: true, schema: {type: integer, minimum: 0, maximum: 9007199254740992}}
       - {name: context, value_type: text, required: false, schema: {type: string, enum: [view, embed, edit], default: view}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: data, value_type: object, schema: {type: object, properties: {author: {type: integer}, date: {type: string}, date_gmt: {type: string}, guid: {type: object}, id: {type: integer}, modified: {type: string}, modified_gmt: {type: string}, parent: {type: integer}, slug: {type: string}, title: {type: object}, content: {type: object}, excerpt: {type: object}}}}
       - {name: http_status, value_type: integer}
@@ -480,6 +491,7 @@ operations:
       - {name: id, value_type: integer, required: true, schema: {type: integer, minimum: 0, maximum: 9007199254740992}}
       - {name: parent, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: integer}}}
       - {name: context, value_type: text, required: false, schema: {type: string, enum: [view, embed, edit], default: view}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {author: {type: integer}, date: {type: string}, date_gmt: {type: string}, guid: {type: object}, id: {type: integer}, modified: {type: string}, modified_gmt: {type: string}, parent: {type: integer}, slug: {type: string}, title: {type: object}, content: {type: object}, excerpt: {type: object}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -528,6 +540,7 @@ operations:
       - {name: parent, value_type: integer, required: true, schema: {type: integer, minimum: 0, maximum: 9007199254740992}}
       - {name: id, value_type: integer, required: true, schema: {type: integer, minimum: 0, maximum: 9007199254740992}}
       - {name: context, value_type: text, required: false, schema: {type: string, enum: [view, embed, edit], default: view}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: data, value_type: object, schema: {type: object, properties: {author: {type: integer}, date: {type: string}, date_gmt: {type: string}, guid: {type: object}, id: {type: integer}, modified: {type: string}, modified_gmt: {type: string}, parent: {type: integer}, slug: {type: string}, title: {type: object}, content: {type: object}, excerpt: {type: object}}}}
       - {name: http_status, value_type: integer}
@@ -563,6 +576,7 @@ operations:
       - {name: status, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
       - {name: media_type, value_type: text, required: false, schema: {type: string, enum: [image, video, text, application, audio]}}
       - {name: mime_type, value_type: text, required: false, schema: {type: string, maxLength: 2048}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {date: {type: [string, "null"]}, date_gmt: {type: [string, "null"]}, guid: {type: object}, id: {type: integer}, link: {type: string}, modified: {type: string}, modified_gmt: {type: string}, slug: {type: string}, status: {type: string}, type: {type: string}, permalink_template: {type: string}, generated_slug: {type: string}, title: {type: object}, author: {type: integer}, comment_status: {type: string}, ping_status: {type: string}, meta: {type: object}, template: {type: string}, alt_text: {type: string}, caption: {type: object}, description: {type: object}, media_type: {type: string}, mime_type: {type: string}, media_details: {type: object}, post: {type: integer}, source_url: {type: string}, missing_image_sizes: {type: array, maxItems: 200, items: {type: [string, number, integer, boolean, object, array, "null"]}}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -611,6 +625,7 @@ operations:
       - {name: connection_ref, value_type: connection_ref, required: true}
       - {name: id, value_type: integer, required: true, schema: {type: integer, minimum: 0, maximum: 9007199254740992}}
       - {name: context, value_type: text, required: false, schema: {type: string, enum: [view, embed, edit], default: view}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: data, value_type: object, schema: {type: object, properties: {date: {type: [string, "null"]}, date_gmt: {type: [string, "null"]}, guid: {type: object}, id: {type: integer}, link: {type: string}, modified: {type: string}, modified_gmt: {type: string}, slug: {type: string}, status: {type: string}, type: {type: string}, permalink_template: {type: string}, generated_slug: {type: string}, title: {type: object}, author: {type: integer}, comment_status: {type: string}, ping_status: {type: string}, meta: {type: object}, template: {type: string}, alt_text: {type: string}, caption: {type: object}, description: {type: object}, media_type: {type: string}, mime_type: {type: string}, media_details: {type: object}, post: {type: integer}, source_url: {type: string}, missing_image_sizes: {type: array, maxItems: 200, items: {type: [string, number, integer, boolean, object, array, "null"]}}}}}
       - {name: http_status, value_type: integer}
@@ -673,6 +688,7 @@ operations:
       - {name: post, value_type: integer, required: false, schema: {type: integer}}
       - {name: status, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
       - {name: type, value_type: text, required: false, schema: {type: string, maxLength: 2048, default: comment}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {id: {type: integer}, author: {type: integer}, author_email: {type: string}, author_ip: {type: string}, author_name: {type: string}, author_url: {type: string}, author_user_agent: {type: string}, content: {type: object}, date: {type: string}, date_gmt: {type: string}, link: {type: string}, parent: {type: integer}, post: {type: integer}, status: {type: string}, type: {type: string}, author_avatar_urls: {type: object}, meta: {type: object}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -717,6 +733,7 @@ operations:
       - {name: connection_ref, value_type: connection_ref, required: true}
       - {name: id, value_type: integer, required: true, schema: {type: integer, minimum: 0, maximum: 9007199254740992}}
       - {name: context, value_type: text, required: false, schema: {type: string, enum: [view, embed, edit], default: view}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: data, value_type: object, schema: {type: object, properties: {id: {type: integer}, author: {type: integer}, author_email: {type: string}, author_ip: {type: string}, author_name: {type: string}, author_url: {type: string}, author_user_agent: {type: string}, content: {type: object}, date: {type: string}, date_gmt: {type: string}, link: {type: string}, parent: {type: integer}, post: {type: integer}, status: {type: string}, type: {type: string}, author_avatar_urls: {type: object}, meta: {type: object}}}}
       - {name: http_status, value_type: integer}
@@ -771,6 +788,7 @@ operations:
       - {name: parent, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: integer}}}
       - {name: post, value_type: integer, required: false, schema: {type: integer}}
       - {name: slug, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {id: {type: integer}, count: {type: integer}, description: {type: string}, link: {type: string}, name: {type: string}, slug: {type: string}, taxonomy: {type: string}, parent: {type: integer}, meta: {type: object}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -807,6 +825,7 @@ operations:
       - {name: connection_ref, value_type: connection_ref, required: true}
       - {name: id, value_type: integer, required: true, schema: {type: integer, minimum: 0, maximum: 9007199254740992}}
       - {name: context, value_type: text, required: false, schema: {type: string, enum: [view, embed, edit], default: view}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: data, value_type: object, schema: {type: object, properties: {id: {type: integer}, count: {type: integer}, description: {type: string}, link: {type: string}, name: {type: string}, slug: {type: string}, taxonomy: {type: string}, parent: {type: integer}, meta: {type: object}}}}
       - {name: http_status, value_type: integer}
@@ -853,6 +872,7 @@ operations:
       - {name: hide_empty, value_type: boolean, required: false, schema: {type: boolean}}
       - {name: post, value_type: integer, required: false, schema: {type: integer}}
       - {name: slug, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {id: {type: integer}, count: {type: integer}, description: {type: string}, link: {type: string}, name: {type: string}, slug: {type: string}, taxonomy: {type: string}, meta: {type: object}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -888,6 +908,7 @@ operations:
       - {name: connection_ref, value_type: connection_ref, required: true}
       - {name: id, value_type: integer, required: true, schema: {type: integer, minimum: 0, maximum: 9007199254740992}}
       - {name: context, value_type: text, required: false, schema: {type: string, enum: [view, embed, edit], default: view}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: data, value_type: object, schema: {type: object, properties: {id: {type: integer}, count: {type: integer}, description: {type: string}, link: {type: string}, name: {type: string}, slug: {type: string}, taxonomy: {type: string}, meta: {type: object}}}}
       - {name: http_status, value_type: integer}
@@ -923,6 +944,7 @@ operations:
       - {name: connection_ref, value_type: connection_ref, required: true}
       - {name: context, value_type: text, required: false, schema: {type: string, enum: [view, embed, edit], default: view}}
       - {name: type, value_type: text, required: false, schema: {type: string, maxLength: 2048}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: data, value_type: object, schema: {type: object, additionalProperties: {type: object, properties: {capabilities: {type: object}, description: {type: string}, hierarchical: {type: boolean}, labels: {type: object}, name: {type: string}, slug: {type: string}, show_cloud: {type: boolean}, types: {type: array, maxItems: 200, items: {type: [string, number, integer, boolean, object, array, "null"]}}, rest_base: {type: string}, rest_namespace: {type: string}, visibility: {type: object}}}}}
       - {name: http_status, value_type: integer}
@@ -938,6 +960,7 @@ operations:
       - {name: connection_ref, value_type: connection_ref, required: true}
       - {name: taxonomy, value_type: text, required: true, schema: {type: string, minLength: 1, maxLength: 200}}
       - {name: context, value_type: text, required: false, schema: {type: string, enum: [view, embed, edit], default: view}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: data, value_type: object, schema: {type: object, properties: {capabilities: {type: object}, description: {type: string}, hierarchical: {type: boolean}, labels: {type: object}, name: {type: string}, slug: {type: string}, show_cloud: {type: boolean}, types: {type: array, maxItems: 200, items: {type: [string, number, integer, boolean, object, array, "null"]}}, rest_base: {type: string}, rest_namespace: {type: string}, visibility: {type: object}}}}
       - {name: http_status, value_type: integer}
@@ -965,6 +988,7 @@ operations:
       - {name: capabilities, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
       - {name: who, value_type: text, required: false, schema: {type: string, enum: [authors]}}
       - {name: has_published_posts, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {id: {type: integer}, username: {type: string}, name: {type: string}, first_name: {type: string}, last_name: {type: string}, email: {type: string}, url: {type: string}, description: {type: string}, link: {type: string}, locale: {type: string}, nickname: {type: string}, slug: {type: string}, registered_date: {type: string}, roles: {type: array, maxItems: 200, items: {type: [string, number, integer, boolean, object, array, "null"]}}, capabilities: {type: object}, extra_capabilities: {type: object}, avatar_urls: {type: object}, meta: {type: object}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -981,6 +1005,7 @@ operations:
       - {name: connection_ref, value_type: connection_ref, required: true}
       - {name: id, value_type: integer, required: true, schema: {type: integer, minimum: 0, maximum: 9007199254740992}}
       - {name: context, value_type: text, required: false, schema: {type: string, enum: [view, embed, edit], default: view}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: data, value_type: object, schema: {type: object, properties: {id: {type: integer}, username: {type: string}, name: {type: string}, first_name: {type: string}, last_name: {type: string}, email: {type: string}, url: {type: string}, description: {type: string}, link: {type: string}, locale: {type: string}, nickname: {type: string}, slug: {type: string}, registered_date: {type: string}, roles: {type: array, maxItems: 200, items: {type: [string, number, integer, boolean, object, array, "null"]}}, capabilities: {type: object}, extra_capabilities: {type: object}, avatar_urls: {type: object}, meta: {type: object}}}}
       - {name: http_status, value_type: integer}
@@ -995,6 +1020,7 @@ operations:
     inputs:
       - {name: connection_ref, value_type: connection_ref, required: true}
       - {name: context, value_type: text, required: false, schema: {type: string, enum: [view, embed, edit], default: view}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: data, value_type: object, schema: {type: object, properties: {id: {type: integer}, username: {type: string}, name: {type: string}, first_name: {type: string}, last_name: {type: string}, email: {type: string}, url: {type: string}, description: {type: string}, link: {type: string}, locale: {type: string}, nickname: {type: string}, slug: {type: string}, registered_date: {type: string}, roles: {type: array, maxItems: 200, items: {type: [string, number, integer, boolean, object, array, "null"]}}, capabilities: {type: object}, extra_capabilities: {type: object}, avatar_urls: {type: object}, meta: {type: object}}}}
       - {name: http_status, value_type: integer}
@@ -1009,6 +1035,7 @@ operations:
     inputs:
       - {name: connection_ref, value_type: connection_ref, required: true}
       - {name: context, value_type: text, required: false, schema: {type: string, enum: [view, embed, edit], default: view}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: data, value_type: object, schema: {type: object, additionalProperties: {type: object, properties: {capabilities: {type: object}, description: {type: string}, hierarchical: {type: boolean}, viewable: {type: boolean}, labels: {type: object}, name: {type: string}, slug: {type: string}, supports: {type: object}, has_archive: {type: [string, boolean]}, taxonomies: {type: array, maxItems: 200, items: {type: [string, number, integer, boolean, object, array, "null"]}}, rest_base: {type: string}, rest_namespace: {type: string}, visibility: {type: object}, icon: {type: [string, "null"]}}}}}
       - {name: http_status, value_type: integer}
@@ -1024,6 +1051,7 @@ operations:
       - {name: connection_ref, value_type: connection_ref, required: true}
       - {name: type, value_type: text, required: true, schema: {type: string, minLength: 1, maxLength: 200}}
       - {name: context, value_type: text, required: false, schema: {type: string, enum: [view, embed, edit], default: view}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: data, value_type: object, schema: {type: object, properties: {capabilities: {type: object}, description: {type: string}, hierarchical: {type: boolean}, viewable: {type: boolean}, labels: {type: object}, name: {type: string}, slug: {type: string}, supports: {type: object}, has_archive: {type: [string, boolean]}, taxonomies: {type: array, maxItems: 200, items: {type: [string, number, integer, boolean, object, array, "null"]}}, rest_base: {type: string}, rest_namespace: {type: string}, visibility: {type: object}, icon: {type: [string, "null"]}}}}
       - {name: http_status, value_type: integer}
@@ -1038,6 +1066,7 @@ operations:
     inputs:
       - {name: connection_ref, value_type: connection_ref, required: true}
       - {name: context, value_type: text, required: false, schema: {type: string, enum: [view, embed, edit], default: view}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: data, value_type: object, schema: {type: object, additionalProperties: {type: object, properties: {name: {type: string}, private: {type: boolean}, protected: {type: boolean}, public: {type: boolean}, queryable: {type: boolean}, show_in_list: {type: boolean}, slug: {type: string}, date_floating: {type: boolean}}}}}
       - {name: http_status, value_type: integer}
@@ -1053,6 +1082,7 @@ operations:
       - {name: connection_ref, value_type: connection_ref, required: true}
       - {name: status, value_type: text, required: true, schema: {type: string, minLength: 1, maxLength: 200}}
       - {name: context, value_type: text, required: false, schema: {type: string, enum: [view, embed, edit], default: view}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: data, value_type: object, schema: {type: object, properties: {name: {type: string}, private: {type: boolean}, protected: {type: boolean}, public: {type: boolean}, queryable: {type: boolean}, show_in_list: {type: boolean}, slug: {type: string}, date_floating: {type: boolean}}}}
       - {name: http_status, value_type: integer}
@@ -1066,6 +1096,7 @@ operations:
     connection_type_ids: [wordpress_site]
     inputs:
       - {name: connection_ref, value_type: connection_ref, required: true}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: data, value_type: object, schema: {type: object, properties: {title: {type: string}, description: {type: string}, url: {type: string}, email: {type: string}, timezone: {type: string}, date_format: {type: string}, time_format: {type: string}, start_of_week: {type: integer}, language: {type: string}, use_smilies: {type: boolean}, default_category: {type: integer}, default_post_format: {type: string}, posts_per_page: {type: integer}, show_on_front: {type: string}, page_on_front: {type: integer}, page_for_posts: {type: integer}, default_ping_status: {type: string}, default_comment_status: {type: string}, site_logo: {type: integer}, site_icon: {type: integer}}}}
       - {name: http_status, value_type: integer}
@@ -1115,6 +1146,7 @@ operations:
     inputs:
       - {name: connection_ref, value_type: connection_ref, required: true}
       - {name: status, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {stylesheet: {type: string}, template: {type: string}, author: {type: object}, author_uri: {type: object}, description: {type: object}, is_block_theme: {type: boolean}, name: {type: object}, requires_php: {type: string}, requires_wp: {type: string}, screenshot: {type: string}, tags: {type: object}, textdomain: {type: string}, theme_supports: {type: object}, theme_uri: {type: object}, version: {type: string}, status: {type: string}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -1130,6 +1162,7 @@ operations:
     inputs:
       - {name: connection_ref, value_type: connection_ref, required: true}
       - {name: stylesheet, value_type: text, required: true, schema: {type: string, minLength: 1, maxLength: 200}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: data, value_type: object, schema: {type: object, properties: {stylesheet: {type: string}, template: {type: string}, author: {type: object}, author_uri: {type: object}, description: {type: object}, is_block_theme: {type: boolean}, name: {type: object}, requires_php: {type: string}, requires_wp: {type: string}, screenshot: {type: string}, tags: {type: object}, textdomain: {type: string}, theme_supports: {type: object}, theme_uri: {type: object}, version: {type: string}, status: {type: string}}}}
       - {name: http_status, value_type: integer}
@@ -1151,6 +1184,7 @@ operations:
       - {name: subtype, value_type: text, required: false, schema: {type: string, maxLength: 2048, default: any}}
       - {name: exclude, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: integer}}}
       - {name: include, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: integer}}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {id: {type: [integer, string]}, title: {type: string}, url: {type: string}, type: {type: string}, subtype: {type: string}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -1167,6 +1201,7 @@ operations:
       - {name: connection_ref, value_type: connection_ref, required: true}
       - {name: context, value_type: text, required: false, schema: {type: string, enum: [view, embed, edit], default: view}}
       - {name: namespace, value_type: text, required: false, schema: {type: string, maxLength: 2048}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {api_version: {type: integer}, title: {type: string}, name: {type: string}, description: {type: string}, icon: {type: [string, "null"]}, attributes: {type: [object, "null"]}, provides_context: {type: object}, uses_context: {type: array, maxItems: 200, items: {type: [string, number, integer, boolean, object, array, "null"]}}, selectors: {type: object}, supports: {type: object}, category: {type: [string, "null"]}, is_dynamic: {type: boolean}, editor_script_handles: {type: array, maxItems: 200, items: {type: [string, number, integer, boolean, object, array, "null"]}}, script_handles: {type: array, maxItems: 200, items: {type: [string, number, integer, boolean, object, array, "null"]}}, view_script_handles: {type: array, maxItems: 200, items: {type: [string, number, integer, boolean, object, array, "null"]}}, editor_style_handles: {type: array, maxItems: 200, items: {type: [string, number, integer, boolean, object, array, "null"]}}, style_handles: {type: array, maxItems: 200, items: {type: [string, number, integer, boolean, object, array, "null"]}}, styles: {type: array, maxItems: 200, items: {type: object}}, variations: {type: array, maxItems: 200, items: {type: object}}, textdomain: {type: [string, "null"]}, parent: {type: [array, "null"], maxItems: 200, items: {type: string}}, ancestor: {type: [array, "null"], maxItems: 200, items: {type: string}}, keywords: {type: array, maxItems: 200, items: {type: string}}, example: {type: [object, "null"]}, editor_script: {type: [string, "null"]}, script: {type: [string, "null"]}, view_script: {type: [string, "null"]}, editor_style: {type: [string, "null"]}, style: {type: [string, "null"]}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -1183,6 +1218,7 @@ operations:
       - {name: connection_ref, value_type: connection_ref, required: true}
       - {name: namespace, value_type: text, required: true, schema: {type: string, minLength: 1, maxLength: 200}}
       - {name: context, value_type: text, required: false, schema: {type: string, enum: [view, embed, edit], default: view}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {api_version: {type: integer}, title: {type: string}, name: {type: string}, description: {type: string}, icon: {type: [string, "null"]}, attributes: {type: [object, "null"]}, provides_context: {type: object}, uses_context: {type: array, maxItems: 200, items: {type: [string, number, integer, boolean, object, array, "null"]}}, selectors: {type: object}, supports: {type: object}, category: {type: [string, "null"]}, is_dynamic: {type: boolean}, editor_script_handles: {type: array, maxItems: 200, items: {type: [string, number, integer, boolean, object, array, "null"]}}, script_handles: {type: array, maxItems: 200, items: {type: [string, number, integer, boolean, object, array, "null"]}}, view_script_handles: {type: array, maxItems: 200, items: {type: [string, number, integer, boolean, object, array, "null"]}}, editor_style_handles: {type: array, maxItems: 200, items: {type: [string, number, integer, boolean, object, array, "null"]}}, style_handles: {type: array, maxItems: 200, items: {type: [string, number, integer, boolean, object, array, "null"]}}, styles: {type: array, maxItems: 200, items: {type: object}}, variations: {type: array, maxItems: 200, items: {type: object}}, textdomain: {type: [string, "null"]}, parent: {type: [array, "null"], maxItems: 200, items: {type: string}}, ancestor: {type: [array, "null"], maxItems: 200, items: {type: string}}, keywords: {type: array, maxItems: 200, items: {type: string}}, example: {type: [object, "null"]}, editor_script: {type: [string, "null"]}, script: {type: [string, "null"]}, view_script: {type: [string, "null"]}, editor_style: {type: [string, "null"]}, style: {type: [string, "null"]}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -1200,6 +1236,7 @@ operations:
       - {name: namespace, value_type: text, required: true, schema: {type: string, minLength: 1, maxLength: 200}}
       - {name: name, value_type: text, required: true, schema: {type: string, minLength: 1, maxLength: 200}}
       - {name: context, value_type: text, required: false, schema: {type: string, enum: [view, embed, edit], default: view}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: data, value_type: object, schema: {type: object, properties: {api_version: {type: integer}, title: {type: string}, name: {type: string}, description: {type: string}, icon: {type: [string, "null"]}, attributes: {type: [object, "null"]}, provides_context: {type: object}, uses_context: {type: array, maxItems: 200, items: {type: [string, number, integer, boolean, object, array, "null"]}}, selectors: {type: object}, supports: {type: object}, category: {type: [string, "null"]}, is_dynamic: {type: boolean}, editor_script_handles: {type: array, maxItems: 200, items: {type: [string, number, integer, boolean, object, array, "null"]}}, script_handles: {type: array, maxItems: 200, items: {type: [string, number, integer, boolean, object, array, "null"]}}, view_script_handles: {type: array, maxItems: 200, items: {type: [string, number, integer, boolean, object, array, "null"]}}, editor_style_handles: {type: array, maxItems: 200, items: {type: [string, number, integer, boolean, object, array, "null"]}}, style_handles: {type: array, maxItems: 200, items: {type: [string, number, integer, boolean, object, array, "null"]}}, styles: {type: array, maxItems: 200, items: {type: object}}, variations: {type: array, maxItems: 200, items: {type: object}}, textdomain: {type: [string, "null"]}, parent: {type: [array, "null"], maxItems: 200, items: {type: string}}, ancestor: {type: [array, "null"], maxItems: 200, items: {type: string}}, keywords: {type: array, maxItems: 200, items: {type: string}}, example: {type: [object, "null"]}, editor_script: {type: [string, "null"]}, script: {type: [string, "null"]}, view_script: {type: [string, "null"]}, editor_style: {type: [string, "null"]}, style: {type: [string, "null"]}}}}
       - {name: http_status, value_type: integer}
@@ -1229,6 +1266,7 @@ operations:
       - {name: search_columns, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
       - {name: slug, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
       - {name: status, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {date: {type: [string, "null"]}, date_gmt: {type: [string, "null"]}, guid: {type: object}, id: {type: integer}, link: {type: string}, modified: {type: string}, modified_gmt: {type: string}, slug: {type: string}, status: {type: string}, type: {type: string}, title: {type: object}, content: {type: object}, meta: {type: object}, template: {type: string}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -1268,6 +1306,7 @@ operations:
       - {name: connection_ref, value_type: connection_ref, required: true}
       - {name: id, value_type: integer, required: true, schema: {type: integer, minimum: 0, maximum: 9007199254740992}}
       - {name: context, value_type: text, required: false, schema: {type: string, enum: [view, embed, edit], default: view}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: data, value_type: object, schema: {type: object, properties: {date: {type: [string, "null"]}, date_gmt: {type: [string, "null"]}, guid: {type: object}, id: {type: integer}, link: {type: string}, modified: {type: string}, modified_gmt: {type: string}, slug: {type: string}, status: {type: string}, type: {type: string}, title: {type: object}, content: {type: object}, meta: {type: object}, template: {type: string}}}}
       - {name: http_status, value_type: integer}
@@ -1315,6 +1354,7 @@ operations:
       - {name: offset, value_type: integer, required: false, schema: {type: integer}}
       - {name: order, value_type: text, required: false, schema: {type: string, enum: [asc, desc], default: desc}}
       - {name: orderby, value_type: text, required: false, schema: {type: string, enum: [date, id, include, relevance, slug, include_slugs, title], default: date}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {author: {type: integer}, date: {type: string}, date_gmt: {type: string}, guid: {type: object}, id: {type: integer}, modified: {type: string}, modified_gmt: {type: string}, parent: {type: integer}, slug: {type: string}, title: {type: object}, content: {type: object}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -1332,6 +1372,7 @@ operations:
       - {name: parent, value_type: integer, required: true, schema: {type: integer, minimum: 0, maximum: 9007199254740992}}
       - {name: id, value_type: integer, required: true, schema: {type: integer, minimum: 0, maximum: 9007199254740992}}
       - {name: context, value_type: text, required: false, schema: {type: string, enum: [view, embed, edit], default: view}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: data, value_type: object, schema: {type: object, properties: {author: {type: integer}, date: {type: string}, date_gmt: {type: string}, guid: {type: object}, id: {type: integer}, modified: {type: string}, modified_gmt: {type: string}, parent: {type: integer}, slug: {type: string}, title: {type: object}, content: {type: object}}}}
       - {name: http_status, value_type: integer}
@@ -1348,6 +1389,7 @@ operations:
       - {name: id, value_type: integer, required: true, schema: {type: integer, minimum: 0, maximum: 9007199254740992}}
       - {name: parent, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: integer}}}
       - {name: context, value_type: text, required: false, schema: {type: string, enum: [view, embed, edit], default: view}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {author: {type: integer}, date: {type: string}, date_gmt: {type: string}, guid: {type: object}, id: {type: integer}, modified: {type: string}, modified_gmt: {type: string}, parent: {type: integer}, slug: {type: string}, title: {type: object}, content: {type: object}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -1390,6 +1432,7 @@ operations:
       - {name: parent, value_type: integer, required: true, schema: {type: integer, minimum: 0, maximum: 9007199254740992}}
       - {name: id, value_type: integer, required: true, schema: {type: integer, minimum: 0, maximum: 9007199254740992}}
       - {name: context, value_type: text, required: false, schema: {type: string, enum: [view, embed, edit], default: view}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: data, value_type: object, schema: {type: object, properties: {author: {type: integer}, date: {type: string}, date_gmt: {type: string}, guid: {type: object}, id: {type: integer}, modified: {type: string}, modified_gmt: {type: string}, parent: {type: integer}, slug: {type: string}, title: {type: object}, content: {type: object}}}}
       - {name: http_status, value_type: integer}
@@ -1407,6 +1450,7 @@ operations:
       - {name: page, value_type: integer, required: false, schema: {type: integer, default: 1}}
       - {name: per_page, value_type: integer, required: false, schema: {type: integer, default: 10}}
       - {name: term, value_type: text, required: true, schema: {type: string, maxLength: 2048}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {name: {type: string}, title: {type: string}, description: {type: string}, id: {type: string}, rating: {type: number}, rating_count: {type: integer}, active_installs: {type: integer}, author_block_rating: {type: number}, author_block_count: {type: integer}, author: {type: string}, icon: {type: string}, last_updated: {type: string}, humanized_updated: {type: string}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -1421,6 +1465,7 @@ operations:
     connection_type_ids: [wordpress_site]
     inputs:
       - {name: connection_ref, value_type: connection_ref, required: true}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {name: {type: string}, title: {type: string}, content: {type: string}, description: {type: string}, viewport_width: {type: number}, inserter: {type: boolean}, categories: {type: array, maxItems: 200, items: {type: string}}, keywords: {type: array, maxItems: 200, items: {type: string}}, block_types: {type: array, maxItems: 200, items: {type: string}}, post_types: {type: array, maxItems: 200, items: {type: string}}, template_types: {type: array, maxItems: 200, items: {type: [string, number, integer, boolean, object, array, "null"]}}, source: {type: string}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -1435,6 +1480,7 @@ operations:
     connection_type_ids: [wordpress_site]
     inputs:
       - {name: connection_ref, value_type: connection_ref, required: true}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {name: {type: string}, label: {type: string}, description: {type: string}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -1459,6 +1505,7 @@ operations:
       - {name: offset, value_type: integer, required: false, schema: {type: integer}}
       - {name: order, value_type: text, required: false, schema: {type: string, enum: [asc, desc], default: desc}}
       - {name: orderby, value_type: text, required: false, schema: {type: string, enum: [author, date, id, include, modified, parent, relevance, slug, include_slugs, title, favorite_count], default: date}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {id: {type: integer}, title: {type: string}, content: {type: string}, categories: {type: array, maxItems: 200, items: {type: string}}, keywords: {type: array, maxItems: 200, items: {type: string}}, description: {type: string}, viewport_width: {type: integer}, block_types: {type: array, maxItems: 200, items: {type: [string, number, integer, boolean, object, array, "null"]}}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -1491,6 +1538,7 @@ operations:
     inputs:
       - {name: connection_ref, value_type: connection_ref, required: true}
       - {name: context, value_type: text, required: false, schema: {type: string, enum: [view, embed, edit], default: view}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: data, value_type: object, schema: {type: object, additionalProperties: {type: object, properties: {name: {type: string}, description: {type: string}, menu: {type: integer}}}}}
       - {name: http_status, value_type: integer}
@@ -1506,6 +1554,7 @@ operations:
       - {name: connection_ref, value_type: connection_ref, required: true}
       - {name: location, value_type: text, required: true, schema: {type: string, minLength: 1, maxLength: 200}}
       - {name: context, value_type: text, required: false, schema: {type: string, enum: [view, embed, edit], default: view}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: data, value_type: object, schema: {type: object, properties: {name: {type: string}, description: {type: string}, menu: {type: integer}}}}
       - {name: http_status, value_type: integer}
@@ -1520,6 +1569,7 @@ operations:
     inputs:
       - {name: connection_ref, value_type: connection_ref, required: true}
       - {name: context, value_type: text, required: false, schema: {type: string, enum: [view, embed, edit], default: view}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {id: {type: string}, name: {type: string}, description: {type: string}, class: {type: string}, before_widget: {type: string}, after_widget: {type: string}, before_title: {type: string}, after_title: {type: string}, status: {type: string}, widgets: {type: array, maxItems: 200, items: {type: [string, number, integer, boolean, object, array, "null"]}}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -1536,6 +1586,7 @@ operations:
       - {name: connection_ref, value_type: connection_ref, required: true}
       - {name: id, value_type: text, required: true, schema: {type: string, minLength: 1, maxLength: 200}}
       - {name: context, value_type: text, required: false, schema: {type: string, enum: [view, embed, edit], default: view}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: data, value_type: object, schema: {type: object, properties: {id: {type: string}, name: {type: string}, description: {type: string}, class: {type: string}, before_widget: {type: string}, after_widget: {type: string}, before_title: {type: string}, after_title: {type: string}, status: {type: string}, widgets: {type: array, maxItems: 200, items: {type: [string, number, integer, boolean, object, array, "null"]}}}}}
       - {name: http_status, value_type: integer}
@@ -1567,6 +1618,7 @@ operations:
     inputs:
       - {name: connection_ref, value_type: connection_ref, required: true}
       - {name: context, value_type: text, required: false, schema: {type: string, enum: [view, embed, edit], default: view}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {id: {type: string}, name: {type: string}, description: {type: string}, is_multi: {type: boolean}, classname: {type: string}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -1583,6 +1635,7 @@ operations:
       - {name: connection_ref, value_type: connection_ref, required: true}
       - {name: id, value_type: text, required: true, schema: {type: string, minLength: 1, maxLength: 200}}
       - {name: context, value_type: text, required: false, schema: {type: string, enum: [view, embed, edit], default: view}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: data, value_type: object, schema: {type: object, properties: {id: {type: string}, name: {type: string}, description: {type: string}, is_multi: {type: boolean}, classname: {type: string}}}}
       - {name: http_status, value_type: integer}
@@ -1598,6 +1651,7 @@ operations:
       - {name: connection_ref, value_type: connection_ref, required: true}
       - {name: context, value_type: text, required: false, schema: {type: string, enum: [view, embed, edit], default: view}}
       - {name: sidebar, value_type: text, required: false, schema: {type: string, maxLength: 2048}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {id: {type: string}, id_base: {type: string}, sidebar: {type: string}, rendered: {type: string}, rendered_form: {type: string}, instance: {type: object}, form_data: {type: string}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -1634,6 +1688,7 @@ operations:
       - {name: connection_ref, value_type: connection_ref, required: true}
       - {name: id, value_type: text, required: true, schema: {type: string, minLength: 1, maxLength: 200}}
       - {name: context, value_type: text, required: false, schema: {type: string, enum: [view, embed, edit], default: view}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: data, value_type: object, schema: {type: object, properties: {id: {type: string}, id_base: {type: string}, sidebar: {type: string}, rendered: {type: string}, rendered_form: {type: string}, instance: {type: object}, form_data: {type: string}}}}
       - {name: http_status, value_type: integer}
@@ -1670,6 +1725,7 @@ operations:
       - {name: context, value_type: text, required: false, schema: {type: string, enum: [view, embed, edit], default: view}}
       - {name: search, value_type: text, required: false, schema: {type: string, maxLength: 2048}}
       - {name: status, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {plugin: {type: string}, status: {type: string}, name: {type: string}, plugin_uri: {type: string}, author: {type: object}, author_uri: {type: string}, description: {type: object}, version: {type: string}, network_only: {type: boolean}, requires_wp: {type: string}, requires_php: {type: string}, textdomain: {type: string}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -1686,6 +1742,7 @@ operations:
       - {name: connection_ref, value_type: connection_ref, required: true}
       - {name: plugin, value_type: text, required: true, schema: {type: string, minLength: 1, maxLength: 200}}
       - {name: context, value_type: text, required: false, schema: {type: string, enum: [view, embed, edit], default: view}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: data, value_type: object, schema: {type: object, properties: {plugin: {type: string}, status: {type: string}, name: {type: string}, plugin_uri: {type: string}, author: {type: object}, author_uri: {type: string}, description: {type: object}, version: {type: string}, network_only: {type: boolean}, requires_wp: {type: string}, requires_php: {type: string}, textdomain: {type: string}}}}
       - {name: http_status, value_type: integer}
@@ -1714,6 +1771,7 @@ operations:
       - {name: order, value_type: text, required: false, schema: {type: string, enum: [asc, desc], default: desc}}
       - {name: orderby, value_type: text, required: false, schema: {type: string, enum: [date, modified, id, include, title, slug], default: date}}
       - {name: code, value_type: text, required: false, schema: {type: string, maxLength: 2048}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {id: {type: integer}, code: {type: string}, amount: {type: string}, date_created: {type: string}, date_created_gmt: {type: string}, date_modified: {type: string}, date_modified_gmt: {type: string}, discount_type: {type: string, enum: [percent, fixed_cart, fixed_product]}, description: {type: string}, date_expires: {type: string}, date_expires_gmt: {type: string}, usage_count: {type: integer}, individual_use: {type: boolean}, product_ids: {type: array, maxItems: 200, items: {type: integer}}, excluded_product_ids: {type: array, maxItems: 200, items: {type: integer}}, usage_limit: {type: integer}, usage_limit_per_user: {type: integer}, limit_usage_to_x_items: {type: integer}, free_shipping: {type: boolean}, product_categories: {type: array, maxItems: 200, items: {type: integer}}, excluded_product_categories: {type: array, maxItems: 200, items: {type: integer}}, exclude_sale_items: {type: boolean}, minimum_amount: {type: string}, maximum_amount: {type: string}, email_restrictions: {type: array, maxItems: 200, items: {type: [string, number, integer, boolean, object, array, "null"]}}, used_by: {type: array, maxItems: 200, items: {type: integer}}, meta_data: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, key: {type: string}, value: {type: [string, number, integer, boolean, object, array, "null"]}}}}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -1764,6 +1822,7 @@ operations:
     inputs:
       - {name: connection_ref, value_type: connection_ref, required: true}
       - {name: id, value_type: integer, required: true, schema: {type: integer, minimum: 0, maximum: 9007199254740992}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: data, value_type: object, schema: {type: object, properties: {id: {type: integer}, code: {type: string}, amount: {type: string}, date_created: {type: string}, date_created_gmt: {type: string}, date_modified: {type: string}, date_modified_gmt: {type: string}, discount_type: {type: string, enum: [percent, fixed_cart, fixed_product]}, description: {type: string}, date_expires: {type: string}, date_expires_gmt: {type: string}, usage_count: {type: integer}, individual_use: {type: boolean}, product_ids: {type: array, maxItems: 200, items: {type: integer}}, excluded_product_ids: {type: array, maxItems: 200, items: {type: integer}}, usage_limit: {type: integer}, usage_limit_per_user: {type: integer}, limit_usage_to_x_items: {type: integer}, free_shipping: {type: boolean}, product_categories: {type: array, maxItems: 200, items: {type: integer}}, excluded_product_categories: {type: array, maxItems: 200, items: {type: integer}}, exclude_sale_items: {type: boolean}, minimum_amount: {type: string}, maximum_amount: {type: string}, email_restrictions: {type: array, maxItems: 200, items: {type: [string, number, integer, boolean, object, array, "null"]}}, used_by: {type: array, maxItems: 200, items: {type: integer}}, meta_data: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, key: {type: string}, value: {type: [string, number, integer, boolean, object, array, "null"]}}}}}}}
       - {name: http_status, value_type: integer}
@@ -1841,6 +1900,7 @@ operations:
       - {name: orderby, value_type: text, required: false, schema: {type: string, enum: [id, include, name, registered_date], default: name}}
       - {name: email, value_type: text, required: false, schema: {type: string, maxLength: 2048}}
       - {name: role, value_type: text, required: false, schema: {type: string, enum: [all, administrator, editor, author, contributor, subscriber, customer, shop_manager], default: customer}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {id: {type: integer}, date_created: {type: string}, date_created_gmt: {type: string}, date_modified: {type: string}, date_modified_gmt: {type: string}, email: {type: string}, first_name: {type: string}, last_name: {type: string}, role: {type: string}, username: {type: string}, billing: {type: object, properties: {first_name: {type: string}, last_name: {type: string}, company: {type: string}, address_1: {type: string}, address_2: {type: string}, city: {type: string}, state: {type: string}, postcode: {type: string}, country: {type: string}, email: {type: string}, phone: {type: string}}}, shipping: {type: object, properties: {first_name: {type: string}, last_name: {type: string}, company: {type: string}, address_1: {type: string}, address_2: {type: string}, city: {type: string}, state: {type: string}, postcode: {type: string}, country: {type: string}}}, is_paying_customer: {type: string}, avatar_url: {type: string}, meta_data: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, key: {type: string}, value: {type: [string, number, integer, boolean, object, array, "null"]}}}}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -1878,6 +1938,7 @@ operations:
     inputs:
       - {name: connection_ref, value_type: connection_ref, required: true}
       - {name: id, value_type: integer, required: true, schema: {type: integer, minimum: 0, maximum: 9007199254740992}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: data, value_type: object, schema: {type: object, properties: {id: {type: integer}, date_created: {type: string}, date_created_gmt: {type: string}, date_modified: {type: string}, date_modified_gmt: {type: string}, email: {type: string}, first_name: {type: string}, last_name: {type: string}, role: {type: string}, username: {type: string}, billing: {type: object, properties: {first_name: {type: string}, last_name: {type: string}, company: {type: string}, address_1: {type: string}, address_2: {type: string}, city: {type: string}, state: {type: string}, postcode: {type: string}, country: {type: string}, email: {type: string}, phone: {type: string}}}, shipping: {type: object, properties: {first_name: {type: string}, last_name: {type: string}, company: {type: string}, address_1: {type: string}, address_2: {type: string}, city: {type: string}, state: {type: string}, postcode: {type: string}, country: {type: string}}}, is_paying_customer: {type: string}, avatar_url: {type: string}, meta_data: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, key: {type: string}, value: {type: [string, number, integer, boolean, object, array, "null"]}}}}}}}
       - {name: http_status, value_type: integer}
@@ -1933,6 +1994,7 @@ operations:
       - {name: connection_ref, value_type: connection_ref, required: true}
       - {name: id, value_type: integer, required: true, schema: {type: integer, minimum: 0, maximum: 9007199254740992}}
       - {name: context, value_type: text, required: false, schema: {type: string, enum: [view], default: view}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {download_id: {type: string}, download_url: {type: string}, product_id: {type: integer}, product_name: {type: string}, download_name: {type: string}, order_id: {type: integer}, order_key: {type: string}, downloads_remaining: {type: string}, access_expires: {type: string}, access_expires_gmt: {type: string}, file: {type: object, properties: {name: {type: string}, file: {type: string}}}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -1968,6 +2030,7 @@ operations:
       - {name: product, value_type: integer, required: false, schema: {type: integer}}
       - {name: dp, value_type: integer, required: false, schema: {type: integer, default: 2}}
       - {name: created_via, value_type: text, required: false, schema: {type: string, maxLength: 2048}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {id: {type: integer}, parent_id: {type: integer}, number: {type: string}, order_key: {type: string}, created_via: {type: string}, version: {type: string}, status: {type: string, enum: [pending, processing, on-hold, completed, cancelled, refunded, failed, trash]}, currency: {type: string, enum: [AED, AFN, ALL, AMD, ANG, AOA, ARS, AUD, AWG, AZN, BAM, BBD, BDT, BGN, BHD, BIF, BMD, BND, BOB, BRL, BSD, BTC, BTN, BWP, BYR, BZD, CAD, CDF, CHF, CLP, CNY, COP, CRC, CUC, CUP, CVE, CZK, DJF, DKK, DOP, DZD, EGP, ERN, ETB, EUR, FJD, FKP, GBP, GEL, GGP, GHS, GIP, GMD, GNF, GTQ, GYD, HKD, HNL, HRK, HTG, HUF, IDR, ILS, IMP, INR, IQD, IRR, IRT, ISK, JEP, JMD, JOD, JPY, KES, KGS, KHR, KMF, KPW, KRW, KWD, KYD, KZT, LAK, LBP, LKR, LRD, LSL, LYD, MAD, MDL, MGA, MKD, MMK, MNT, MOP, MRO, MUR, MVR, MWK, MXN, MYR, MZN, NAD, NGN, NIO, NOK, NPR, NZD, OMR, PAB, PEN, PGK, PHP, PKR, PLN, PRB, PYG, QAR, RON, RSD, RUB, RWF, SAR, SBD, SCR, SDG, SEK, SGD, SHP, SLL, SOS, SRD, SSP, STD, SYP, SZL, THB, TJS, TMT, TND, TOP, TRY, TTD, TWD, TZS, UAH, UGX, USD, UYU, UZS, VEF, VND, VUV, WST, XAF, XCD, XOF, XPF, YER, ZAR, ZMW]}, date_created: {type: string}, date_created_gmt: {type: string}, date_modified: {type: string}, date_modified_gmt: {type: string}, discount_total: {type: string}, discount_tax: {type: string}, shipping_total: {type: string}, shipping_tax: {type: string}, cart_tax: {type: string}, total: {type: string}, total_tax: {type: string}, prices_include_tax: {type: boolean}, customer_id: {type: integer}, customer_ip_address: {type: string}, customer_user_agent: {type: string}, customer_note: {type: string}, billing: {type: object, properties: {first_name: {type: string}, last_name: {type: string}, company: {type: string}, address_1: {type: string}, address_2: {type: string}, city: {type: string}, state: {type: string}, postcode: {type: string}, country: {type: string}, email: {type: string}, phone: {type: string}}}, shipping: {type: object, properties: {first_name: {type: string}, last_name: {type: string}, company: {type: string}, address_1: {type: string}, address_2: {type: string}, city: {type: string}, state: {type: string}, postcode: {type: string}, country: {type: string}}}, payment_method: {type: string}, payment_method_title: {type: string}, transaction_id: {type: string}, date_paid: {type: string}, date_paid_gmt: {type: string}, date_completed: {type: string}, date_completed_gmt: {type: string}, cart_hash: {type: string}, meta_data: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, key: {type: string}, value: {type: [string, number, integer, boolean, object, array, "null"]}}}}, line_items: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, name: {type: string}, parent_name: {type: [string, "null"]}, product_id: {type: integer}, variation_id: {type: integer}, quantity: {type: integer}, tax_class: {type: string}, subtotal: {type: string}, subtotal_tax: {type: string}, total: {type: string}, total_tax: {type: string}, taxes: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, rate_code: {type: string}, rate_id: {type: integer}, label: {type: string}, compound: {type: boolean}, tax_total: {type: string}, shipping_tax_total: {type: string}, meta_data: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, key: {type: string}, value: {type: [string, number, integer, boolean, object, array, "null"]}}}}}}}, meta_data: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, key: {type: string}, value: {type: [string, number, integer, boolean, object, array, "null"]}}}}, sku: {type: string}, price: {type: string}}}}, tax_lines: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, rate_code: {type: string}, rate_id: {type: integer}, label: {type: string}, compound: {type: boolean}, tax_total: {type: string}, shipping_tax_total: {type: string}, meta_data: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, key: {type: string}, value: {type: [string, number, integer, boolean, object, array, "null"]}}}}}}}, shipping_lines: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, method_title: {type: string}, method_id: {type: string}, total: {type: string}, total_tax: {type: string}, taxes: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, rate_code: {type: string}, rate_id: {type: integer}, label: {type: string}, compound: {type: boolean}, tax_total: {type: string}, shipping_tax_total: {type: string}, meta_data: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, key: {type: string}, value: {type: [string, number, integer, boolean, object, array, "null"]}}}}}}}, meta_data: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, key: {type: string}, value: {type: [string, number, integer, boolean, object, array, "null"]}}}}}}}, fee_lines: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, name: {type: string}, tax_class: {type: string}, tax_status: {type: string, enum: [taxable, none]}, total: {type: string}, total_tax: {type: string}, taxes: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, rate_code: {type: string}, rate_id: {type: integer}, label: {type: string}, compound: {type: boolean}, tax_total: {type: string}, shipping_tax_total: {type: string}, meta_data: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, key: {type: string}, value: {type: [string, number, integer, boolean, object, array, "null"]}}}}}}}, meta_data: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, key: {type: string}, value: {type: [string, number, integer, boolean, object, array, "null"]}}}}}}}, coupon_lines: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, code: {type: string}, discount: {type: string}, discount_tax: {type: string}, meta_data: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, key: {type: string}, value: {type: [string, number, integer, boolean, object, array, "null"]}}}}}}}, refunds: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, reason: {type: string}, total: {type: string}}}}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -2016,6 +2079,7 @@ operations:
       - {name: connection_ref, value_type: connection_ref, required: true}
       - {name: id, value_type: integer, required: true, schema: {type: integer, minimum: 0, maximum: 9007199254740992}}
       - {name: dp, value_type: text, required: false, schema: {type: string, maxLength: 2048}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: data, value_type: object, schema: {type: object, properties: {id: {type: integer}, parent_id: {type: integer}, number: {type: string}, order_key: {type: string}, created_via: {type: string}, version: {type: string}, status: {type: string, enum: [pending, processing, on-hold, completed, cancelled, refunded, failed, trash]}, currency: {type: string, enum: [AED, AFN, ALL, AMD, ANG, AOA, ARS, AUD, AWG, AZN, BAM, BBD, BDT, BGN, BHD, BIF, BMD, BND, BOB, BRL, BSD, BTC, BTN, BWP, BYR, BZD, CAD, CDF, CHF, CLP, CNY, COP, CRC, CUC, CUP, CVE, CZK, DJF, DKK, DOP, DZD, EGP, ERN, ETB, EUR, FJD, FKP, GBP, GEL, GGP, GHS, GIP, GMD, GNF, GTQ, GYD, HKD, HNL, HRK, HTG, HUF, IDR, ILS, IMP, INR, IQD, IRR, IRT, ISK, JEP, JMD, JOD, JPY, KES, KGS, KHR, KMF, KPW, KRW, KWD, KYD, KZT, LAK, LBP, LKR, LRD, LSL, LYD, MAD, MDL, MGA, MKD, MMK, MNT, MOP, MRO, MUR, MVR, MWK, MXN, MYR, MZN, NAD, NGN, NIO, NOK, NPR, NZD, OMR, PAB, PEN, PGK, PHP, PKR, PLN, PRB, PYG, QAR, RON, RSD, RUB, RWF, SAR, SBD, SCR, SDG, SEK, SGD, SHP, SLL, SOS, SRD, SSP, STD, SYP, SZL, THB, TJS, TMT, TND, TOP, TRY, TTD, TWD, TZS, UAH, UGX, USD, UYU, UZS, VEF, VND, VUV, WST, XAF, XCD, XOF, XPF, YER, ZAR, ZMW]}, date_created: {type: string}, date_created_gmt: {type: string}, date_modified: {type: string}, date_modified_gmt: {type: string}, discount_total: {type: string}, discount_tax: {type: string}, shipping_total: {type: string}, shipping_tax: {type: string}, cart_tax: {type: string}, total: {type: string}, total_tax: {type: string}, prices_include_tax: {type: boolean}, customer_id: {type: integer}, customer_ip_address: {type: string}, customer_user_agent: {type: string}, customer_note: {type: string}, billing: {type: object, properties: {first_name: {type: string}, last_name: {type: string}, company: {type: string}, address_1: {type: string}, address_2: {type: string}, city: {type: string}, state: {type: string}, postcode: {type: string}, country: {type: string}, email: {type: string}, phone: {type: string}}}, shipping: {type: object, properties: {first_name: {type: string}, last_name: {type: string}, company: {type: string}, address_1: {type: string}, address_2: {type: string}, city: {type: string}, state: {type: string}, postcode: {type: string}, country: {type: string}}}, payment_method: {type: string}, payment_method_title: {type: string}, transaction_id: {type: string}, date_paid: {type: string}, date_paid_gmt: {type: string}, date_completed: {type: string}, date_completed_gmt: {type: string}, cart_hash: {type: string}, meta_data: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, key: {type: string}, value: {type: [string, number, integer, boolean, object, array, "null"]}}}}, line_items: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, name: {type: string}, parent_name: {type: [string, "null"]}, product_id: {type: integer}, variation_id: {type: integer}, quantity: {type: integer}, tax_class: {type: string}, subtotal: {type: string}, subtotal_tax: {type: string}, total: {type: string}, total_tax: {type: string}, taxes: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, rate_code: {type: string}, rate_id: {type: integer}, label: {type: string}, compound: {type: boolean}, tax_total: {type: string}, shipping_tax_total: {type: string}, meta_data: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, key: {type: string}, value: {type: [string, number, integer, boolean, object, array, "null"]}}}}}}}, meta_data: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, key: {type: string}, value: {type: [string, number, integer, boolean, object, array, "null"]}}}}, sku: {type: string}, price: {type: string}}}}, tax_lines: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, rate_code: {type: string}, rate_id: {type: integer}, label: {type: string}, compound: {type: boolean}, tax_total: {type: string}, shipping_tax_total: {type: string}, meta_data: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, key: {type: string}, value: {type: [string, number, integer, boolean, object, array, "null"]}}}}}}}, shipping_lines: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, method_title: {type: string}, method_id: {type: string}, total: {type: string}, total_tax: {type: string}, taxes: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, rate_code: {type: string}, rate_id: {type: integer}, label: {type: string}, compound: {type: boolean}, tax_total: {type: string}, shipping_tax_total: {type: string}, meta_data: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, key: {type: string}, value: {type: [string, number, integer, boolean, object, array, "null"]}}}}}}}, meta_data: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, key: {type: string}, value: {type: [string, number, integer, boolean, object, array, "null"]}}}}}}}, fee_lines: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, name: {type: string}, tax_class: {type: string}, tax_status: {type: string, enum: [taxable, none]}, total: {type: string}, total_tax: {type: string}, taxes: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, rate_code: {type: string}, rate_id: {type: integer}, label: {type: string}, compound: {type: boolean}, tax_total: {type: string}, shipping_tax_total: {type: string}, meta_data: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, key: {type: string}, value: {type: [string, number, integer, boolean, object, array, "null"]}}}}}}}, meta_data: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, key: {type: string}, value: {type: [string, number, integer, boolean, object, array, "null"]}}}}}}}, coupon_lines: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, code: {type: string}, discount: {type: string}, discount_tax: {type: string}, meta_data: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, key: {type: string}, value: {type: [string, number, integer, boolean, object, array, "null"]}}}}}}}, refunds: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, reason: {type: string}, total: {type: string}}}}}}}
       - {name: http_status, value_type: integer}
@@ -2080,6 +2144,7 @@ operations:
     inputs:
       - {name: connection_ref, value_type: connection_ref, required: true}
       - {name: id, value_type: integer, required: true, schema: {type: integer, minimum: 0, maximum: 9007199254740992}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {id: {type: string}, title: {type: string}, description: {type: string}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -2132,6 +2197,7 @@ operations:
       - {name: id, value_type: integer, required: true, schema: {type: integer, minimum: 0, maximum: 9007199254740992}}
       - {name: context, value_type: text, required: false, schema: {type: string, enum: [view, edit], default: view}}
       - {name: type, value_type: text, required: false, schema: {type: string, enum: [any, customer, internal], default: any}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {id: {type: integer}, author: {type: string}, date_created: {type: string}, date_created_gmt: {type: string}, note: {type: string}, customer_note: {type: boolean}, added_by_user: {type: boolean}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -2167,6 +2233,7 @@ operations:
       - {name: connection_ref, value_type: connection_ref, required: true}
       - {name: id, value_type: integer, required: true, schema: {type: integer, minimum: 0, maximum: 9007199254740992}}
       - {name: note_id, value_type: integer, required: true, schema: {type: integer, minimum: 0, maximum: 9007199254740992}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: data, value_type: object, schema: {type: object, properties: {id: {type: integer}, author: {type: string}, date_created: {type: string}, date_created_gmt: {type: string}, note: {type: string}, customer_note: {type: boolean}, added_by_user: {type: boolean}}}}
       - {name: http_status, value_type: integer}
@@ -2196,6 +2263,7 @@ operations:
       - {name: parent, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: integer}}}
       - {name: parent_exclude, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: integer}}}
       - {name: dp, value_type: integer, required: false, schema: {type: integer, default: 2}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {id: {type: integer}, date_created: {type: string}, date_created_gmt: {type: string}, amount: {type: string}, reason: {type: string}, refunded_by: {type: integer}, refunded_payment: {type: boolean}, meta_data: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, key: {type: string}, value: {type: [string, number, integer, boolean, object, array, "null"]}}}}, line_items: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, name: {type: string}, product_id: {type: integer}, variation_id: {type: integer}, quantity: {type: integer}, tax_class: {type: string}, subtotal: {type: string}, subtotal_tax: {type: string}, total: {type: string}, total_tax: {type: string}, taxes: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, total: {type: string}, subtotal: {type: string}}}}, meta_data: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, key: {type: string}, value: {type: [string, number, integer, boolean, object, array, "null"]}}}}, sku: {type: string}, price: {type: string}}}}, tax_lines: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, rate_code: {type: string}, rate_id: {type: integer}, label: {type: string}, compound: {type: boolean}, tax_total: {type: string}, shipping_tax_total: {type: string}, meta_data: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, key: {type: string}, value: {type: [string, number, integer, boolean, object, array, "null"]}}}}}}}, shipping_lines: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, method_title: {type: string}, method_id: {type: string}, total: {type: string}, total_tax: {type: string}, taxes: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, rate_code: {type: string}, rate_id: {type: integer}, label: {type: string}, compound: {type: boolean}, tax_total: {type: string}, shipping_tax_total: {type: string}, meta_data: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, key: {type: string}, value: {type: [string, number, integer, boolean, object, array, "null"]}}}}}}}, meta_data: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, key: {type: string}, value: {type: [string, number, integer, boolean, object, array, "null"]}}}}}}}, fee_lines: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, name: {type: string}, tax_class: {type: string}, tax_status: {type: string, enum: [taxable, none]}, total: {type: string}, total_tax: {type: string}, taxes: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, rate_code: {type: string}, rate_id: {type: integer}, label: {type: string}, compound: {type: boolean}, tax_total: {type: string}, shipping_tax_total: {type: string}, meta_data: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, key: {type: string}, value: {type: [string, number, integer, boolean, object, array, "null"]}}}}}}}, meta_data: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, key: {type: string}, value: {type: [string, number, integer, boolean, object, array, "null"]}}}}}}}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -2213,6 +2281,7 @@ operations:
       - {name: id, value_type: integer, required: true, schema: {type: integer, minimum: 0, maximum: 9007199254740992}}
       - {name: refund_id, value_type: integer, required: true, schema: {type: integer, minimum: 0, maximum: 9007199254740992}}
       - {name: dp, value_type: text, required: false, schema: {type: string, maxLength: 2048}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: data, value_type: object, schema: {type: object, properties: {id: {type: integer}, date_created: {type: string}, date_created_gmt: {type: string}, amount: {type: string}, reason: {type: string}, refunded_by: {type: integer}, refunded_payment: {type: boolean}, meta_data: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, key: {type: string}, value: {type: [string, number, integer, boolean, object, array, "null"]}}}}, line_items: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, name: {type: string}, product_id: {type: integer}, variation_id: {type: integer}, quantity: {type: integer}, tax_class: {type: string}, subtotal: {type: string}, subtotal_tax: {type: string}, total: {type: string}, total_tax: {type: string}, taxes: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, total: {type: string}, subtotal: {type: string}}}}, meta_data: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, key: {type: string}, value: {type: [string, number, integer, boolean, object, array, "null"]}}}}, sku: {type: string}, price: {type: string}}}}, tax_lines: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, rate_code: {type: string}, rate_id: {type: integer}, label: {type: string}, compound: {type: boolean}, tax_total: {type: string}, shipping_tax_total: {type: string}, meta_data: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, key: {type: string}, value: {type: [string, number, integer, boolean, object, array, "null"]}}}}}}}, shipping_lines: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, method_title: {type: string}, method_id: {type: string}, total: {type: string}, total_tax: {type: string}, taxes: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, rate_code: {type: string}, rate_id: {type: integer}, label: {type: string}, compound: {type: boolean}, tax_total: {type: string}, shipping_tax_total: {type: string}, meta_data: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, key: {type: string}, value: {type: [string, number, integer, boolean, object, array, "null"]}}}}}}}, meta_data: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, key: {type: string}, value: {type: [string, number, integer, boolean, object, array, "null"]}}}}}}}, fee_lines: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, name: {type: string}, tax_class: {type: string}, tax_status: {type: string, enum: [taxable, none]}, total: {type: string}, total_tax: {type: string}, taxes: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, rate_code: {type: string}, rate_id: {type: integer}, label: {type: string}, compound: {type: boolean}, tax_total: {type: string}, shipping_tax_total: {type: string}, meta_data: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, key: {type: string}, value: {type: [string, number, integer, boolean, object, array, "null"]}}}}}}}, meta_data: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, key: {type: string}, value: {type: [string, number, integer, boolean, object, array, "null"]}}}}}}}}}}
       - {name: http_status, value_type: integer}
@@ -2241,6 +2310,7 @@ operations:
     connection_type_ids: [wordpress_site]
     inputs:
       - {name: connection_ref, value_type: connection_ref, required: true}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {parent_id: {type: integer}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -2294,6 +2364,7 @@ operations:
       - {name: virtual, value_type: boolean, required: false, schema: {type: boolean}}
       - {name: downloadable, value_type: boolean, required: false, schema: {type: boolean}}
       - {name: image_size, value_type: text, required: false, schema: {type: string, maxLength: 2048, default: full}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {id: {type: integer}, name: {type: string}, slug: {type: string}, permalink: {type: string}, date_created: {type: string}, date_created_gmt: {type: string}, date_modified: {type: string}, date_modified_gmt: {type: string}, type: {type: string, enum: [simple, grouped, external, variable]}, status: {type: string, enum: [draft, pending, private, publish]}, featured: {type: boolean}, catalog_visibility: {type: string, enum: [visible, catalog, search, hidden]}, description: {type: string}, short_description: {type: string}, sku: {type: string}, global_unique_id: {type: string}, price: {type: string}, regular_price: {type: string}, sale_price: {type: string}, date_on_sale_from: {type: string}, date_on_sale_from_gmt: {type: string}, date_on_sale_to: {type: string}, date_on_sale_to_gmt: {type: string}, price_html: {type: string}, on_sale: {type: boolean}, purchasable: {type: boolean}, total_sales: {type: integer}, virtual: {type: boolean}, downloadable: {type: boolean}, downloads: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: string}, name: {type: string}, file: {type: string}}}}, download_limit: {type: integer}, download_expiry: {type: integer}, external_url: {type: string}, button_text: {type: string}, tax_status: {type: string, enum: [taxable, shipping, none]}, tax_class: {type: string}, manage_stock: {type: boolean}, stock_quantity: {type: integer}, stock_status: {type: string, enum: [instock, outofstock, onbackorder]}, backorders: {type: string, enum: ["no", notify, "yes"]}, backorders_allowed: {type: boolean}, backordered: {type: boolean}, sold_individually: {type: boolean}, weight: {type: string}, dimensions: {type: object, properties: {length: {type: string}, width: {type: string}, height: {type: string}}}, shipping_required: {type: boolean}, shipping_taxable: {type: boolean}, shipping_class: {type: string}, shipping_class_id: {type: integer}, reviews_allowed: {type: boolean}, average_rating: {type: string}, rating_count: {type: integer}, related_ids: {type: array, maxItems: 200, items: {type: integer}}, upsell_ids: {type: array, maxItems: 200, items: {type: integer}}, cross_sell_ids: {type: array, maxItems: 200, items: {type: integer}}, parent_id: {type: integer}, purchase_note: {type: string}, categories: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, name: {type: string}, slug: {type: string}}}}, tags: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, name: {type: string}, slug: {type: string}}}}, brands: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, name: {type: string}, slug: {type: string}}}}, images: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, date_created: {type: string}, date_created_gmt: {type: string}, date_modified: {type: string}, date_modified_gmt: {type: string}, src: {type: string}, name: {type: string}, alt: {type: string}}}}, attributes: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, name: {type: string}, position: {type: integer}, visible: {type: boolean}, variation: {type: boolean}, options: {type: array, maxItems: 200, items: {type: string}}}}}, default_attributes: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, name: {type: string}, option: {type: string}}}}, variations: {type: array, maxItems: 200, items: {type: integer}}, grouped_products: {type: array, maxItems: 200, items: {type: integer}}, menu_order: {type: integer}, meta_data: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, key: {type: string}, value: {type: [string, number, integer, boolean, object, array, "null"]}}}}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -2371,6 +2442,7 @@ operations:
     inputs:
       - {name: connection_ref, value_type: connection_ref, required: true}
       - {name: id, value_type: integer, required: true, schema: {type: integer, minimum: 0, maximum: 9007199254740992}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: data, value_type: object, schema: {type: object, properties: {id: {type: integer}, name: {type: string}, slug: {type: string}, permalink: {type: string}, date_created: {type: string}, date_created_gmt: {type: string}, date_modified: {type: string}, date_modified_gmt: {type: string}, type: {type: string, enum: [simple, grouped, external, variable]}, status: {type: string, enum: [draft, pending, private, publish]}, featured: {type: boolean}, catalog_visibility: {type: string, enum: [visible, catalog, search, hidden]}, description: {type: string}, short_description: {type: string}, sku: {type: string}, global_unique_id: {type: string}, price: {type: string}, regular_price: {type: string}, sale_price: {type: string}, date_on_sale_from: {type: string}, date_on_sale_from_gmt: {type: string}, date_on_sale_to: {type: string}, date_on_sale_to_gmt: {type: string}, price_html: {type: string}, on_sale: {type: boolean}, purchasable: {type: boolean}, total_sales: {type: integer}, virtual: {type: boolean}, downloadable: {type: boolean}, downloads: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: string}, name: {type: string}, file: {type: string}}}}, download_limit: {type: integer}, download_expiry: {type: integer}, external_url: {type: string}, button_text: {type: string}, tax_status: {type: string, enum: [taxable, shipping, none]}, tax_class: {type: string}, manage_stock: {type: boolean}, stock_quantity: {type: integer}, stock_status: {type: string, enum: [instock, outofstock, onbackorder]}, backorders: {type: string, enum: ["no", notify, "yes"]}, backorders_allowed: {type: boolean}, backordered: {type: boolean}, sold_individually: {type: boolean}, weight: {type: string}, dimensions: {type: object, properties: {length: {type: string}, width: {type: string}, height: {type: string}}}, shipping_required: {type: boolean}, shipping_taxable: {type: boolean}, shipping_class: {type: string}, shipping_class_id: {type: integer}, reviews_allowed: {type: boolean}, average_rating: {type: string}, rating_count: {type: integer}, related_ids: {type: array, maxItems: 200, items: {type: integer}}, upsell_ids: {type: array, maxItems: 200, items: {type: integer}}, cross_sell_ids: {type: array, maxItems: 200, items: {type: integer}}, parent_id: {type: integer}, purchase_note: {type: string}, categories: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, name: {type: string}, slug: {type: string}}}}, tags: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, name: {type: string}, slug: {type: string}}}}, brands: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, name: {type: string}, slug: {type: string}}}}, images: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, date_created: {type: string}, date_created_gmt: {type: string}, date_modified: {type: string}, date_modified_gmt: {type: string}, src: {type: string}, name: {type: string}, alt: {type: string}}}}, attributes: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, name: {type: string}, position: {type: integer}, visible: {type: boolean}, variation: {type: boolean}, options: {type: array, maxItems: 200, items: {type: string}}}}}, default_attributes: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, name: {type: string}, option: {type: string}}}}, variations: {type: array, maxItems: 200, items: {type: integer}}, grouped_products: {type: array, maxItems: 200, items: {type: integer}}, menu_order: {type: integer}, meta_data: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, key: {type: string}, value: {type: [string, number, integer, boolean, object, array, "null"]}}}}}}}
       - {name: http_status, value_type: integer}
@@ -2508,6 +2580,7 @@ operations:
       - {name: virtual, value_type: boolean, required: false, schema: {type: boolean}}
       - {name: downloadable, value_type: boolean, required: false, schema: {type: boolean}}
       - {name: image_size, value_type: text, required: false, schema: {type: string, maxLength: 2048, default: full}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {id: {type: integer}, date_created: {type: string}, date_created_gmt: {type: string}, date_modified: {type: string}, date_modified_gmt: {type: string}, description: {type: string}, permalink: {type: string}, sku: {type: string}, global_unique_id: {type: string}, price: {type: string}, regular_price: {type: string}, sale_price: {type: string}, date_on_sale_from: {type: string}, date_on_sale_from_gmt: {type: string}, date_on_sale_to: {type: string}, date_on_sale_to_gmt: {type: string}, on_sale: {type: boolean}, status: {type: string, enum: [draft, pending, private, publish]}, purchasable: {type: boolean}, virtual: {type: boolean}, downloadable: {type: boolean}, downloads: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: string}, name: {type: string}, file: {type: string}}}}, download_limit: {type: integer}, download_expiry: {type: integer}, tax_status: {type: string, enum: [taxable, shipping, none]}, tax_class: {type: string}, manage_stock: {type: [boolean, string]}, stock_quantity: {type: integer}, stock_status: {type: string, enum: [instock, outofstock, onbackorder]}, backorders: {type: string, enum: ["no", notify, "yes"]}, backorders_allowed: {type: boolean}, backordered: {type: boolean}, weight: {type: string}, dimensions: {type: object, properties: {length: {type: string}, width: {type: string}, height: {type: string}}}, shipping_class: {type: string}, shipping_class_id: {type: string}, image: {type: object, properties: {id: {type: integer}, date_created: {type: string}, date_created_gmt: {type: string}, date_modified: {type: string}, date_modified_gmt: {type: string}, src: {type: string}, name: {type: string}, alt: {type: string}}}, gallery_image_ids: {type: array, maxItems: 200, items: {type: integer}}, attributes: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, name: {type: string}, option: {type: string}}}}, menu_order: {type: integer}, meta_data: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, key: {type: string}, value: {type: [string, number, integer, boolean, object, array, "null"]}}}}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -2569,6 +2642,7 @@ operations:
       - {name: connection_ref, value_type: connection_ref, required: true}
       - {name: product_id, value_type: integer, required: true, schema: {type: integer, minimum: 0, maximum: 9007199254740992}}
       - {name: id, value_type: integer, required: true, schema: {type: integer, minimum: 0, maximum: 9007199254740992}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: data, value_type: object, schema: {type: object, properties: {id: {type: integer}, date_created: {type: string}, date_created_gmt: {type: string}, date_modified: {type: string}, date_modified_gmt: {type: string}, description: {type: string}, permalink: {type: string}, sku: {type: string}, global_unique_id: {type: string}, price: {type: string}, regular_price: {type: string}, sale_price: {type: string}, date_on_sale_from: {type: string}, date_on_sale_from_gmt: {type: string}, date_on_sale_to: {type: string}, date_on_sale_to_gmt: {type: string}, on_sale: {type: boolean}, status: {type: string, enum: [draft, pending, private, publish]}, purchasable: {type: boolean}, virtual: {type: boolean}, downloadable: {type: boolean}, downloads: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: string}, name: {type: string}, file: {type: string}}}}, download_limit: {type: integer}, download_expiry: {type: integer}, tax_status: {type: string, enum: [taxable, shipping, none]}, tax_class: {type: string}, manage_stock: {type: [boolean, string]}, stock_quantity: {type: integer}, stock_status: {type: string, enum: [instock, outofstock, onbackorder]}, backorders: {type: string, enum: ["no", notify, "yes"]}, backorders_allowed: {type: boolean}, backordered: {type: boolean}, weight: {type: string}, dimensions: {type: object, properties: {length: {type: string}, width: {type: string}, height: {type: string}}}, shipping_class: {type: string}, shipping_class_id: {type: string}, image: {type: object, properties: {id: {type: integer}, date_created: {type: string}, date_created_gmt: {type: string}, date_modified: {type: string}, date_modified_gmt: {type: string}, src: {type: string}, name: {type: string}, alt: {type: string}}}, gallery_image_ids: {type: array, maxItems: 200, items: {type: integer}}, attributes: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, name: {type: string}, option: {type: string}}}}, menu_order: {type: integer}, meta_data: {type: array, maxItems: 200, items: {type: object, properties: {id: {type: integer}, key: {type: string}, value: {type: [string, number, integer, boolean, object, array, "null"]}}}}}}}
       - {name: http_status, value_type: integer}
@@ -2647,6 +2721,7 @@ operations:
     inputs:
       - {name: connection_ref, value_type: connection_ref, required: true}
       - {name: context, value_type: text, required: false, schema: {type: string, enum: [view, edit], default: view}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {id: {type: integer}, name: {type: string}, slug: {type: string}, type: {type: string}, order_by: {type: string, enum: [menu_order, name, name_num, id]}, has_archives: {type: boolean}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -2682,6 +2757,7 @@ operations:
     inputs:
       - {name: connection_ref, value_type: connection_ref, required: true}
       - {name: id, value_type: integer, required: true, schema: {type: integer, minimum: 0, maximum: 9007199254740992}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: data, value_type: object, schema: {type: object, properties: {id: {type: integer}, name: {type: string}, slug: {type: string}, type: {type: string}, order_by: {type: string, enum: [menu_order, name, name_num, id]}, has_archives: {type: boolean}}}}
       - {name: http_status, value_type: integer}
@@ -2746,6 +2822,7 @@ operations:
       - {name: parent, value_type: integer, required: false, schema: {type: integer}}
       - {name: product, value_type: integer, required: false, schema: {type: integer}}
       - {name: slug, value_type: text, required: false, schema: {type: string, maxLength: 2048}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {id: {type: integer}, name: {type: string}, slug: {type: string}, description: {type: string}, menu_order: {type: integer}, count: {type: integer}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -2782,6 +2859,7 @@ operations:
       - {name: connection_ref, value_type: connection_ref, required: true}
       - {name: attribute_id, value_type: integer, required: true, schema: {type: integer, minimum: 0, maximum: 9007199254740992}}
       - {name: id, value_type: integer, required: true, schema: {type: integer, minimum: 0, maximum: 9007199254740992}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: data, value_type: object, schema: {type: object, properties: {id: {type: integer}, name: {type: string}, slug: {type: string}, description: {type: string}, menu_order: {type: integer}, count: {type: integer}}}}
       - {name: http_status, value_type: integer}
@@ -2846,6 +2924,7 @@ operations:
       - {name: parent, value_type: integer, required: false, schema: {type: integer}}
       - {name: product, value_type: integer, required: false, schema: {type: integer}}
       - {name: slug, value_type: text, required: false, schema: {type: string, maxLength: 2048}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {id: {type: integer}, name: {type: string}, slug: {type: string}, parent: {type: integer}, description: {type: string}, display: {type: string, enum: [default, products, subcategories, both]}, image: {type: object, properties: {id: {type: integer}, date_created: {type: string}, date_created_gmt: {type: string}, date_modified: {type: string}, date_modified_gmt: {type: string}, src: {type: string}, name: {type: string}, alt: {type: string}}}, menu_order: {type: integer}, count: {type: integer}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -2883,6 +2962,7 @@ operations:
     inputs:
       - {name: connection_ref, value_type: connection_ref, required: true}
       - {name: id, value_type: integer, required: true, schema: {type: integer, minimum: 0, maximum: 9007199254740992}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: data, value_type: object, schema: {type: object, properties: {id: {type: integer}, name: {type: string}, slug: {type: string}, parent: {type: integer}, description: {type: string}, display: {type: string, enum: [default, products, subcategories, both]}, image: {type: object, properties: {id: {type: integer}, date_created: {type: string}, date_created_gmt: {type: string}, date_modified: {type: string}, date_modified_gmt: {type: string}, src: {type: string}, name: {type: string}, alt: {type: string}}}, menu_order: {type: integer}, count: {type: integer}}}}
       - {name: http_status, value_type: integer}
@@ -2962,6 +3042,7 @@ operations:
       - {name: hide_empty, value_type: boolean, required: false, schema: {type: boolean, default: false}}
       - {name: product, value_type: integer, required: false, schema: {type: integer}}
       - {name: slug, value_type: text, required: false, schema: {type: string, maxLength: 2048}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {id: {type: integer}, name: {type: string}, slug: {type: string}, description: {type: string}, count: {type: integer}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -2995,6 +3076,7 @@ operations:
     inputs:
       - {name: connection_ref, value_type: connection_ref, required: true}
       - {name: id, value_type: integer, required: true, schema: {type: integer, minimum: 0, maximum: 9007199254740992}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: data, value_type: object, schema: {type: object, properties: {id: {type: integer}, name: {type: string}, slug: {type: string}, description: {type: string}, count: {type: integer}}}}
       - {name: http_status, value_type: integer}
@@ -3056,6 +3138,7 @@ operations:
       - {name: hide_empty, value_type: boolean, required: false, schema: {type: boolean, default: false}}
       - {name: product, value_type: integer, required: false, schema: {type: integer}}
       - {name: slug, value_type: text, required: false, schema: {type: string, maxLength: 2048}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {id: {type: integer}, name: {type: string}, slug: {type: string}, description: {type: string}, count: {type: integer}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -3089,6 +3172,7 @@ operations:
     inputs:
       - {name: connection_ref, value_type: connection_ref, required: true}
       - {name: id, value_type: integer, required: true, schema: {type: integer, minimum: 0, maximum: 9007199254740992}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: data, value_type: object, schema: {type: object, properties: {id: {type: integer}, name: {type: string}, slug: {type: string}, description: {type: string}, count: {type: integer}}}}
       - {name: http_status, value_type: integer}
@@ -3155,6 +3239,7 @@ operations:
       - {name: reviewer_email, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: [string, number, integer, boolean, object, array, "null"]}}}
       - {name: product, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: integer}}}
       - {name: status, value_type: text, required: false, schema: {type: string, enum: [all, hold, approved, spam, trash], default: approved}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {id: {type: integer}, date_created: {type: string}, date_created_gmt: {type: string}, product_id: {type: integer}, status: {type: string, enum: [approved, hold, spam, unspam, trash, untrash]}, reviewer: {type: string}, reviewer_email: {type: string}, review: {type: string}, rating: {type: integer}, verified: {type: boolean}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -3192,6 +3277,7 @@ operations:
     inputs:
       - {name: connection_ref, value_type: connection_ref, required: true}
       - {name: id, value_type: integer, required: true, schema: {type: integer, minimum: 0, maximum: 9007199254740992}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: data, value_type: object, schema: {type: object, properties: {id: {type: integer}, date_created: {type: string}, date_created_gmt: {type: string}, product_id: {type: integer}, status: {type: string, enum: [approved, hold, spam, unspam, trash, untrash]}, reviewer: {type: string}, reviewer_email: {type: string}, review: {type: string}, rating: {type: integer}, verified: {type: boolean}}}}
       - {name: http_status, value_type: integer}
@@ -3245,6 +3331,7 @@ operations:
     connection_type_ids: [wordpress_site]
     inputs:
       - {name: connection_ref, value_type: connection_ref, required: true}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {total_sales: {type: string}, net_sales: {type: string}, average_sales: {type: string}, total_orders: {type: integer}, total_items: {type: integer}, total_tax: {type: string}, total_shipping: {type: string}, total_refunds: {type: integer}, total_discount: {type: integer}, totals_grouped_by: {type: string}, totals: {type: array, maxItems: 200, items: {type: [string, number, integer, boolean, object, array, "null"]}}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -3263,6 +3350,7 @@ operations:
       - {name: period, value_type: text, required: false, schema: {type: string, enum: [week, month, last_month, year], default: today's date}}
       - {name: date_min, value_type: text, required: false, schema: {type: string, maxLength: 2048}}
       - {name: date_max, value_type: text, required: false, schema: {type: string, maxLength: 2048}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {total_sales: {type: string}, net_sales: {type: string}, average_sales: {type: string}, total_orders: {type: integer}, total_items: {type: integer}, total_tax: {type: string}, total_shipping: {type: string}, total_refunds: {type: integer}, total_discount: {type: integer}, totals_grouped_by: {type: string}, totals: {type: array, maxItems: 200, items: {type: [string, number, integer, boolean, object, array, "null"]}}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -3281,6 +3369,7 @@ operations:
       - {name: period, value_type: text, required: false, schema: {type: string, enum: [week, month, last_month, year], default: week}}
       - {name: date_min, value_type: text, required: false, schema: {type: string, maxLength: 2048}}
       - {name: date_max, value_type: text, required: false, schema: {type: string, maxLength: 2048}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {title: {type: string}, product_id: {type: integer}, quantity: {type: integer}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -3295,6 +3384,7 @@ operations:
     connection_type_ids: [wordpress_site]
     inputs:
       - {name: connection_ref, value_type: connection_ref, required: true}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {slug: {type: string}, name: {type: string}, total: {type: string}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -3309,6 +3399,7 @@ operations:
     connection_type_ids: [wordpress_site]
     inputs:
       - {name: connection_ref, value_type: connection_ref, required: true}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {slug: {type: string}, name: {type: string}, total: {type: string}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -3323,6 +3414,7 @@ operations:
     connection_type_ids: [wordpress_site]
     inputs:
       - {name: connection_ref, value_type: connection_ref, required: true}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {slug: {type: string}, name: {type: string}, total: {type: string}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -3337,6 +3429,7 @@ operations:
     connection_type_ids: [wordpress_site]
     inputs:
       - {name: connection_ref, value_type: connection_ref, required: true}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {slug: {type: string}, name: {type: string}, total: {type: string}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -3351,6 +3444,7 @@ operations:
     connection_type_ids: [wordpress_site]
     inputs:
       - {name: connection_ref, value_type: connection_ref, required: true}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {slug: {type: string}, name: {type: string}, total: {type: string}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -3372,6 +3466,7 @@ operations:
       - {name: order, value_type: text, required: false, schema: {type: string, enum: [asc, desc], default: asc}}
       - {name: orderby, value_type: text, required: false, schema: {type: string, enum: [id, order, priority], default: order}}
       - {name: class, value_type: text, required: false, schema: {type: string, maxLength: 2048}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {id: {type: integer}, country: {type: string}, state: {type: string}, postcode: {type: string}, city: {type: string}, postcodes: {type: array, maxItems: 200, items: {type: string}}, cities: {type: array, maxItems: 200, items: {type: string}}, rate: {type: string}, name: {type: string}, priority: {type: integer}, compound: {type: boolean}, shipping: {type: boolean}, order: {type: integer}, class: {type: string}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -3415,6 +3510,7 @@ operations:
     inputs:
       - {name: connection_ref, value_type: connection_ref, required: true}
       - {name: id, value_type: integer, required: true, schema: {type: integer, minimum: 0, maximum: 9007199254740992}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: data, value_type: object, schema: {type: object, properties: {id: {type: integer}, country: {type: string}, state: {type: string}, postcode: {type: string}, city: {type: string}, postcodes: {type: array, maxItems: 200, items: {type: string}}, cities: {type: array, maxItems: 200, items: {type: string}}, rate: {type: string}, name: {type: string}, priority: {type: integer}, compound: {type: boolean}, shipping: {type: boolean}, order: {type: integer}, class: {type: string}}}}
       - {name: http_status, value_type: integer}
@@ -3474,6 +3570,7 @@ operations:
     connection_type_ids: [wordpress_site]
     inputs:
       - {name: connection_ref, value_type: connection_ref, required: true}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {slug: {type: string}, name: {type: string}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -3504,6 +3601,7 @@ operations:
     connection_type_ids: [wordpress_site]
     inputs:
       - {name: connection_ref, value_type: connection_ref, required: true}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {id: {type: string}, label: {type: string}, description: {type: string}, parent_id: {type: string}, sub_groups: {type: string}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -3519,6 +3617,7 @@ operations:
     inputs:
       - {name: connection_ref, value_type: connection_ref, required: true}
       - {name: group_id, value_type: text, required: true, schema: {type: string, minLength: 1, maxLength: 200}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {id: {type: string}, label: {type: string}, description: {type: string}, value: {type: [string, number, integer, boolean, object, array, "null"]}, default: {type: [string, number, integer, boolean, object, array, "null"]}, tip: {type: string}, placeholder: {type: string}, type: {type: string, enum: [text, email, number, color, password, textarea, select, multiselect, radio, image_width, checkbox]}, options: {type: object}, group_id: {type: string}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -3535,6 +3634,7 @@ operations:
       - {name: connection_ref, value_type: connection_ref, required: true}
       - {name: group_id, value_type: text, required: true, schema: {type: string, minLength: 1, maxLength: 200}}
       - {name: id, value_type: text, required: true, schema: {type: string, minLength: 1, maxLength: 200}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: data, value_type: object, schema: {type: object, properties: {id: {type: string}, label: {type: string}, description: {type: string}, value: {type: [string, number, integer, boolean, object, array, "null"]}, default: {type: [string, number, integer, boolean, object, array, "null"]}, tip: {type: string}, placeholder: {type: string}, type: {type: string, enum: [text, email, number, color, password, textarea, select, multiselect, radio, image_width, checkbox]}, options: {type: object}, group_id: {type: string}}}}
       - {name: http_status, value_type: integer}
@@ -3583,6 +3683,7 @@ operations:
     connection_type_ids: [wordpress_site]
     inputs:
       - {name: connection_ref, value_type: connection_ref, required: true}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {id: {type: string}, title: {type: string}, description: {type: string}, order: {type: integer}, enabled: {type: boolean}, method_title: {type: string}, method_description: {type: string}, method_supports: {type: array, maxItems: 200, items: {type: [string, number, integer, boolean, object, array, "null"]}}, settings: {type: object, properties: {id: {type: string}, label: {type: string}, description: {type: string}, type: {type: string, enum: [text, email, number, color, password, textarea, select, multiselect, radio, image_width, checkbox]}, value: {type: string}, default: {type: string}, tip: {type: string}, placeholder: {type: string}}}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -3598,6 +3699,7 @@ operations:
     inputs:
       - {name: connection_ref, value_type: connection_ref, required: true}
       - {name: id, value_type: text, required: true, schema: {type: string, minLength: 1, maxLength: 200}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: data, value_type: object, schema: {type: object, properties: {id: {type: string}, title: {type: string}, description: {type: string}, order: {type: integer}, enabled: {type: boolean}, method_title: {type: string}, method_description: {type: string}, method_supports: {type: array, maxItems: 200, items: {type: [string, number, integer, boolean, object, array, "null"]}}, settings: {type: object, properties: {id: {type: string}, label: {type: string}, description: {type: string}, type: {type: string, enum: [text, email, number, color, password, textarea, select, multiselect, radio, image_width, checkbox]}, value: {type: string}, default: {type: string}, tip: {type: string}, placeholder: {type: string}}}}}}
       - {name: http_status, value_type: integer}
@@ -3632,6 +3734,7 @@ operations:
     connection_type_ids: [wordpress_site]
     inputs:
       - {name: connection_ref, value_type: connection_ref, required: true}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {id: {type: integer}, name: {type: string}, order: {type: integer}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -3664,6 +3767,7 @@ operations:
     inputs:
       - {name: connection_ref, value_type: connection_ref, required: true}
       - {name: id, value_type: integer, required: true, schema: {type: integer, minimum: 0, maximum: 9007199254740992}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: data, value_type: object, schema: {type: object, properties: {id: {type: integer}, name: {type: string}, order: {type: integer}}}}
       - {name: http_status, value_type: integer}
@@ -3696,6 +3800,7 @@ operations:
     inputs:
       - {name: connection_ref, value_type: connection_ref, required: true}
       - {name: id, value_type: integer, required: true, schema: {type: integer, minimum: 0, maximum: 9007199254740992}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {code: {type: string}, type: {type: string, enum: [postcode, state, country, continent]}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -3729,6 +3834,7 @@ operations:
     inputs:
       - {name: connection_ref, value_type: connection_ref, required: true}
       - {name: zone_id, value_type: integer, required: true, schema: {type: integer, minimum: 0, maximum: 9007199254740992}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {instance_id: {type: integer}, title: {type: string}, order: {type: integer}, enabled: {type: boolean}, method_id: {type: string}, method_title: {type: string}, method_description: {type: string}, settings: {type: object, properties: {id: {type: string}, label: {type: string}, description: {type: string}, type: {type: string, enum: [text, email, number, color, password, textarea, select, multiselect, radio, image_width, checkbox]}, value: {type: string}, default: {type: string}, tip: {type: string}, placeholder: {type: string}}}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -3765,6 +3871,7 @@ operations:
       - {name: connection_ref, value_type: connection_ref, required: true}
       - {name: zone_id, value_type: integer, required: true, schema: {type: integer, minimum: 0, maximum: 9007199254740992}}
       - {name: id, value_type: integer, required: true, schema: {type: integer, minimum: 0, maximum: 9007199254740992}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: data, value_type: object, schema: {type: object, properties: {instance_id: {type: integer}, title: {type: string}, order: {type: integer}, enabled: {type: boolean}, method_id: {type: string}, method_title: {type: string}, method_description: {type: string}, settings: {type: object, properties: {id: {type: string}, label: {type: string}, description: {type: string}, type: {type: string, enum: [text, email, number, color, password, textarea, select, multiselect, radio, image_width, checkbox]}, value: {type: string}, default: {type: string}, tip: {type: string}, placeholder: {type: string}}}}}}
       - {name: http_status, value_type: integer}
@@ -3798,6 +3905,7 @@ operations:
     connection_type_ids: [wordpress_site]
     inputs:
       - {name: connection_ref, value_type: connection_ref, required: true}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {id: {type: string}, title: {type: string}, description: {type: string}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -3813,6 +3921,7 @@ operations:
     inputs:
       - {name: connection_ref, value_type: connection_ref, required: true}
       - {name: id, value_type: text, required: true, schema: {type: string, minLength: 1, maxLength: 200}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: data, value_type: object, schema: {type: object, properties: {id: {type: string}, title: {type: string}, description: {type: string}}}}
       - {name: http_status, value_type: integer}
@@ -3826,6 +3935,7 @@ operations:
     connection_type_ids: [wordpress_site]
     inputs:
       - {name: connection_ref, value_type: connection_ref, required: true}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: data, value_type: object, schema: {type: object, properties: {environment: {type: object, properties: {home_url: {type: string}, site_url: {type: string}, version: {type: string}, log_directory: {type: string}, log_directory_writable: {type: boolean}, wp_version: {type: string}, wp_multisite: {type: boolean}, wp_memory_limit: {type: integer}, wp_debug_mode: {type: boolean}, wp_cron: {type: boolean}, wp_environment_type: {type: string}, language: {type: string}, server_info: {type: string}, php_version: {type: string}, php_post_max_size: {type: integer}, php_max_execution_time: {type: integer}, php_max_input_vars: {type: integer}, curl_version: {type: string}, suhosin_installed: {type: boolean}, max_upload_size: {type: integer}, mysql_version: {type: string}, default_timezone: {type: string}, fsockopen_or_curl_enabled: {type: boolean}, soapclient_enabled: {type: boolean}, domdocument_enabled: {type: boolean}, gzip_enabled: {type: boolean}, mbstring_enabled: {type: boolean}, remote_post_successful: {type: boolean}, remote_post_response: {type: string}, remote_get_successful: {type: boolean}, remote_get_response: {type: string}}}, database: {type: object, properties: {wc_database_version: {type: string}, database_prefix: {type: string}, maxmind_geoip_database: {type: string}, database_tables: {type: array, maxItems: 200, items: {type: [string, number, integer, boolean, object, array, "null"]}}}}, active_plugins: {type: array, maxItems: 200, items: {type: object}}, theme: {type: object, properties: {name: {type: string}, version: {type: string}, version_latest: {type: string}, author_url: {type: string}, is_child_theme: {type: boolean}, has_woocommerce_support: {type: boolean}, has_woocommerce_file: {type: boolean}, has_outdated_templates: {type: boolean}, overrides: {type: array, maxItems: 200, items: {type: [string, number, integer, boolean, object, array, "null"]}}, parent_name: {type: string}, parent_version: {type: string}, parent_author_url: {type: string}}}, settings: {type: object, properties: {api_enabled: {type: boolean}, force_ssl: {type: boolean}, currency: {type: string}, currency_symbol: {type: string}, currency_position: {type: string}, thousand_separator: {type: string}, decimal_separator: {type: string}, number_of_decimals: {type: integer}, geolocation_enabled: {type: boolean}, taxonomies: {type: array, maxItems: 200, items: {type: [string, number, integer, boolean, object, array, "null"]}}}}, security: {type: object, properties: {secure_connection: {type: boolean}, hide_errors: {type: boolean}}}, pages: {type: array, maxItems: 200, items: {type: object}}}}}
       - {name: http_status, value_type: integer}
@@ -3839,6 +3949,7 @@ operations:
     connection_type_ids: [wordpress_site]
     inputs:
       - {name: connection_ref, value_type: connection_ref, required: true}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {id: {type: string}, name: {type: string}, action: {type: string}, description: {type: string}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -3854,6 +3965,7 @@ operations:
     inputs:
       - {name: connection_ref, value_type: connection_ref, required: true}
       - {name: id, value_type: text, required: true, schema: {type: string, minLength: 1, maxLength: 200}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: data, value_type: object, schema: {type: object, properties: {id: {type: string}, name: {type: string}, action: {type: string}, description: {type: string}}}}
       - {name: http_status, value_type: integer}
@@ -3867,6 +3979,7 @@ operations:
     connection_type_ids: [wordpress_site]
     inputs:
       - {name: connection_ref, value_type: connection_ref, required: true}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {slug: {type: string}, description: {type: string}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -3881,6 +3994,7 @@ operations:
     connection_type_ids: [wordpress_site]
     inputs:
       - {name: connection_ref, value_type: connection_ref, required: true}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {code: {type: string}, name: {type: string}, countries: {type: array, maxItems: 200, items: {type: object, properties: {code: {type: string}, currency_code: {type: string}, currency_pos: {type: string}, decimal_sep: {type: string}, dimension_unit: {type: string}, name: {type: string}, num_decimals: {type: integer}, states: {type: array, maxItems: 200, items: {type: object, properties: {code: {type: string}, name: {type: string}}}}, thousand_sep: {type: string}, weight_unit: {type: string}}}}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -3896,6 +4010,7 @@ operations:
     inputs:
       - {name: connection_ref, value_type: connection_ref, required: true}
       - {name: location, value_type: text, required: true, schema: {type: string, minLength: 1, maxLength: 200}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: data, value_type: object, schema: {type: object, properties: {code: {type: string}, name: {type: string}, countries: {type: array, maxItems: 200, items: {type: object, properties: {code: {type: string}, currency_code: {type: string}, currency_pos: {type: string}, decimal_sep: {type: string}, dimension_unit: {type: string}, name: {type: string}, num_decimals: {type: integer}, states: {type: array, maxItems: 200, items: {type: object, properties: {code: {type: string}, name: {type: string}}}}, thousand_sep: {type: string}, weight_unit: {type: string}}}}}}}
       - {name: http_status, value_type: integer}
@@ -3909,6 +4024,7 @@ operations:
     connection_type_ids: [wordpress_site]
     inputs:
       - {name: connection_ref, value_type: connection_ref, required: true}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {code: {type: string}, currency_code: {type: string}, currency_pos: {type: string}, decimal_sep: {type: string}, dimension_unit: {type: string}, name: {type: string}, num_decimals: {type: integer}, states: {type: array, maxItems: 200, items: {type: object, properties: {code: {type: string}, name: {type: string}}}}, thousand_sep: {type: string}, weight_unit: {type: string}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -3924,6 +4040,7 @@ operations:
     inputs:
       - {name: connection_ref, value_type: connection_ref, required: true}
       - {name: location, value_type: text, required: true, schema: {type: string, minLength: 1, maxLength: 200}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: data, value_type: object, schema: {type: object, properties: {code: {type: string}, currency_code: {type: string}, currency_pos: {type: string}, decimal_sep: {type: string}, dimension_unit: {type: string}, name: {type: string}, num_decimals: {type: integer}, states: {type: array, maxItems: 200, items: {type: object, properties: {code: {type: string}, name: {type: string}}}}, thousand_sep: {type: string}, weight_unit: {type: string}}}}
       - {name: http_status, value_type: integer}
@@ -3937,6 +4054,7 @@ operations:
     connection_type_ids: [wordpress_site]
     inputs:
       - {name: connection_ref, value_type: connection_ref, required: true}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: items, value_type: array, schema: {type: array, items: {type: object, properties: {code: {type: string}, name: {type: string}, symbol: {type: string}}}}}
       - {name: pagination, value_type: object, schema: {type: object, additionalProperties: false, properties: {total: {type: [integer, "null"]}, total_pages: {type: [integer, "null"]}, page: {type: [integer, "null"]}, per_page: {type: [integer, "null"]}, next_link: {type: [string, "null"]}, previous_link: {type: [string, "null"]}, has_more: {type: boolean}}}}
@@ -3952,6 +4070,7 @@ operations:
     inputs:
       - {name: connection_ref, value_type: connection_ref, required: true}
       - {name: currency, value_type: text, required: true, schema: {type: string, minLength: 1, maxLength: 200}}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: data, value_type: object, schema: {type: object, properties: {code: {type: string}, name: {type: string}, symbol: {type: string}}}}
       - {name: http_status, value_type: integer}
@@ -3965,6 +4084,7 @@ operations:
     connection_type_ids: [wordpress_site]
     inputs:
       - {name: connection_ref, value_type: connection_ref, required: true}
+      - {name: _fields, value_type: array, required: false, schema: {type: array, maxItems: 200, items: {type: string, maxLength: 2048}}}
     outputs:
       - {name: data, value_type: object, schema: {type: object, properties: {code: {type: string}, name: {type: string}, symbol: {type: string}}}}
       - {name: http_status, value_type: integer}

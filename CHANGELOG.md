@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.3.0
+
+### Added
+
+- Every read that returns records accepts WordPress's global `_fields` parameter, so a workflow
+  can ask for only the fields it needs, for example a product's ID, SKU, price and stock. A large
+  product page then arrives without its full metadata, descriptions and links.
+  Endpoint: `GET` routes that return records, with `_fields[]=<field>`, for example
+  `GET /wp-json/wc/v3/products?_fields[]=id&_fields[]=sku`.
+
 ## 1.2.3
 
 ### Changed

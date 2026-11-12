@@ -286,6 +286,39 @@ def test_documented_query_values_reach_the_native_request(http, transport_factor
     assert "featured=true" in query
 
 
+def test_a_product_page_can_ask_for_only_the_fields_it_needs(http, transport_factory) -> None:
+    """WordPress's global ``_fields`` narrows each record before it leaves the site."""
+    http.queue(json_response([{"id": 7, "sku": "LED-7", "price": "9.99"}]))
+    response = _run(
+        "wc_list_products",
+        {"page": 18, "per_page": 20, "_fields": ["id", "sku", "price"]},
+        transport_factory,
+        **WOO,
+    )
+    parsed = php_parse_str(http.last["url"].split("?", 1)[1])
+
+    assert response["ok"] is True
+    assert parsed["_fields"] == ["id", "sku", "price"]
+    assert response["result"]["items"] == [{"id": 7, "sku": "LED-7", "price": "9.99"}]
+
+
+def test_every_record_read_and_no_write_accepts_fields_selection() -> None:
+    from runtime.io_shapes import response_kind
+
+    record_kinds = {"object", "object_list", "keyed_map"}
+    for row in REST_OPERATIONS:
+        accepts = "_fields" in query_field_names(row)
+        reads_records = row.method == "GET" and response_kind(row) in record_kinds
+        assert accepts is reads_records, row.operation_id
+
+
+def test_fields_selection_does_not_open_plugin_parameters(http, transport_factory) -> None:
+    response = _run("wc_list_products", {"_fields": ["id"], "lang": "en"}, transport_factory, **WOO)
+
+    assert response["error_code"] == errors.INVALID_PAYLOAD
+    assert http.requests == []
+
+
 def test_the_registry_and_the_parameter_tables_cover_the_same_operations() -> None:
     assert set(QUERY_FIELDS) == set(REST_OPERATIONS_BY_ID)
     assert set(BODY_FIELDS) == set(REST_OPERATIONS_BY_ID)

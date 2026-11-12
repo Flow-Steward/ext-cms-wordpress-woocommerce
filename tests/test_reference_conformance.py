@@ -138,6 +138,10 @@ def test_every_typed_field_traces_to_a_documented_parameter() -> None:
 
     # WooCommerce documents these action payloads in its request examples only.
     example_sourced = {"template_id", "email", "force_email_update"}
+    # WordPress documents its global parameters once, on the Global Parameters page.
+    import build_parameters
+
+    globally_sourced = {field["name"] for field in build_parameters.GLOBAL_READ_QUERY_FIELDS}
 
     for operation in REST_OPERATIONS_BY_ID.values():
         key = f"{operation.provider}:{operation.doc_slug}"
@@ -145,7 +149,7 @@ def test_every_typed_field_traces_to_a_documented_parameter() -> None:
             field["name"]
             for field in QUERY_FIELDS[operation.operation_id] + BODY_FIELDS[operation.operation_id]
         }
-        unsourced = declared - documented[key] - example_sourced
+        unsourced = declared - documented[key] - example_sourced - globally_sourced
         assert unsourced == set(), (operation.operation_id, sorted(unsourced))
 
 
