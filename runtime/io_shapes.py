@@ -14,6 +14,7 @@ from __future__ import annotations
 
 from typing import Any
 
+from .action_copy import field_guidance
 from .catalog import Operation
 from .parameters import (
     BATCH_CAPABILITIES,
@@ -533,6 +534,7 @@ def step_form_fields(row: Operation) -> list[dict[str, Any]]:
             "label": field_label(name),
             "widget_type": "select" if enum else _WIDGET_TYPES[value_type],
         }
+        entry.update(field_guidance(row, field))
         if enum:
             entry["options"] = [{"label": str(value), "value": str(value)} for value in enum]
         if field.get("required") is True:

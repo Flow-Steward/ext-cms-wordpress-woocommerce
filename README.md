@@ -1,5 +1,7 @@
 # WordPress & WooCommerce
 
+See [Workflow actions and examples](docs/workflow-actions.md) for connection setup, action inputs and end-to-end examples.
+
 Connect WordPress publishing and WooCommerce store operations to Flow Steward over their standard REST APIs. WordPress steps list, read, create and update posts, pages, media, comments, categories, tags and reusable blocks. Additional supported operations expose revisions, autosaves, search, settings, widgets and site metadata, giving content workflows the records needed to publish material, maintain taxonomy or moderate comments with the connected user's permissions.
 
 For WooCommerce, work with products and variations, prices and stock, categories, attributes, tags, reviews, customers, coupons, orders and order notes. Supported batch operations let a workflow submit related creates or updates together. Read store reports, taxes, shipping configuration and other supported reference data, or send an order email through its dedicated operation. A product export step follows the matching catalog's pages and writes a JSONL file for later processing.

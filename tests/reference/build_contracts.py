@@ -149,6 +149,7 @@ def scalar(value) -> str:
         return '""'
     needs_quote = (
         text[0] in "!&*?|>%@`'\"-{}[]#,"
+        or text[0].isdigit()
         or text[-1] in " :"
         or ": " in text
         or " #" in text
