@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 from typing import Any
 
 # Examples illustrate values; they do not populate or change action defaults.
@@ -177,5 +178,12 @@ def field_guidance(row: Any, field: dict[str, Any]) -> dict[str, str]:
         help_text += " Supply JSON or bind a matching value from an earlier step."
     result = {"help_text": help_text}
     if placeholder:
+        if field["value_type"] in {"array", "object", "json"}:
+            try:
+                json.loads(placeholder)
+            except json.JSONDecodeError:
+                # A JSON editor needs quoted string syntax, even when the
+                # executable schema also permits plain string values.
+                placeholder = json.dumps(placeholder)
         result["placeholder"] = placeholder
     return result
