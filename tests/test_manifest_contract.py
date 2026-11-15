@@ -138,7 +138,7 @@ def test_manifest_declares_the_free_first_party_identity() -> None:
     manifest = _yaml("extension.yaml")
     assert manifest["extension_id"] == "flowsteward.wordpress-woocommerce"
     assert manifest["display_name"] == "WordPress & WooCommerce"
-    assert manifest["version"] == "1.2.4"
+    assert manifest["version"] == "1.2.5"
     assert manifest["billing_mode"] == "free"
     assert manifest["vendor"]["name"] == "Flow Steward"
     assert manifest["account_scope"]["scope_type"] == "project"
@@ -230,6 +230,7 @@ def test_ui_declares_exactly_the_five_extension_owned_pages() -> None:
         "wordpress-api",
         "woocommerce-api",
         "changelog",
+        "support",
     ]
     assert [page["title"] for page in pages] == [
         "Setup Guide",
@@ -237,6 +238,7 @@ def test_ui_declares_exactly_the_five_extension_owned_pages() -> None:
         "WordPress API",
         "WooCommerce API",
         "Changelog",
+        "Support",
     ]
 
 

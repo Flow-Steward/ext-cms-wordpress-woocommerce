@@ -225,6 +225,7 @@ def test_the_changelog_page_is_registered() -> None:
         "pages/wordpress-api.yaml",
         "pages/woocommerce-api.yaml",
         "pages/changelog.yaml",
+        "pages/support.yaml",
     ]
     page = _yaml("ui/pages/changelog.yaml")
     assert page["page_id"] == "changelog"
