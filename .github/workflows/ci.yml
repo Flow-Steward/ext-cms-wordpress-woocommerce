@@ -84,5 +84,9 @@ jobs:
           path: dist
       - name: Verify the packaged archives
         run: cd dist && sha256sum -c SHA256SUMS
+      - name: Install the catalog checker's dependency
+        run: >-
+          python -m pip install --no-deps --only-binary=:all: --require-hashes
+          -r .github/requirements-catalog.txt
       - name: The catalog would accept it
         run: python .github/scripts/catalog_check.py dist/*.zip
