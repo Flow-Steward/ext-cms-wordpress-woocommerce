@@ -192,6 +192,22 @@ class RestTransport:
     def _open(self, request: Request, *, mutating: bool, purpose: str) -> Response:
         assert_site_url_allowed(self._connection.site_url)
         try:
+            return self._send(request, mutating=mutating, purpose=purpose)
+        except ExtensionError as exc:
+            if (
+                not mutating
+                or exc.external_effect_status is not None
+                or exc.code == errors.BLOCKED_ADDRESS
+            ):
+                raise
+            raise errors.mutation_outcome_unknown() from exc
+        except Exception as exc:
+            if not mutating:
+                raise
+            raise errors.mutation_outcome_unknown() from exc
+
+    def _send(self, request: Request, *, mutating: bool, purpose: str) -> Response:
+        try:
             with self._opener(
                 request,
                 timeout_seconds=self._timeout_seconds,
@@ -230,12 +246,7 @@ class RestTransport:
                 "The site could not be reached",
                 **_transport_failure_facts(mutating=mutating),
             ) from exc
-        if 300 <= status < 400:
-            raise ExtensionError(
-                errors.REDIRECT_REJECTED,
-                "The site redirected the request and it was not followed",
-            )
-        if status >= 400:
+        if status >= 300:
             code, message = errors.classify_status(status, mutating=mutating)
             raise ExtensionError(
                 code,
@@ -307,7 +318,8 @@ def _http_failure_facts(
     retry_after: float | None = None,
 ) -> dict[str, Any]:
     retryable_status = status in {408, 429, 500, 502, 503, 504}
-    ambiguous = mutating and status in {408, 500, 502, 503, 504}
+    confirmed_rejection = status in {400, 401, 403, 404, 409, 422, 429}
+    ambiguous = mutating and not confirmed_rejection
     facts: dict[str, Any] = {
         "failure_class": "provider",
         "retryable": retryable_status and not ambiguous,

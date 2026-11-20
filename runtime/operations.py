@@ -22,7 +22,7 @@ from .field_policy import sanitized_response_body
 from .io_shapes import batch_members
 from .media import media_upload_source
 from .pagination import pagination_from_headers
-from .transport import RestTransport
+from .transport import Response, RestTransport
 
 #: Exactly the keys the host puts in an action envelope. Rejecting the ones it
 #: adds for provenance — which page and component invoked the action, and the
@@ -220,6 +220,17 @@ def _run_rest_operation(
             purpose=purpose,
         )
 
+    try:
+        return _rest_result(row, response, page=page, per_page=per_page)
+    except Exception as exc:
+        if not row.has_external_effect:
+            raise
+        raise errors.mutation_outcome_unknown() from exc
+
+
+def _rest_result(
+    row: Operation, response: Response, *, page: int | None, per_page: int | None
+) -> dict[str, Any]:
     # The site's record is forwarded to the workflow as-is, so a property this
     # version never returns is dropped here, before anything is serialised.
     body = sanitized_response_body(row, response.body)

@@ -7,13 +7,10 @@ single source for that decision. The generators build the manifests, step forms
 and documentation from it, and the runtime rejects the same fields, so a field
 can never be published in one place and refused in another.
 
-The policy is deliberately narrow. It names the exact operations and the exact
-top-level field of the documented record. It is not a rule about the word
-"password": it never touches WordPress ``meta``, WooCommerce ``meta_data``, a
-WooCommerce setting whose own ``type`` is ``password``, ordinary text that
-mentions a password, or any nested value that merely shares the name. The
-connection's own WordPress Application Password is a stored connection secret
-and is untouched by any of this.
+The policy names the affected operations and properties. Only configuration
+responses omit password setting values and limit nested provider settings to
+metadata. WordPress ``meta``, WooCommerce ``meta_data`` and ordinary content
+keep their existing behavior.
 """
 
 from __future__ import annotations
@@ -114,6 +111,28 @@ PRODUCT_POST_PASSWORD_RESPONSE_OPERATIONS: frozenset[str] = frozenset(
     }
 )
 
+_SETTING_OPTION_OPERATIONS = frozenset(
+    {
+        "wc_list_setting_options",
+        "wc_get_setting_option",
+        "wc_update_setting_option",
+        "wc_batch_setting_options",
+    }
+)
+_PROVIDER_SETTING_OPERATIONS = frozenset(
+    {
+        "wc_list_payment_gateways",
+        "wc_get_payment_gateway",
+        "wc_update_payment_gateway",
+        "wc_list_shipping_zone_methods",
+        "wc_get_shipping_zone_method",
+        "wc_create_shipping_zone_method",
+        "wc_update_shipping_zone_method",
+    }
+)
+_SETTING_VALUE_FIELDS = frozenset({"value", "default", "placeholder"})
+_PROVIDER_SETTING_METADATA = frozenset({"id", "type", "label", "description", "tip"})
+
 
 def excluded_query_fields(operation_id: str) -> frozenset[str]:
     """Query fields this version does not publish or accept."""
@@ -153,6 +172,37 @@ def _without(record: Any, names: frozenset[str]) -> Any:
     return {key: value for key, value in record.items() if key not in names}
 
 
+def _password_setting_metadata(value: Any) -> Any:
+    if isinstance(value, list):
+        return [_password_setting_metadata(item) for item in value]
+    if not isinstance(value, dict):
+        return value
+    kind = value.get("type")
+    if isinstance(kind, str) and kind.strip().casefold() == "password":
+        value = _without(value, _SETTING_VALUE_FIELDS)
+    return {key: _password_setting_metadata(item) for key, item in value.items()}
+
+
+def _provider_settings_metadata(record: Any) -> Any:
+    if not isinstance(record, dict) or "settings" not in record:
+        return record
+    settings = record["settings"]
+    return {
+        **record,
+        "settings": {
+            name: {
+                key: item
+                for key, item in setting.items()
+                if key in _PROVIDER_SETTING_METADATA and isinstance(item, str)
+            }
+            for name, setting in settings.items()
+            if isinstance(setting, dict)
+        }
+        if isinstance(settings, dict)
+        else {},
+    }
+
+
 def sanitized_response_body(row: Operation, body: Any) -> Any:
     """Remove excluded record properties from one upstream response body.
 
@@ -162,6 +212,12 @@ def sanitized_response_body(row: Operation, body: Any) -> Any:
     them grouped by member, and everything else returns one record. The removed
     value is never logged or reported.
     """
+    if row.operation_id in _SETTING_OPTION_OPERATIONS:
+        return _password_setting_metadata(body)
+    if row.operation_id in _PROVIDER_SETTING_OPERATIONS:
+        if isinstance(body, list):
+            return [_provider_settings_metadata(item) for item in body]
+        return _provider_settings_metadata(body)
     names = excluded_response_fields(row)
     if not names:
         return body

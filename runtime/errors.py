@@ -131,6 +131,18 @@ def error_response(
     return response
 
 
+def mutation_outcome_unknown() -> ExtensionError:
+    """A mutation may have landed before its response could be processed."""
+    return ExtensionError(
+        TIMEOUT_UNKNOWN,
+        "The outcome of this request is unknown; check the current state before retrying",
+        failure_class="provider",
+        retryable=False,
+        definitely_no_external_effect=False,
+        external_effect_status=TIMEOUT_UNKNOWN,
+    )
+
+
 def classify_status(status: int, *, mutating: bool) -> tuple[str, str]:
     """Map one upstream HTTP status onto a safe code and a safe message."""
     if 300 <= status < 400:

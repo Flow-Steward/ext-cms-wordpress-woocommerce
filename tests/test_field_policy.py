@@ -222,18 +222,46 @@ def test_unrelated_values_named_password_are_left_alone(http, transport_factory)
     assert "Reset your password here" in data["content"]["rendered"]
 
 
-def test_a_setting_option_whose_type_is_password_is_untouched(http, transport_factory) -> None:
-    """WooCommerce describes a setting's own input type; it is not a credential field."""
-    body = {"id": "woocommerce_registration_generate_password", "type": "password", "value": "yes"}
+def test_password_setting_values_are_omitted_from_workflow_output(http, transport_factory) -> None:
+    body = {
+        "id": "registration_option",
+        "type": "password",
+        "value": "configured",
+        "default": "initial",
+        "placeholder": "example",
+    }
     http.queue(json_response(body))
     response = _run(
         "wc_get_setting_option",
-        {"group_id": "account", "id": "woocommerce_registration_generate_password"},
+        {"group_id": "account", "id": "registration_option"},
         transport_factory,
         **WOO,
     )
 
-    assert response["result"]["data"] == body
+    assert response["result"]["data"] == {"id": "registration_option", "type": "password"}
+
+
+@pytest.mark.parametrize(
+    ("operation_id", "shape"),
+    [("wc_list_payment_gateways", "list"), ("wc_get_shipping_zone_method", "get")],
+)
+def test_provider_settings_carry_only_safe_metadata(operation_id, shape) -> None:
+    record = {
+        "id": "provider",
+        "settings": {
+            "option": {"id": "option", "label": "Option", "type": "text", "value": "configured"},
+            "undocumented": "opaque",
+        },
+    }
+    sanitized = {
+        "id": "provider",
+        "settings": {"option": {"id": "option", "label": "Option", "type": "text"}},
+    }
+    body = [record] if shape == "list" else record
+
+    result = sanitized_response_body(REST_OPERATIONS_BY_ID[operation_id], body)
+
+    assert result == ([sanitized] if shape == "list" else sanitized)
 
 
 def test_an_operation_outside_the_policy_is_not_touched() -> None:

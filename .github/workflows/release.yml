@@ -39,9 +39,13 @@ jobs:
     needs: ci
     runs-on: ubuntu-24.04
     steps:
+      - name: Require the packaging job's artifact ID
+        env:
+          ARCHIVE_ID: ${{ needs.ci.outputs.archive-id }}
+        run: '[[ "$ARCHIVE_ID" =~ ^[1-9][0-9]*$ ]]'
       - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
-          name: dist
+          artifact-ids: ${{ needs.ci.outputs.archive-id }}
           path: dist
       - name: Publish only the archives CI packaged
         run: cd dist && sha256sum -c SHA256SUMS

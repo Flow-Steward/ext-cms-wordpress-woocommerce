@@ -115,6 +115,46 @@ def test_a_redirect_status_raised_as_an_http_error_is_also_rejected(
     assert response["error_code"] == errors.REDIRECT_REJECTED
 
 
+@pytest.mark.parametrize("status_as_error", [False, True])
+def test_mutation_redirect_has_unknown_effect(http, transport_factory, status_as_error) -> None:
+    if status_as_error:
+        http.queue(HTTPError("https://shop.example/x", 302, "found", Message(), None))
+    else:
+        http.queue(FakeResponse(302, {}, b""))
+
+    response = _run("wp_create_post", {"title": "draft"}, transport_factory)
+
+    assert response["external_effect_status"] == errors.TIMEOUT_UNKNOWN
+    assert response["definitely_no_external_effect"] is False
+    assert response["retryable"] is False
+    assert len(http.requests) == 1
+
+
+@pytest.mark.parametrize(
+    ("module", "function", "failure"),
+    [
+        ("transport", "read_bounded", ExtensionError(errors.RESPONSE_TOO_LARGE, "size limit")),
+        ("transport", "decode_json", ExtensionError(errors.INVALID_JSON_RESPONSE, "decode failed")),
+        ("operations", "sanitized_response_body", ValueError("projection failed")),
+    ],
+)
+def test_mutation_response_processing_failure_has_unknown_effect(
+    monkeypatch, http, transport_factory, module, function, failure
+) -> None:
+    def fail(*args, **kwargs):
+        raise failure
+
+    monkeypatch.setattr(f"runtime.{module}.{function}", fail)
+    http.queue(json_response({"id": 7}, status=201))
+
+    response = _run("wp_create_post", {"title": "draft"}, transport_factory)
+
+    assert response["external_effect_status"] == errors.TIMEOUT_UNKNOWN
+    assert response["definitely_no_external_effect"] is False
+    assert response["retryable"] is False
+    assert len(http.requests) == 1
+
+
 def test_an_oversized_response_is_refused(http, transport_factory) -> None:
     http.queue(FakeResponse(200, {}, b"[" + b"0," * (MAX_RESPONSE_BYTES // 2) + b"0]"))
     response = _run("wp_list_posts", {}, transport_factory)

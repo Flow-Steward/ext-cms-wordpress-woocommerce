@@ -55,6 +55,8 @@ Replace example IDs with IDs from this store. Create items use the corresponding
 resource's create fields. Inspect each returned batch member for errors; the
 batch is not a promise that every entry succeeded. Batch capabilities vary by
 resource, and setting-option batches only update existing settings.
+WooCommerce responses omit password setting values, defaults, and placeholders.
+Payment gateway and shipping method settings expose only option metadata.
 
 ## Export records and continue through lists
 
