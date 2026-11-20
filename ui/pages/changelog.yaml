@@ -10,6 +10,14 @@ components:
     title: Release history
     body: |
 
+      ## 1.2.6
+
+      ### Security
+
+      - Preserve the unknown outcome of WordPress and WooCommerce writes when their responses cannot be processed.
+      - Keep WooCommerce password option values and provider setting values out of workflow results.
+      - Package release archives in a separate job using the tagged source and no test dependencies.
+
       ## 1.2.5
 
       ### Added
