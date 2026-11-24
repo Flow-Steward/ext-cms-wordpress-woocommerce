@@ -1,2 +1,2 @@
-# CPython 3.12 Linux x86-64 wheel from https://pypi.org/project/PyYAML/6.0.3/#files
+# CPython 3.12 Linux x86-64 wheel from https://pypi.org/project/PyYAML/6.0.4/#files
 PyYAML==6.0.4 --hash=sha256:93bfb2459195406a518e2f487a9bbf01df240175f31e06f5a252ac6734c7bbf0
